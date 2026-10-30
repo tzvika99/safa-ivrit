@@ -28,19 +28,20 @@
       --color-sea-sponge: 215, 255, 184;
     }
     * { box-sizing: border-box; }
-    body { font-family: 'Rubik', sans-serif; margin: 0; background: #ffffff; color: #3c3c3c; overflow-x: hidden; }
-    .font-hebrew { font-family: 'Rubik', 'Assistant', sans-serif; direction: rtl; }
-    .font-hebrew-serif { font-family: 'Frank Ruhl Libre', serif; direction: rtl; }
+    body { font-family: 'Rubik', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: #ffffff; color: #3c3c3c; overflow-x: hidden; }
+    .font-hebrew { font-family: 'Rubik', 'Assistant', Arial, sans-serif; direction: rtl; }
 
-    /* Brand Title Gradient / Multi-color styling */
-    .brand-yafa { color: #1cb0f6; text-shadow: 0 2px 0 rgba(0, 150, 221, 0.25); }
-    .brand-safa { color: #58cc02; text-shadow: 0 2px 0 rgba(88, 167, 0, 0.25); }
+    /* Brand Title Multi-color styling (Blue, Green & Red) */
+    .brand-yafa { color: #1cb0f6; text-shadow: 0 2px 0 rgba(0, 150, 221, 0.22); }
+    .brand-safa { color: #58cc02; text-shadow: 0 2px 0 rgba(88, 167, 0, 0.22); }
     .brand-dot  { color: #ff4b4b; }
 
     .duo-btn-green {
       background-color: rgb(var(--color-owl));
       box-shadow: 0 4px 0 rgb(var(--color-tree-frog));
       color: white;
+      border: none;
+      cursor: pointer;
       transition: transform 0.1s, box-shadow 0.1s;
     }
     .duo-btn-green:active {
@@ -51,6 +52,8 @@
       background-color: rgb(var(--color-macaw));
       box-shadow: 0 4px 0 rgb(var(--color-macaw-shadow));
       color: white;
+      border: none;
+      cursor: pointer;
       transition: transform 0.1s, box-shadow 0.1s;
     }
     .duo-btn-blue:active {
@@ -61,6 +64,8 @@
       background-color: rgb(var(--color-cardinal));
       box-shadow: 0 4px 0 rgb(var(--color-fire-ant));
       color: white;
+      border: none;
+      cursor: pointer;
       transition: transform 0.1s, box-shadow 0.1s;
     }
     .duo-btn-red:active {
@@ -72,6 +77,7 @@
       border: 2px solid rgb(var(--color-swan));
       box-shadow: 0 4px 0 rgb(var(--color-swan));
       color: rgb(var(--color-eel));
+      cursor: pointer;
       transition: transform 0.1s, box-shadow 0.1s, background-color 0.1s;
     }
     .duo-btn-outline:hover {
@@ -86,23 +92,21 @@
       border: 2px solid rgb(var(--color-macaw));
       box-shadow: 0 4px 0 rgb(var(--color-macaw));
       color: rgb(24, 153, 214);
+      cursor: pointer;
     }
 
-    /* ---- Hebrew on-screen keyboard: light-blue design ---- */
+    /* Hebrew on-screen keyboard */
     .kb-toggle-btn { background: linear-gradient(180deg, #f4fbff 0%, #d4f0ff 100%); border: 2px solid #84d8ff; box-shadow: 0 4px 0 #5cc6f7; color: #1899d6; cursor: pointer; transition: transform .1s, box-shadow .1s, background .15s; }
     .kb-toggle-btn:hover { background: linear-gradient(180deg, #ffffff 0%, #c2ebff 100%); }
     .kb-toggle-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #5cc6f7; }
     .kb-toggle-btn.kb-on { background: linear-gradient(180deg, #52c7fb 0%, #1cb0f6 100%); border-color: #0e9be0; box-shadow: 0 4px 0 #0f8fd0; color: #ffffff; }
     .kb-panel { background: linear-gradient(180deg, #f4fbff 0%, #def3ff 100%); border: 2px solid #84d8ff; border-radius: 18px; box-shadow: 0 8px 24px rgba(28, 176, 246, .30); }
-    .kb-key { background: #ffffff; border: 2px solid #bfe8fd; box-shadow: 0 3px 0 #9fd8f6; color: #17689a; transition: transform .08s, box-shadow .08s, background .12s; }
+    .kb-key { background: #ffffff; border: 2px solid #bfe8fd; box-shadow: 0 3px 0 #9fd8f6; color: #17689a; cursor: pointer; transition: transform .08s, box-shadow .08s, background .12s; }
     .kb-key:hover { background: #e8f7ff; }
     .kb-key:active { transform: translateY(3px); box-shadow: 0 0 0 #9fd8f6; background: #d4f0ff; }
     .kb-key-mark { background: #e3f5ff; border-color: #84d8ff; color: #1478b3; }
 
-    /* Smooth sliding progress bar */
-    .duo-progress-fill {
-      transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-    }
+    .duo-progress-fill { transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
 
     @keyframes duoBounce {
       0%, 100% { transform: translateY(0); }
@@ -114,14 +118,6 @@
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-4px) rotate(1.8deg); }
     }
-    @keyframes flashPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-    @keyframes flashWiggle {
-      0%, 100% { transform: rotate(-5deg); }
-      50% { transform: rotate(5deg); }
-    }
     @keyframes srulikBlink {
       0%, 92%, 100% { transform: scaleY(1); }
       96% { transform: scaleY(0.1); }
@@ -132,19 +128,15 @@
       95% { transform: rotate(5deg); }
     }
     .flash-float { animation: flashFloat 2.6s infinite ease-in-out; transform-origin: center; }
-    .flash-pulse { animation: flashPulse 2s infinite ease-in-out; transform-origin: center; }
-    .flash-wiggle { animation: flashWiggle 2.2s infinite ease-in-out; transform-origin: center; }
-    .srulik-eyes { animation: srulikBlink 4s infinite; transform-origin: center 84px; }
+    .srulik-eyes { animation: srulikBlink 4s infinite; transform-origin: center 67px; }
     .srulik-curl { animation: curlBounce 3.2s infinite; transform-origin: 105px 42px; }
 
     .srulik-mascot-click { cursor: pointer; transition: transform .15s; }
     .srulik-mascot-click:hover { transform: scale(1.06) rotate(-2deg); }
 
-    /* Story word hover tooltip */
     .story-word { position: relative; cursor: pointer; border-bottom: 2px dotted #84d8ff; padding: 0 2px; border-radius: 4px; transition: background .15s; }
     .story-word:hover { background: #ddf4ff; color: #1453a3; }
 
-    /* Mobile responsive shell */
     @media (max-width: 767px) {
       #primary-sidebar {
         position: fixed !important; top: auto !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
@@ -167,6 +159,23 @@
 
   <script>
     // ============================================================================
+    // SAFE STORAGE HELPERS (PREVENTS CRASHES IN SANDBOXED / FILE:// ENVIRONMENTS)
+    // ============================================================================
+    function safeGet(key, fallback) {
+      try {
+        var val = window.localStorage.getItem(key);
+        return val !== null ? val : fallback;
+      } catch (e) {
+        return fallback;
+      }
+    }
+    function safeSet(key, val) {
+      try {
+        window.localStorage.setItem(key, val);
+      } catch (e) {}
+    }
+
+    // ============================================================================
     // UTILITIES, NORMALIZATION & SYNTHESIZED AUDIO ENGINE
     // ============================================================================
     function stripNikud(text) {
@@ -187,34 +196,21 @@
         .replace(/'/g, ''');
     }
 
-    function shuffleDerangement(arr) {
-      if (!arr || arr.length <= 1) return arr ? arr.slice() : [];
-      const originalJoin = arr.map(function(x) { return typeof x === 'object' ? JSON.stringify(x) : String(x); }).join('||');
-      let copy = arr.slice();
-      for (let attempt = 0; attempt < 12; attempt++) {
-        for (let i = copy.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          const temp = copy[i]; copy[i] = copy[j]; copy[j] = temp;
-        }
-        const currentJoin = copy.map(function(x) { return typeof x === 'object' ? JSON.stringify(x) : String(x); }).join('||');
-        if (currentJoin !== originalJoin) break;
-      }
-      return copy;
-    }
-
     function speakHebrew(text) {
       if (!('speechSynthesis' in window) || !text) return;
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(stripNikud(text));
-      u.lang = 'he-IL';
-      u.rate = 0.88;
-      window.speechSynthesis.speak(u);
+      try {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(stripNikud(text));
+        u.lang = 'he-IL';
+        u.rate = 0.88;
+        window.speechSynthesis.speak(u);
+      } catch (e) {}
     }
 
-    let feedbackAudioContext = null;
+    var feedbackAudioContext = null;
     function getFeedbackAudioContext() {
       try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        var AudioCtx = window.AudioContext || window.webkitAudioContext;
         if (!AudioCtx) return null;
         if (!feedbackAudioContext) feedbackAudioContext = new AudioCtx();
         return feedbackAudioContext;
@@ -222,24 +218,28 @@
     }
 
     function playToneSequence(sequence, volume) {
-      const ctx = getFeedbackAudioContext();
+      var ctx = getFeedbackAudioContext();
       if (!ctx) return;
-      if (ctx.state === 'suspended') ctx.resume().catch(function(){});
+      if (ctx.state === 'suspended') {
+        try { ctx.resume(); } catch (e) {}
+      }
       try {
-        const startAt = ctx.currentTime + 0.005;
+        var startAt = ctx.currentTime + 0.005;
         sequence.forEach(function(note) {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          const at = startAt + note.at;
-          const duration = note.duration || 0.12;
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          var at = startAt + note.at;
+          var duration = note.duration || 0.12;
           osc.type = note.type || 'triangle';
           osc.frequency.setValueAtTime(note.freq, at);
           if (note.endFreq) osc.frequency.exponentialRampToValueAtTime(note.endFreq, at + duration);
           gain.gain.setValueAtTime(0.0001, at);
           gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, (note.gain || 0.2) * (volume || 1)), at + 0.008);
           gain.gain.exponentialRampToValueAtTime(0.0001, at + duration);
-          osc.connect(gain); gain.connect(ctx.destination);
-          osc.start(at); osc.stop(at + duration + 0.015);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(at);
+          osc.stop(at + duration + 0.015);
         });
       } catch (e) {}
     }
@@ -269,251 +269,221 @@
 
     // ============================================================================
     // CARTOONISH "SRULIK" KID MASCOT SVG
-    // Iconic Kova Tembel (bucket hat), curly forelock, open-collar shirt,
-    // shorts, sandals, and thinking hand-to-chin gesture!
     // ============================================================================
     function getSrulikMascotHTML(className, noClick) {
-      const cls = className || "w-32 h-36";
-      const clickAttrs = noClick ? 'class="inline-block shrink-0"' : 'onclick="toggleSrulikChat()" class="inline-block shrink-0 srulik-mascot-click"';
-      return `<span title="${noClick ? 'Srulik — Your Hebrew Buddy' : 'Click to ask Srulik a Hebrew question!'}" ${clickAttrs}>
-        <svg viewBox="0 0 240 265" class="${cls}" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Ground Shadow -->
-          <ellipse cx="120" cy="250" rx="64" ry="10" fill="rgb(175,175,175)" fill-opacity="0.35" />
-          <g class="flash-float">
-            <!-- Legs (long cartoonish pioneer legs) -->
-            <rect x="96" y="182" width="13" height="52" rx="6" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />
-            <rect x="131" y="182" width="13" height="52" rx="6" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />
-            
-            <!-- Iconic Biblical Sandals (סנדלים תנ״כיים) -->
-            <g>
-              <path d="M78 232 C78 225 112 225 114 234 L115 242 C115 245 76 245 76 240 Z" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />
-              <path d="M74 242 H117" stroke="#1e293b" stroke-width="5.5" stroke-linecap="round" />
-              <path d="M88 228 V241 M100 227 V241 M94 227 H112" stroke="#78350f" stroke-width="4.5" stroke-linecap="round" />
-            </g>
-            <g>
-              <path d="M126 234 C128 225 162 225 162 232 L164 240 C164 245 125 245 125 242 Z" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />
-              <path d="M123 242 H166" stroke="#1e293b" stroke-width="5.5" stroke-linecap="round" />
-              <path d="M138 227 V241 M150 228 V241 M128 227 H146" stroke="#78350f" stroke-width="4.5" stroke-linecap="round" />
-            </g>
-
-            <!-- Iconic Dark Khaki/Black Pioneer Shorts -->
-            <path d="M85 158 H155 L152 190 H125 L120 178 L115 190 H88 Z" fill="#1e293b" stroke="#0f172a" stroke-width="3.5" stroke-linejoin="round" />
-
-            <!-- Loose Pioneer Tunic / Open-Collar Shirt (חולצה פתוחה) -->
-            <path d="M84 106 C84 98 156 98 156 106 L164 164 L76 164 Z" fill="#e0f2fe" stroke="#1e293b" stroke-width="3.5" stroke-linejoin="round" />
-            <!-- Side slit detail like classic Srulik -->
-            <path d="M152 164 L156 149 L160 164 Z" fill="#1e293b" />
-            <!-- V-Neck & Open Collar -->
-            <path d="M107 102 L120 126 L133 102" fill="#fde2c4" stroke="#1e293b" stroke-width="3.2" stroke-linejoin="round" />
-            <path d="M106 102 L95 115 L112 118 Z" fill="#bae6fd" stroke="#1e293b" stroke-width="3" stroke-linejoin="round" />
-            <path d="M134 102 L145 115 L128 118 Z" fill="#bae6fd" stroke="#1e293b" stroke-width="3" stroke-linejoin="round" />
-
-            <!-- Crossed Arm (Right Arm resting across tummy) -->
-            <path d="M156 112 C168 128 164 146 144 146 L105 142" stroke="#1e293b" stroke-width="14" stroke-linecap="round" fill="none" />
-            <path d="M156 112 C168 128 164 146 144 146 L105 142" stroke="#fde2c4" stroke-width="8" stroke-linecap="round" fill="none" />
-
-            <!-- Neck -->
-            <rect x="111" y="90" width="18" height="16" rx="6" fill="#fde2c4" stroke="#1e293b" stroke-width="3.2" />
-
-            <!-- Head & Ears -->
-            <circle cx="148" cy="79" r="9" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />
-            <path d="M146 76 C149 76 149 82 145 82" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round" />
-            <path d="M88 64 C88 42 146 42 146 68 C146 92 134 102 114 102 C95 102 88 88 88 64 Z" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />
-
-            <!-- Iconic Kova Tembel (כובע טמבל - pointed pioneer bucket hat tilted back) -->
-            <path d="M92 50 C108 26 154 24 182 48 L150 84 C138 66 110 56 92 50 Z" fill="#fef08a" stroke="#1e293b" stroke-width="3.8" stroke-linejoin="round" />
-            <!-- Dashed stitching line on Kova Tembel -->
-            <path d="M142 36 C152 48 156 62 156 73" stroke="#1e293b" stroke-width="2.8" stroke-dasharray="5 5" stroke-linecap="round" />
-
-            <!-- Iconic Curly Forelock (הבלורית של שרוליק) -->
-            <g class="srulik-curl">
-              <path d="M98 46 C82 32 86 14 102 18 C114 21 112 39 99 42 C91 44 90 32 98 30" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" fill="none" />
-            </g>
-
-            <!-- Expressive Cartoon Eyes & Eyebrows -->
-            <path d="M98 56 Q103 51 108 55" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round" fill="none" />
-            <path d="M115 56 Q120 51 125 55" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round" fill="none" />
-            <g class="srulik-eyes">
-              <ellipse cx="103" cy="67" rx="5.5" ry="8" fill="#ffffff" stroke="#1e293b" stroke-width="2.8" />
-              <ellipse cx="119" cy="67" rx="5.5" ry="8" fill="#ffffff" stroke="#1e293b" stroke-width="2.8" />
-              <circle cx="102" cy="68" r="2.8" fill="#1e293b" />
-              <circle cx="118" cy="68" r="2.8" fill="#1e293b" />
-            </g>
-
-            <!-- Cute Rounded Nose & Friendly Smile -->
-            <path d="M94 74 C83 74 83 84 95 84" fill="#fde2c4" stroke="#1e293b" stroke-width="3.2" stroke-linecap="round" />
-            <path d="M102 89 Q112 95 121 88" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none" />
-
-            <!-- Left Arm Raised to Chin in Srulik's Classic Pondering Pose -->
-            <path d="M84 114 C68 128 70 105 88 94" stroke="#1e293b" stroke-width="13" stroke-linecap="round" fill="none" />
-            <path d="M84 114 C68 128 70 105 88 94" stroke="#fde2c4" stroke-width="7.5" stroke-linecap="round" fill="none" />
-            <!-- Hand on chin -->
-            <circle cx="92" cy="91" r="8.5" fill="#fde2c4" stroke="#1e293b" stroke-width="3.2" />
-            <path d="M88 86 L93 89 M91 84 L96 87" stroke="#1e293b" stroke-width="2.4" stroke-linecap="round" />
-          </g>
-        </svg>
-      </span>`;
+      var cls = className || "w-32 h-36";
+      var clickAttrs = noClick ? 'class="inline-block shrink-0"' : 'onclick="toggleSrulikChat()" class="inline-block shrink-0 srulik-mascot-click"';
+      return '<span title="' + (noClick ? 'Srulik — Your Hebrew Buddy' : 'Click to ask Srulik a Hebrew question!') + '" ' + clickAttrs + '>' +
+        '<svg viewBox="0 0 240 265" class="' + cls + '" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          '<ellipse cx="120" cy="250" rx="64" ry="10" fill="rgb(175,175,175)" fill-opacity="0.35" />' +
+          '<g class="flash-float">' +
+            '<rect x="96" y="182" width="13" height="52" rx="6" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />' +
+            '<rect x="131" y="182" width="13" height="52" rx="6" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />' +
+            '<g>' +
+              '<path d="M78 232 C78 225 112 225 114 234 L115 242 C115 245 76 245 76 240 Z" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />' +
+              '<path d="M74 242 H117" stroke="#1e293b" stroke-width="5.5" stroke-linecap="round" />' +
+              '<path d="M88 228 V241 M100 227 V241 M94 227 H112" stroke="#78350f" stroke-width="4.5" stroke-linecap="round" />' +
+            '</g>' +
+            '<g>' +
+              '<path d="M126 234 C128 225 162 225 162 232 L164 240 C164 245 125 245 125 242 Z" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />' +
+              '<path d="M123 242 H166" stroke="#1e293b" stroke-width="5.5" stroke-linecap="round" />' +
+              '<path d="M138 227 V241 M150 228 V241 M128 227 H146" stroke="#78350f" stroke-width="4.5" stroke-linecap="round" />' +
+            '</g>' +
+            '<path d="M85 158 H155 L152 190 H125 L120 178 L115 190 H88 Z" fill="#1e293b" stroke="#0f172a" stroke-width="3.5" stroke-linejoin="round" />' +
+            '<path d="M84 106 C84 98 156 98 156 106 L164 164 L76 164 Z" fill="#e0f2fe" stroke="#1e293b" stroke-width="3.5" stroke-linejoin="round" />' +
+            '<path d="M152 164 L156 149 L160 164 Z" fill="#1e293b" />' +
+            '<path d="M107 102 L120 126 L133 102" fill="#fde2c4" stroke="#1e293b" stroke-width="3.2" stroke-linejoin="round" />' +
+            '<path d="M106 102 L95 115 L112 118 Z" fill="#bae6fd" stroke="#1e293b" stroke-width="3" stroke-linejoin="round" />' +
+            '<path d="M134 102 L145 115 L128 118 Z" fill="#bae6fd" stroke="#1e293b" stroke-width="3" stroke-linejoin="round" />' +
+            '<path d="M156 112 C168 128 164 146 144 146 L105 142" stroke="#1e293b" stroke-width="14" stroke-linecap="round" fill="none" />' +
+            '<path d="M156 112 C168 128 164 146 144 146 L105 142" stroke="#fde2c4" stroke-width="8" stroke-linecap="round" fill="none" />' +
+            '<rect x="111" y="90" width="18" height="16" rx="6" fill="#fde2c4" stroke="#1e293b" stroke-width="3.2" />' +
+            '<circle cx="148" cy="79" r="9" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />' +
+            '<path d="M146 76 C149 76 149 82 145 82" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round" />' +
+            '<path d="M88 64 C88 42 146 42 146 68 C146 92 134 102 114 102 C95 102 88 88 88 64 Z" fill="#fde2c4" stroke="#1e293b" stroke-width="3.5" />' +
+            '<path d="M92 50 C108 26 154 24 182 48 L150 84 C138 66 110 56 92 50 Z" fill="#fef08a" stroke="#1e293b" stroke-width="3.8" stroke-linejoin="round" />' +
+            '<path d="M142 36 C152 48 156 62 156 73" stroke="#1e293b" stroke-width="2.8" stroke-dasharray="5 5" stroke-linecap="round" />' +
+            '<g class="srulik-curl">' +
+              '<path d="M98 46 C82 32 86 14 102 18 C114 21 112 39 99 42 C91 44 90 32 98 30" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" fill="none" />' +
+            '</g>' +
+            '<path d="M98 56 Q103 51 108 55" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round" fill="none" />' +
+            '<path d="M115 56 Q120 51 125 55" stroke="#1e293b" stroke-width="2.8" stroke-linecap="round" fill="none" />' +
+            '<g class="srulik-eyes">' +
+              '<ellipse cx="103" cy="67" rx="5.5" ry="8" fill="#ffffff" stroke="#1e293b" stroke-width="2.8" />' +
+              '<ellipse cx="119" cy="67" rx="5.5" ry="8" fill="#ffffff" stroke="#1e293b" stroke-width="2.8" />' +
+              '<circle cx="102" cy="68" r="2.8" fill="#1e293b" />' +
+              '<circle cx="118" cy="68" r="2.8" fill="#1e293b" />' +
+            '</g>' +
+            '<path d="M94 74 C83 74 83 84 95 84" fill="#fde2c4" stroke="#1e293b" stroke-width="3.2" stroke-linecap="round" />' +
+            '<path d="M102 89 Q112 95 121 88" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none" />' +
+            '<path d="M84 114 C68 128 70 105 88 94" stroke="#1e293b" stroke-width="13" stroke-linecap="round" fill="none" />' +
+            '<path d="M84 114 C68 128 70 105 88 94" stroke="#fde2c4" stroke-width="7.5" stroke-linecap="round" fill="none" />' +
+            '<circle cx="92" cy="91" r="8.5" fill="#fde2c4" stroke="#1e293b" stroke-width="3.2" />' +
+            '<path d="M88 86 L93 89 M91 84 L96 87" stroke="#1e293b" stroke-width="2.4" stroke-linecap="round" />' +
+          '</g>' +
+        '</svg>' +
+      '</span>';
     }
 
     // ============================================================================
     // VOCABULARY DATABASE (HEBREW WITH NIKUD, TRANSLITERATION, ENGLISH, PLURAL, GENDER)
     // ============================================================================
-    const RAW_VOCAB_LIST = [
+    var RAW_VOCAB_LIST = [
       // Pronouns & People
-      ['אֲנִי', 'ani', 'I', 'Pronouns & People', 'אֲנַחְנוּ', '-', '-'],
-      ['אַתָּה', 'ata', 'you (m. sg.)', 'Pronouns & People', 'אַתֶּם', 'אַתְּ', '-'],
-      ['אַתְּ', 'at', 'you (f. sg.)', 'Pronouns & People', 'אַתֶּן', 'אַתְּ', '-'],
-      ['הוּא', 'hu', 'he', 'Pronouns & People', 'הֵם', 'הִיא', '-'],
-      ['הִיא', 'hi', 'she', 'Pronouns & People', 'הֵן', 'הִיא', '-'],
-      ['אֲנַחְנוּ', 'anachnu', 'we', 'Pronouns & People', '-', '-', '-'],
-      ['אַתֶּם', 'atem', 'you (m. pl.)', 'Pronouns & People', '-', 'אַתֶּן', '-'],
-      ['הֵם', 'hem', 'they (m.)', 'Pronouns & People', '-', 'הֵן', '-'],
-      ['מִשְׁפָּחָה', 'mishpacha', 'family', 'Pronouns & People', 'מִשְׁפָּחוֹת', 'מִשְׁפָּחָה', 'שְׁתֵּי מִשְׁפָּחוֹת'],
-      ['אָב / אַבָּא', 'av / aba', 'father / dad', 'Pronouns & People', 'אָבוֹת', 'אֵם / אִמָּא', '-'],
-      ['אֵם / אִמָּא', 'em / ima', 'mother / mom', 'Pronouns & People', 'אִמָּהוֹת', 'אֵם', '-'],
-      ['אָח', 'ach', 'brother', 'Pronouns & People', 'אַחִים', 'אָחוֹת', 'שְׁנֵי אַחִים'],
-      ['אָחוֹת', 'achot', 'sister / nurse', 'Pronouns & People', 'אֲחָיוֹת', 'אָחוֹת', 'שְׁתֵּי אֲחָיוֹת'],
-      ['חָבֵר', 'chaver', 'friend (m.)', 'Pronouns & People', 'חֲבֵרִים', 'חֲבֵרָה', 'שְׁנֵי חֲבֵרִים'],
-      ['יֶלֶד', 'yeled', 'boy / child', 'Pronouns & People', 'יְלָדִים', 'יַלְדָּה', 'שְׁנֵי יְלָדִים'],
-      ['אִישׁ', 'ish', 'man / person', 'Pronouns & People', 'אֲנָשִׁים', 'אִשָּׁה', 'שְׁנֵי אֲנָשִׁים'],
-      ['אִשָּׁה', 'isha', 'woman / wife', 'Pronouns & People', 'נָשִׁים', 'אִשָּׁה', 'שְׁתֵּי נָשִׁים'],
-      ['תַּיָּר', 'tayar', 'tourist', 'Pronouns & People', 'תַּיָּרִים', 'תַּיֶּרֶת', 'שְׁנֵי תַּיָּרִים'],
-      ['שָׁכֵן', 'shachen', 'neighbor', 'Pronouns & People', 'שְׁכֵנִים', 'שְׁכֵנָה', '-'],
+      ["אֲנִי", "ani", "I", "Pronouns & People", "אֲנַחְנוּ", "-", "-"],
+      ["אַתָּה", "ata", "you (m. sg.)", "Pronouns & People", "אַתֶּם", "אַתְּ", "-"],
+      ["אַתְּ", "at", "you (f. sg.)", "Pronouns & People", "אַתֶּן", "אַתְּ", "-"],
+      ["הוּא", "hu", "he", "Pronouns & People", "הֵם", "הִיא", "-"],
+      ["הִיא", "hi", "she", "Pronouns & People", "הֵן", "הִיא", "-"],
+      ["אֲנַחְנוּ", "anachnu", "we", "Pronouns & People", "-", "-", "-"],
+      ["אַתֶּם", "atem", "you (m. pl.)", "Pronouns & People", "-", "אַתֶּן", "-"],
+      ["הֵם", "hem", "they (m.)", "Pronouns & People", "-", "הֵן", "-"],
+      ["מִשְׁפָּחָה", "mishpacha", "family", "Pronouns & People", "מִשְׁפָּחוֹת", "מִשְׁפָּחָה", "שְׁתֵּי מִשְׁפָּחוֹת"],
+      ["אָב / אַבָּא", "av / aba", "father / dad", "Pronouns & People", "אָבוֹת", "אֵם / אִמָּא", "-"],
+      ["אֵם / אִמָּא", "em / ima", "mother / mom", "Pronouns & People", "אִמָּהוֹת", "אֵם", "-"],
+      ["אָח", "ach", "brother", "Pronouns & People", "אַחִים", "אָחוֹת", "שְׁנֵי אַחִים"],
+      ["אָחוֹת", "achot", "sister / nurse", "Pronouns & People", "אֲחָיוֹת", "אָחוֹת", "שְׁתֵּי אֲחָיוֹת"],
+      ["חָבֵר", "chaver", "friend (m.)", "Pronouns & People", "חֲבֵרִים", "חֲבֵרָה", "שְׁנֵי חֲבֵרִים"],
+      ["יֶלֶד", "yeled", "boy / child", "Pronouns & People", "יְלָדִים", "יַלְדָּה", "שְׁנֵי יְלָדִים"],
+      ["אִישׁ", "ish", "man / person", "Pronouns & People", "אֲנָשִׁים", "אִשָּׁה", "שְׁנֵי אֲנָשִׁים"],
+      ["אִשָּׁה", "isha", "woman / wife", "Pronouns & People", "נָשִׁים", "אִשָּׁה", "שְׁתֵּי נָשִׁים"],
+      ["תַּיָּר", "tayar", "tourist", "Pronouns & People", "תַּיָּרִים", "תַּיֶּרֶת", "שְׁנֵי תַּיָּרִים"],
+      ["שָׁכֵן", "shachen", "neighbor", "Pronouns & People", "שְׁכֵנִים", "שְׁכֵנָה", "-"],
 
       // Greetings & Expressions
-      ['שָׁלוֹם', 'shalom', 'hello / peace / goodbye', 'Greetings & Expressions', '-', '-', '-'],
-      ['בֹּקֶר טוֹב', 'boker tov', 'good morning', 'Greetings & Expressions', '-', '-', '-'],
-      ['עֶרֶב טוֹב', 'erev tov', 'good evening', 'Greetings & Expressions', '-', '-', '-'],
-      ['לַיְלָה טוֹב', 'layla tov', 'good night', 'Greetings & Expressions', '-', '-', '-'],
-      ['תּוֹדָה רַבָּה', 'toda raba', 'thank you very much', 'Greetings & Expressions', '-', '-', '-'],
-      ['בְּבַקָּשָׁה', 'bevakasha', 'please / you are welcome', 'Greetings & Expressions', '-', '-', '-'],
-      ['סְלִיחָה', 'slicha', 'excuse me / sorry', 'Greetings & Expressions', '-', '-', '-'],
-      ['נָעִים מְאוֹד', 'na\'im me\'od', 'nice to meet you', 'Greetings & Expressions', '-', '-', '-'],
-      ['מַה שְּׁלוֹמְךָ?', 'ma shlomcha?', 'how are you? (to a male)', 'Greetings & Expressions', '-', 'מַה שְּׁלוֹמֵךְ?', '-'],
-      ['הַכֹּל בְּסֵדֶר', 'hakol beseder', 'everything is alright', 'Greetings & Expressions', '-', '-', '-'],
-      ['בְּהַצְלָחָה!', 'behatzlacha!', 'good luck!', 'Greetings & Expressions', '-', '-', '-'],
-      ['לְהִתְרָאוֹת', 'lehitra\'ot', 'see you later', 'Greetings & Expressions', '-', '-', '-'],
-      ['בְּרוּכִים הַבָּאִים', 'bruchim haba\'im', 'welcome (pl.)', 'Greetings & Expressions', '-', '-', '-'],
-      ['אֵין בְּעָיָה', 'ein be\'aya', 'no problem', 'Greetings & Expressions', '-', '-', '-'],
-      ['כַּמּוּבָן / בֶּטַח', 'kamuvan / betach', 'of course / sure', 'Greetings & Expressions', '-', '-', '-'],
-      ['כָּל הַכָּבוֹד!', 'kol hakavod!', 'well done! / respect!', 'Greetings & Expressions', '-', '-', '-'],
+      ["שָׁלוֹם", "shalom", "hello / peace / goodbye", "Greetings & Expressions", "-", "-", "-"],
+      ["בֹּקֶר טוֹב", "boker tov", "good morning", "Greetings & Expressions", "-", "-", "-"],
+      ["עֶרֶב טוֹב", "erev tov", "good evening", "Greetings & Expressions", "-", "-", "-"],
+      ["לַיְלָה טוֹב", "layla tov", "good night", "Greetings & Expressions", "-", "-", "-"],
+      ["תּוֹדָה רַבָּה", "toda raba", "thank you very much", "Greetings & Expressions", "-", "-", "-"],
+      ["בְּבַקָּשָׁה", "bevakasha", "please / you are welcome", "Greetings & Expressions", "-", "-", "-"],
+      ["סְלִיחָה", "slicha", "excuse me / sorry", "Greetings & Expressions", "-", "-", "-"],
+      ["נָעִים מְאוֹד", "naim meod", "nice to meet you", "Greetings & Expressions", "-", "-", "-"],
+      ["מַה שְּׁלוֹמְךָ?", "ma shlomcha?", "how are you? (to a male)", "Greetings & Expressions", "-", "מַה שְּׁלוֹמֵךְ?", "-"],
+      ["הַכֹּל בְּסֵדֶר", "hakol beseder", "everything is alright", "Greetings & Expressions", "-", "-", "-"],
+      ["בְּהַצְלָחָה!", "behatzlacha!", "good luck!", "Greetings & Expressions", "-", "-", "-"],
+      ["לְהִתְרָאוֹת", "lehitraot", "see you later", "Greetings & Expressions", "-", "-", "-"],
+      ["בְּרוּכִים הַבָּאִים", "bruchim habaim", "welcome (pl.)", "Greetings & Expressions", "-", "-", "-"],
+      ["אֵין בְּעָיָה", "ein beaya", "no problem", "Greetings & Expressions", "-", "-", "-"],
+      ["כַּמּוּבָן / בֶּטַח", "kamuvan / betach", "of course / sure", "Greetings & Expressions", "-", "-", "-"],
+      ["כָּל הַכָּבוֹד!", "kol hakavod!", "well done! / respect!", "Greetings & Expressions", "-", "-", "-"],
 
       // University, Classroom & Tech
-      ['אוּנִיבֶרְסִיטָה', 'universita', 'university', 'University & Classroom', 'אוּנִיבֶרְסִיטָאוֹת', 'אוּנִיבֶרְסִיטָה', '-'],
-      ['סְטוּדֶנְט', 'student', 'student (m.)', 'University & Classroom', 'סְטוּדֶנְטִים', 'סְטוּדֶנְטִית', '-'],
-      ['תַּלְמִיד', 'talmid', 'pupil / student', 'University & Classroom', 'תַּלְמִידִים', 'תַּלְמִידָה', '-'],
-      ['מוֹרֶה', 'moreh', 'teacher (m.)', 'University & Classroom', 'מוֹרִים', 'מוֹרָה', '-'],
-      ['מַרְצֶה', 'martzeh', 'lecturer / professor', 'University & Classroom', 'מַרְצִים', 'מַרְצָה', '-'],
-      ['שִׁעוּר', 'shi\'ur', 'lesson / class', 'University & Classroom', 'שִׁעוּרִים', '-', 'שְׁנֵי שִׁעוּרִים'],
-      ['כִּתָּה', 'kita', 'classroom / grade', 'University & Classroom', 'כִּתּוֹת', 'כִּתָּה', '-'],
-      ['סֵפֶר', 'sefer', 'book', 'University & Classroom', 'סְפָרִים', '-', 'שְׁנֵי סְפָרִים'],
-      ['מַחְבֶּרֶת', 'machberet', 'notebook', 'University & Classroom', 'מַחְבָּרוֹת', 'מַחְבֶּרֶת', '-'],
-      ['עֵט', 'et', 'pen', 'University & Classroom', 'עֵטִים', '-', '-'],
-      ['עִפָּרוֹן', 'iparon', 'pencil', 'University & Classroom', 'עֶפְרוֹנוֹת', '-', '-'],
-      ['שֻׁלְחָן', 'shulchan', 'table / desk', 'University & Classroom', 'שֻׁלְחָנוֹת', '-', '-'],
-      ['כִּסֵּא', 'kise', 'chair', 'University & Classroom', 'כִּסְאוֹת', '-', '-'],
-      ['מַחְשֵׁב', 'machshev', 'computer', 'University & Classroom', 'מַחְשְׁבִים', '-', '-'],
-      ['טֶלֶפוֹן נַיָּד', 'telefon nayad', 'mobile phone', 'University & Classroom', 'טֶלֶפוֹנִים', '-', '-'],
-      ['מִלּוֹן', 'milon', 'dictionary', 'University & Classroom', 'מִלּוֹנִים', '-', '-'],
-      ['שָׂפָה', 'safa', 'language / lip', 'University & Classroom', 'שָׂפוֹת', 'שָׂפָה', 'שְׂפָתַיִם'],
-      ['מִלָּה', 'mila', 'word', 'University & Classroom', 'מִלִּים', 'מִלָּה', 'שְׁתֵּי מִלִּים'],
-      ['מִשְׁפָּט', 'mishpat', 'sentence / trial', 'University & Classroom', 'מִשְׁפָּטִים', '-', '-'],
-      ['שְׁאֵלָה', 'she\'ela', 'question', 'University & Classroom', 'שְׁאֵלוֹת', 'שְׁאֵלָה', '-'],
-      ['תְּשׁוּבָה', 'tshuva', 'answer', 'University & Classroom', 'תְּשׁוּבוֹת', 'תְּשׁוּבָה', '-'],
-      ['מִבְחָן', 'mivchan', 'exam / test', 'University & Classroom', 'מִבְחָנִים', '-', '-'],
-      ['סִפְרִיָּה', 'sifriya', 'library', 'University & Classroom', 'סִפְרִיּוֹת', 'סִפְרִיָּה', '-'],
-      ['מְעוֹנוֹת הַסְּטוּדֶנְטִים', 'me\'onot hastudentim', 'student dormitories (construct)', 'University & Classroom', '-', '-', '-'],
+      ["אוּנִיבֶרְסִיטָה", "universita", "university", "University & Classroom", "אוּנִיבֶרְסִיטָאוֹת", "אוּנִיבֶרְסִיטָה", "-"],
+      ["סְטוּדֶנְט", "student", "student (m.)", "University & Classroom", "סְטוּדֶנְטִים", "סְטוּדֶנְטִית", "-"],
+      ["תַּלְמִיד", "talmid", "pupil / student", "University & Classroom", "תַּלְמִידִים", "תַּלְמִידָה", "-"],
+      ["מוֹרֶה", "moreh", "teacher (m.)", "University & Classroom", "מוֹרִים", "מוֹרָה", "-"],
+      ["מַרְצֶה", "martzeh", "lecturer / professor", "University & Classroom", "מַרְצִים", "מַרְצָה", "-"],
+      ["שִׁעוּר", "shiur", "lesson / class", "University & Classroom", "שִׁעוּרִים", "-", "שְׁנֵי שִׁעוּרִים"],
+      ["כִּתָּה", "kita", "classroom / grade", "University & Classroom", "כִּתּוֹת", "כִּתָּה", "-"],
+      ["סֵפֶר", "sefer", "book", "University & Classroom", "סְפָרִים", "-", "שְׁנֵי סְפָרִים"],
+      ["מַחְבֶּרֶת", "machberet", "notebook", "University & Classroom", "מַחְבָּרוֹת", "מַחְבֶּרֶת", "-"],
+      ["עֵט", "et", "pen", "University & Classroom", "עֵטִים", "-", "-"],
+      ["עִפָּרוֹן", "iparon", "pencil", "University & Classroom", "עֶפְרוֹנוֹת", "-", "-"],
+      ["שֻׁלְחָן", "shulchan", "table / desk", "University & Classroom", "שֻׁלְחָנוֹת", "-", "-"],
+      ["כִּסֵּא", "kise", "chair", "University & Classroom", "כִּסְאוֹת", "-", "-"],
+      ["מַחְשֵׁב", "machshev", "computer", "University & Classroom", "מַחְשְׁבִים", "-", "-"],
+      ["טֶלֶפוֹן נַיָּד", "telefon nayad", "mobile phone", "University & Classroom", "טֶלֶפוֹנִים", "-", "-"],
+      ["מִלּוֹן", "milon", "dictionary", "University & Classroom", "מִלּוֹנִים", "-", "-"],
+      ["שָׂפָה", "safa", "language / lip", "University & Classroom", "שָׂפוֹת", "שָׂפָה", "שְׂפָתַיִם"],
+      ["מִלָּה", "mila", "word", "University & Classroom", "מִלִּים", "מִלָּה", "שְׁתֵּי מִלִּים"],
+      ["מִשְׁפָּט", "mishpat", "sentence / trial", "University & Classroom", "מִשְׁפָּטִים", "-", "-"],
+      ["שְׁאֵלָה", "sheela", "question", "University & Classroom", "שְׁאֵלוֹת", "שְׁאֵלָה", "-"],
+      ["תְּשׁוּבָה", "tshuva", "answer", "University & Classroom", "תְּשׁוּבוֹת", "תְּשׁוּבָה", "-"],
+      ["מִבְחָן", "mivchan", "exam / test", "University & Classroom", "מִבְחָנִים", "-", "-"],
+      ["סִפְרִיָּה", "sifriya", "library", "University & Classroom", "סִפְרִיּוֹת", "סִפְרִיָּה", "-"],
+      ["מְעוֹנוֹת הַסְּטוּדֶנְטִים", "meonot hastudentim", "student dormitories (construct)", "University & Classroom", "-", "-", "-"],
 
       // Food, Cafe & Nature
-      ['לֶחֶם', 'lechem', 'bread', 'Food & Nature', 'לְחָמִים', '-', '-'],
-      ['מַיִם', 'mayim', 'water', 'Food & Nature', 'מַיִם', '-', '-'],
-      ['קָפֶה', 'kafe', 'coffee', 'Food & Nature', '-', '-', '-'],
-      ['תֵּה', 'te', 'tea', 'Food & Nature', '-', '-', '-'],
-      ['חָלָב', 'chalav', 'milk', 'Food & Nature', '-', '-', '-'],
-      ['תַּפּוּחַ', 'tapuach', 'apple', 'Food & Nature', 'תַּפּוּחִים', '-', 'שְׁנֵי תַּפּוּחִים'],
-      ['בָּנָנָה', 'banana', 'banana', 'Food & Nature', 'בָּנָנוֹת', 'בָּנָנָה', '-'],
-      ['רִמּוֹן', 'rimon', 'pomegranate', 'Food & Nature', 'רִמּוֹנִים', '-', '-'],
-      ['עֲנָבִים', 'anavim', 'grapes', 'Food & Nature', 'עֲנָבִים', '-', '-'],
-      ['סָלָט', 'salat', 'salad', 'Food & Nature', 'סָלָטִים', '-', '-'],
-      ['חוּמוּס', 'chumus', 'hummus', 'Food & Nature', '-', '-', '-'],
-      ['פָלָאפֶל', 'falafel', 'falafel', 'Food & Nature', '-', '-', '-'],
-      ['גְּבִינָה', 'gvina', 'cheese', 'Food & Nature', 'גְּבִינוֹת', 'גְּבִינָה', '-'],
-      ['עוּגָה', 'uga', 'cake', 'Food & Nature', 'עוּגוֹת', 'עוּגָה', '-'],
-      ['מִסְעָדָה', 'mis\'ada', 'restaurant', 'Food & Nature', 'מִסְעָדוֹת', 'מִסְעָדָה', '-'],
-      ['בֵּית קָפֶה', 'beit kafe', 'coffee shop / cafe (construct)', 'Food & Nature', 'בָּתֵּי קָפֶה', '-', '-'],
-      ['תַּפְרִיט', 'tafrit', 'menu', 'Food & Nature', 'תַּפְרִיטִים', '-', '-'],
-      ['מֶלְצַר', 'meltzar', 'waiter', 'Food & Nature', 'מֶלְצָרִים', 'מֶלְצָרִית', '-'],
-      ['חֶשְׁבּוֹן', 'cheshbon', 'bill / check / math', 'Food & Nature', 'חֶשְׁבּוֹנוֹת', '-', '-'],
-      ['שֶׁמֶשׁ', 'shemesh', 'sun', 'Food & Nature', 'שְׁמָשׁוֹת', 'שֶׁמֶשׁ', '-'],
-      ['יָם', 'yam', 'sea', 'Food & Nature', 'יַמִּים', '-', '-'],
-      ['עֵץ', 'etz', 'tree', 'Food & Nature', 'עֵצִים', '-', '-'],
+      ["לֶחֶם", "lechem", "bread", "Food & Nature", "לְחָמִים", "-", "-"],
+      ["מַיִם", "mayim", "water", "Food & Nature", "מַיִם", "-", "-"],
+      ["קָפֶה", "kafe", "coffee", "Food & Nature", "-", "-", "-"],
+      ["תֵּה", "te", "tea", "Food & Nature", "-", "-", "-"],
+      ["חָלָב", "chalav", "milk", "Food & Nature", "-", "-", "-"],
+      ["תַּפּוּחַ", "tapuach", "apple", "Food & Nature", "תַּפּוּחִים", "-", "שְׁנֵי תַּפּוּחִים"],
+      ["בָּנָנָה", "banana", "banana", "Food & Nature", "בָּנָנוֹת", "בָּנָנָה", "-"],
+      ["רִמּוֹן", "rimon", "pomegranate", "Food & Nature", "רִמּוֹנִים", "-", "-"],
+      ["עֲנָבִים", "anavim", "grapes", "Food & Nature", "עֲנָבִים", "-", "-"],
+      ["סָלָט", "salat", "salad", "Food & Nature", "סָלָטִים", "-", "-"],
+      ["חוּמוּס", "chumus", "hummus", "Food & Nature", "-", "-", "-"],
+      ["פָלָאפֶל", "falafel", "falafel", "Food & Nature", "-", "-", "-"],
+      ["גְּבִינָה", "gvina", "cheese", "Food & Nature", "גְּבִינוֹת", "גְּבִינָה", "-"],
+      ["עוּגָה", "uga", "cake", "Food & Nature", "עוּגוֹת", "עוּגָה", "-"],
+      ["מִסְעָדָה", "misada", "restaurant", "Food & Nature", "מִסְעָדוֹת", "מִסְעָדָה", "-"],
+      ["בֵּית קָפֶה", "beit kafe", "coffee shop / cafe (construct)", "Food & Nature", "בָּתֵּי קָפֶה", "-", "-"],
+      ["תַּפְרִיט", "tafrit", "menu", "Food & Nature", "תַּפְרִיטִים", "-", "-"],
+      ["מֶלְצַר", "meltzar", "waiter", "Food & Nature", "מֶלְצָרִים", "מֶלְצָרִית", "-"],
+      ["חֶשְׁבּוֹן", "cheshbon", "bill / check / math", "Food & Nature", "חֶשְׁבּוֹנוֹת", "-", "-"],
+      ["שֶׁמֶשׁ", "shemesh", "sun", "Food & Nature", "שְׁמָשׁוֹת", "שֶׁמֶשׁ", "-"],
+      ["יָם", "yam", "sea", "Food & Nature", "יַמִּים", "-", "-"],
+      ["עֵץ", "etz", "tree", "Food & Nature", "עֵצִים", "-", "-"],
 
       // City, Transport & Places
-      ['בַּיִת', 'bayit', 'house / home', 'City & Places', 'בָּתִּים', '-', 'שְׁנֵי בָּתִּים'],
-      ['דִּירָה', 'dira', 'apartment', 'City & Places', 'דִּירוֹת', 'דִּירָה', '-'],
-      ['חֶדֶר', 'cheder', 'room', 'City & Places', 'חֲדָרִים', '-', '-'],
-      ['עִיר', 'ir', 'city (f.)', 'City & Places', 'עָרִים', 'עִיר', 'שְׁתֵּי עָרִים'],
-      ['רְחוֹב', 'rechov', 'street', 'City & Places', 'רְחוֹבוֹת', '-', '-'],
-      ['שׁוּק', 'shuk', 'market', 'City & Places', 'שְׁוָקִים', '-', '-'],
-      ['חֲנוּת', 'chanut', 'shop / store', 'City & Places', 'חֲנֻיּוֹת', 'חֲנוּת', '-'],
-      ['תַּחֲנָה', 'tachana', 'station / stop', 'City & Places', 'תַּחֲנוֹת', 'תַּחֲנָה', '-'],
-      ['אוֹטוֹבּוּס', 'otobus', 'bus', 'City & Places', 'אוֹטוֹבּוּסִים', '-', '-'],
-      ['רַכֶּבֶת קַלָּה', 'rakevet kala', 'light rail', 'City & Places', 'רַכָּבוֹת קַלּוֹת', 'רַכֶּבֶת', '-'],
-      ['מְכוֹנִית', 'mechonit', 'car', 'City & Places', 'מְכוֹנִיּוֹת', 'מְכוֹנִית', '-'],
-      ['אוֹפַנַּיִם', 'ofanayim', 'bicycle (dual)', 'City & Places', '-', '-', 'אוֹפַנַּיִם'],
-      ['יְרוּשָׁלַיִם', 'Yerushalayim', 'Jerusalem', 'City & Places', '-', '-', '-'],
-      ['תֵּל אָבִיב', 'Tel Aviv', 'Tel Aviv', 'City & Places', '-', '-', '-'],
-      ['חֵיפָה', 'Cheifa', 'Haifa', 'City & Places', '-', '-', '-'],
-      ['הָעִיר הָעַתִּיקָה', 'ha\'ir ha\'atika', 'The Old City', 'City & Places', '-', '-', '-'],
+      ["בַּיִת", "bayit", "house / home", "City & Places", "בָּתִּים", "-", "שְׁנֵי בָּתִּים"],
+      ["דִּירָה", "dira", "apartment", "City & Places", "דִּירוֹת", "דִּירָה", "-"],
+      ["חֶדֶר", "cheder", "room", "City & Places", "חֲדָרִים", "-", "-"],
+      ["עִיר", "ir", "city (f.)", "City & Places", "עָרִים", "עִיר", "שְׁתֵּי עָרִים"],
+      ["רְחוֹב", "rechov", "street", "City & Places", "רְחוֹבוֹת", "-", "-"],
+      ["שׁוּק", "shuk", "market", "City & Places", "שְׁוָקִים", "-", "-"],
+      ["חֲנוּת", "chanut", "shop / store", "City & Places", "חֲנֻיּוֹת", "חֲנוּת", "-"],
+      ["תַּחֲנָה", "tachana", "station / stop", "City & Places", "תַּחֲנוֹת", "תַּחֲנָה", "-"],
+      ["אוֹטוֹבּוּס", "otobus", "bus", "City & Places", "אוֹטוֹבּוּסִים", "-", "-"],
+      ["רַכֶּבֶת קַלָּה", "rakevet kala", "light rail", "City & Places", "רַכָּבוֹת קַלּוֹת", "רַכֶּבֶת", "-"],
+      ["מְכוֹנִית", "mechonit", "car", "City & Places", "מְכוֹנִיּוֹת", "מְכוֹנִית", "-"],
+      ["אוֹפַנַּיִם", "ofanayim", "bicycle (dual)", "City & Places", "-", "-", "אוֹפַנַּיִם"],
+      ["יְרוּשָׁלַיִם", "Yerushalayim", "Jerusalem", "City & Places", "-", "-", "-"],
+      ["תֵּל אָבִיב", "Tel Aviv", "Tel Aviv", "City & Places", "-", "-", "-"],
+      ["חֵיפָה", "Cheifa", "Haifa", "City & Places", "-", "-", "-"],
+      ["הָעִיר הָעַתִּיקָה", "hair haatika", "The Old City", "City & Places", "-", "-", "-"],
 
       // Adjectives & Colors
-      ['גָּדוֹל', 'gadol', 'big / large', 'Adjectives', 'גְּדוֹלִים / גְּדוֹלוֹת', 'גְּדוֹלָה', '-'],
-      ['קָטָן', 'katan', 'small / little', 'Adjectives', 'קְטַנִּים / קְטַנּוֹת', 'קְטַנָּה', '-'],
-      ['טוֹב', 'tov', 'good', 'Adjectives', 'טוֹבִים / טוֹבוֹת', 'טוֹבָה', '-'],
-      ['יָפֶה', 'yafeh', 'beautiful / nice', 'Adjectives', 'יָפִים / יָפוֹת', 'יָפָה', '-'],
-      ['חָדָשׁ', 'chadash', 'new', 'Adjectives', 'חֲדָשִׁים / חֲדָשׁוֹת', 'חֲדָשָׁה', '-'],
-      ['יָשָׁן', 'yashan', 'old (for objects)', 'Adjectives', 'יְשָׁנִים / יְשָׁנוֹת', 'יְשָׁנָה', '-'],
-      ['עַתִּיק', 'atik', 'ancient', 'Adjectives', 'עַתִּיקִים / עַתִּיקוֹת', 'עַתִּיקָה', '-'],
-      ['קָרוֹב', 'karov', 'close / near', 'Adjectives', 'קְרוֹבִים / קְרוֹבוֹת', 'קְרוֹבָה', '-'],
-      ['רָחוֹק', 'rachok', 'far', 'Adjectives', 'רְחוֹקִים / רְחוֹקוֹת', 'רְחוֹקָה', '-'],
-      ['קַל', 'kal', 'easy / light', 'Adjectives', 'קַלִּים / קַלּוֹת', 'קַלָּה', '-'],
-      ['קָשֶׁה', 'kasheh', 'hard / difficult', 'Adjectives', 'קָשִׁים / קָשׁוֹת', 'קָשָׁה', '-'],
-      ['טָעִים', 'ta\'im', 'tasty / delicious', 'Adjectives', 'טְעִימִים / טְעִימוֹת', 'טְעִימָה', '-'],
-      ['חַם', 'cham', 'hot / warm', 'Adjectives', 'חַמִּים / חַמּוֹת', 'חַמָּה', '-'],
-      ['קַר', 'kar', 'cold', 'Adjectives', 'קָרִים / קָרוֹת', 'קָרָה', '-'],
-      ['חָשׁוּב', 'chashuv', 'important', 'Adjectives', 'חֲשׁוּבִים / חֲשׁוּבוֹת', 'חֲשׁוּבָה', '-'],
-      ['מְעַנְיֵן', 'me\'anyen', 'interesting', 'Adjectives', 'מְעַנְיְנִים / מְעַנְיְנוֹת', 'מְעַנְיֶנֶת', '-'],
-      ['מְצֻיָּן', 'metzuyan', 'excellent', 'Adjectives', 'מְצֻיָּנִים / מְצֻיָּנוֹת', 'מְצֻיֶּנֶת', '-'],
-      ['שָׂמֵחַ', 'same\'ach', 'happy / glad', 'Adjectives', 'שְׂמֵחִים / שְׂמֵחוֹת', 'שְׂמֵחָה', '-'],
-      ['כָּחֹל', 'kachol', 'blue', 'Adjectives', 'כְּחֻלִּים / כְּחֻלּוֹת', 'כְּחֻלָּה', '-'],
-      ['יָרֹק', 'yarok', 'green', 'Adjectives', 'יְרֻקִּים / יְרֻקּוֹת', 'יְרֻקָּה', '-'],
-      ['אָדֹם', 'adom', 'red', 'Adjectives', 'אֲדֻמִּים / אֲדֻמּוֹת', 'אֲדֻמָּה', '-'],
-      ['לָבָן', 'lavan', 'white', 'Adjectives', 'לְבָנִים / לְבָנוֹת', 'לְבָנָה', '-'],
+      ["גָּדוֹל", "gadol", "big / large", "Adjectives", "גְּדוֹלִים / גְּדוֹלוֹת", "גְּדוֹלָה", "-"],
+      ["קָטָן", "katan", "small / little", "Adjectives", "קְטַנִּים / קְטַנּוֹת", "קְטַנָּה", "-"],
+      ["טוֹב", "tov", "good", "Adjectives", "טוֹבִים / טוֹבוֹת", "טוֹבָה", "-"],
+      ["יָפֶה", "yafeh", "beautiful / nice", "Adjectives", "יָפִים / יָפוֹת", "יָפָה", "-"],
+      ["חָדָשׁ", "chadash", "new", "Adjectives", "חֲדָשִׁים / חֲדָשׁוֹת", "חֲדָשָׁה", "-"],
+      ["יָשָׁן", "yashan", "old (for objects)", "Adjectives", "יְשָׁנִים / יְשָׁנוֹת", "יְשָׁנָה", "-"],
+      ["עַתִּיק", "atik", "ancient", "Adjectives", "עַתִּיקִים / עַתִּיקוֹת", "עַתִּיקָה", "-"],
+      ["קָרוֹב", "karov", "close / near", "Adjectives", "קְרוֹבִים / קְרוֹבוֹת", "קְרוֹבָה", "-"],
+      ["רָחוֹק", "rachok", "far", "Adjectives", "רְחוֹקִים / רְחוֹקוֹת", "רְחוֹקָה", "-"],
+      ["קַל", "kal", "easy / light", "Adjectives", "קַלִּים / קַלּוֹת", "קַלָּה", "-"],
+      ["קָשֶׁה", "kasheh", "hard / difficult", "Adjectives", "קָשִׁים / קָשׁוֹת", "קָשָׁה", "-"],
+      ["טָעִים", "taim", "tasty / delicious", "Adjectives", "טְעִימִים / טְעִימוֹת", "טְעִימָה", "-"],
+      ["חַם", "cham", "hot / warm", "Adjectives", "חַמִּים / חַמּוֹת", "חַמָּה", "-"],
+      ["קַר", "kar", "cold", "Adjectives", "קָרִים / קָרוֹת", "קָרָה", "-"],
+      ["חָשׁוּב", "chashuv", "important", "Adjectives", "חֲשׁוּבִים / חֲשׁוּבוֹת", "חֲשׁוּבָה", "-"],
+      ["מְעַנְיֵן", "meanyen", "interesting", "Adjectives", "מְעַנְיְנִים / מְעַנְיְנוֹת", "מְעַנְיֶנֶת", "-"],
+      ["מְצֻיָּן", "metzuyan", "excellent", "Adjectives", "מְצֻיָּנִים / מְצֻיָּנוֹת", "מְצֻיֶּנֶת", "-"],
+      ["שָׂמֵחַ", "sameach", "happy / glad", "Adjectives", "שְׂמֵחִים / שְׂמֵחוֹת", "שְׂמֵחָה", "-"],
+      ["כָּחֹל", "kachol", "blue", "Adjectives", "כְּחֻלִּים / כְּחֻלּוֹת", "כְּחֻלָּה", "-"],
+      ["יָרֹק", "yarok", "green", "Adjectives", "יְרֻקִּים / יְרֻקּוֹת", "יְרֻקָּה", "-"],
+      ["אָדֹם", "adom", "red", "Adjectives", "אֲדֻמִּים / אֲדֻמּוֹת", "אֲדֻמָּה", "-"],
+      ["לָבָן", "lavan", "white", "Adjectives", "לְבָנִים / לְבָנוֹת", "לְבָנָה", "-"],
 
       // Time, Numbers & Prepositions
-      ['יוֹם', 'yom', 'day', 'Time & Connectors', 'יָמִים', '-', 'יוֹמַיִם (two days)'],
-      ['שָׁבוּעַ', 'shavua', 'week', 'Time & Connectors', 'שָׁבוּעוֹת', '-', 'שְׁבוּעַיִם (two weeks)'],
-      ['שָׁעָה', 'sha\'a', 'hour / time', 'Time & Connectors', 'שָׁעוֹת', 'שָׁעָה', 'שְׁעָתַיִם (two hours)'],
-      ['הַיּוֹם', 'hayom', 'today', 'Time & Connectors', '-', '-', '-'],
-      ['אֶתְמוֹל', 'etmol', 'yesterday', 'Time & Connectors', '-', '-', '-'],
-      ['מָחָר', 'machar', 'tomorrow', 'Time & Connectors', '-', '-', '-'],
-      ['עַכְשָׁו', 'achshav', 'now', 'Time & Connectors', '-', '-', '-'],
-      ['תָּמִיד', 'tamid', 'always', 'Time & Connectors', '-', '-', '-'],
-      ['בְּ־ / בְּתוֹךְ', 'be- / betoch', 'in / inside', 'Time & Connectors', '-', '-', '-'],
-      ['לְ־ / אֶל', 'le- / el', 'to / toward', 'Time & Connectors', '-', '-', '-'],
-      ['מִ־ / מִן', 'mi- / min', 'from', 'Time & Connectors', '-', '-', '-'],
-      ['עַל', 'al', 'on / about', 'Time & Connectors', '-', '-', '-'],
-      ['עִם', 'im', 'with', 'Time & Connectors', '-', '-', '-'],
-      ['שֶׁל', 'shel', 'of / belonging to', 'Time & Connectors', '-', '-', '-'],
-      ['אֶת', 'et', 'definite direct object marker', 'Time & Connectors', '-', '-', '-'],
-      ['יֵשׁ', 'yesh', 'there is / there are', 'Time & Connectors', '-', '-', '-'],
-      ['אֵין', 'ein', 'there is not / there are not', 'Time & Connectors', '-', '-', '-'],
-      ['שְׁלוֹשָׁה / שָׁלוֹשׁ', 'shlosha / shalosh', 'three (m. / f.)', 'Time & Connectors', '-', 'שָׁלוֹשׁ', '-'],
-      ['חֲמִשָּׁה / חָמֵשׁ', 'chamisha / chamesh', 'five (m. / f.)', 'Time & Connectors', '-', 'חָמֵשׁ', '-'],
-      ['עֲשָׂרָה / עֶשֶׂר', 'asara / eser', 'ten (m. / f.)', 'Time & Connectors', '-', 'עֶשֶׂר', '-']
+      ["יוֹם", "yom", "day", "Time & Connectors", "יָמִים", "-", "יוֹמַיִם (two days)"],
+      ["שָׁבוּעַ", "shavua", "week", "Time & Connectors", "שָׁבוּעוֹת", "-", "שְׁבוּעַיִם (two weeks)"],
+      ["שָׁעָה", "shaa", "hour / time", "Time & Connectors", "שָׁעוֹת", "שָׁעָה", "שְׁעָתַיִם (two hours)"],
+      ["הַיּוֹם", "hayom", "today", "Time & Connectors", "-", "-", "-"],
+      ["אֶתְמוֹל", "etmol", "yesterday", "Time & Connectors", "-", "-", "-"],
+      ["מָחָר", "machar", "tomorrow", "Time & Connectors", "-", "-", "-"],
+      ["עַכְשָׁו", "achshav", "now", "Time & Connectors", "-", "-", "-"],
+      ["תָּמִיד", "tamid", "always", "Time & Connectors", "-", "-", "-"],
+      ["בְּ־ / בְּתוֹךְ", "be- / betoch", "in / inside", "Time & Connectors", "-", "-", "-"],
+      ["לְ־ / אֶל", "le- / el", "to / toward", "Time & Connectors", "-", "-", "-"],
+      ["מִ־ / מִן", "mi- / min", "from", "Time & Connectors", "-", "-", "-"],
+      ["עַל", "al", "on / about", "Time & Connectors", "-", "-", "-"],
+      ["עִם", "im", "with", "Time & Connectors", "-", "-", "-"],
+      ["שֶׁל", "shel", "of / belonging to", "Time & Connectors", "-", "-", "-"],
+      ["אֶת", "et", "definite direct object marker", "Time & Connectors", "-", "-", "-"],
+      ["יֵשׁ", "yesh", "there is / there are", "Time & Connectors", "-", "-", "-"],
+      ["אֵין", "ein", "there is not / there are not", "Time & Connectors", "-", "-", "-"],
+      ["שְׁלוֹשָׁה / שָׁלוֹשׁ", "shlosha / shalosh", "three (m. / f.)", "Time & Connectors", "-", "שָׁלוֹשׁ", "-"],
+      ["חֲמִשָּׁה / חָמֵשׁ", "chamisha / chamesh", "five (m. / f.)", "Time & Connectors", "-", "חָמֵשׁ", "-"],
+      ["עֲשָׂרָה / עֶשֶׂר", "asara / eser", "ten (m. / f.)", "Time & Connectors", "-", "עֶשֶׂר", "-"]
     ];
 
-    const CATEGORIZED_VOCABULARY = RAW_VOCAB_LIST.map(function(row) {
+    var CATEGORIZED_VOCABULARY = RAW_VOCAB_LIST.map(function(row) {
       return {
         he: row[0],
         translit: row[1],
@@ -528,7 +498,7 @@
     // ============================================================================
     // HEBREW VERB CONJUGATION DATABASE (PAST, PRESENT, FUTURE & INFINITIVE)
     // ============================================================================
-    const PRONOUN_LIST = [
+    var PRONOUN_LIST = [
       { id: 'ani', he: 'אֲנִי', en: 'I' },
       { id: 'ata', he: 'אַתָּה', en: 'You (m. sg.)' },
       { id: 'at', he: 'אַתְּ', en: 'You (f. sg.)' },
@@ -539,11 +509,11 @@
       { id: 'hem', he: 'הֵם/ן', en: 'They' }
     ];
 
-    const VERB_CONJUGATION_DB = [
+    var VERB_CONJUGATION_DB = [
       {
         lemma: 'כָּתַב', infinitive: 'לִכְתֹּב (lichtov)', root: 'כ.ת.ב', meaning: 'to write',
-        binyan: 'Binyan Pa\'al (בִּנְיַן פָּעַל - Qal)', binyanBadgeColor: '#58cc02',
-        binyanNote: 'In Present tense, Hebrew verbs conjugate ONLY for gender and number (כּוֹתֵב / כּוֹתֶבֶת / כּוֹתְבִים / כּוֹתְבוֹת). In Past and Future, they conjugate for person as well!',
+        binyan: "Binyan Pa'al (בִּנְיַן פָּעַל - Qal)", binyanBadgeColor: '#58cc02',
+        binyanNote: "In Present tense, Hebrew verbs conjugate ONLY for gender and number (כּוֹתֵב / כּוֹתֶבֶת / כּוֹתְבִים / כּוֹתְבוֹת). In Past and Future, they conjugate for person as well!",
         forms: {
           past: { ani: 'כָּתַבְתִּי', ata: 'כָּתַבְתָּ', at: 'כָּתַבְתְּ', hu: 'כָּתַב', hi: 'כָּתְבָה', anachnu: 'כָּתַבְנוּ', atem: 'כְּתַבְתֶּם', hem: 'כָּתְבוּ' },
           present: { ani: 'כּוֹתֵב / כּוֹתֶבֶת', ata: 'כּוֹתֵב', at: 'כּוֹתֶבֶת', hu: 'כּוֹתֵב', hi: 'כּוֹתֶבֶת', anachnu: 'כּוֹתְבִים / כּוֹתְבוֹת', atem: 'כּוֹתְבִים / כּוֹתְבוֹת', hem: 'כּוֹתְבִים / כּוֹתְבוֹת' },
@@ -552,8 +522,8 @@
       },
       {
         lemma: 'לָמַד', infinitive: 'לִלְמֹד (lilmod)', root: 'ל.מ.ד', meaning: 'to study / learn',
-        binyan: 'Binyan Pa\'al (בִּנְיַן פָּעַל - Qal)', binyanBadgeColor: '#58cc02',
-        binyanNote: 'Classic sound triliteral root (ל.מ.ד). Notice the o-vowel pattern in the present (לוֹמֵד) and future (יִלְמֹד).',
+        binyan: "Binyan Pa'al (בִּנְיַן פָּעַל - Qal)", binyanBadgeColor: '#58cc02',
+        binyanNote: "Classic sound triliteral root (ל.מ.ד). Notice the o-vowel pattern in the present (לוֹמֵד) and future (יִלְמֹד).",
         forms: {
           past: { ani: 'לָמַדְתִּי', ata: 'לָמַדְתָּ', at: 'לָמַדְתְּ', hu: 'לָמַד', hi: 'לָמְדָה', anachnu: 'לָמַדְנוּ', atem: 'לְמַדְתֶּם', hem: 'לָמְדוּ' },
           present: { ani: 'לוֹמֵד / לוֹמֶדֶת', ata: 'לוֹמֵד', at: 'לוֹמֶדֶת', hu: 'לוֹמֵד', hi: 'לוֹמֶדֶת', anachnu: 'לוֹמְדִים / לוֹמְדוֹת', atem: 'לוֹמְדִים / לוֹמְדוֹת', hem: 'לוֹמְדִים / לוֹמְדוֹת' },
@@ -562,8 +532,8 @@
       },
       {
         lemma: 'הָלַךְ', infinitive: 'לָלֶכֶת (lalechet)', root: 'ה.ל.כ', meaning: 'to go / walk',
-        binyan: 'Binyan Pa\'al (בִּנְיַן פָּעַל)', binyanBadgeColor: '#58cc02',
-        binyanNote: 'Takes the preposition לְ־ (to): הָלַכְתִּי לָאוּנִיבֶרְסִיטָה (I went to the university). In the future tense, the ה drops: אֵלֵךְ, תֵּלֵךְ.',
+        binyan: "Binyan Pa'al (בִּנְיַן פָּעַל)", binyanBadgeColor: '#58cc02',
+        binyanNote: "Takes the preposition לְ־ (to): הָלַכְתִּי לָאוּנִיבֶרְסִיטָה (I went to the university). In the future tense, the ה drops: אֵלֵךְ, תֵּלֵךְ.",
         forms: {
           past: { ani: 'הָלַכְתִּי', ata: 'הָלַכְתָּ', at: 'הָלַכְתְּ', hu: 'הָלַךְ', hi: 'הָלְכָה', anachnu: 'הָלַכְנוּ', atem: 'הֲלַכְתֶּם', hem: 'הָלְכוּ' },
           present: { ani: 'הוֹלֵךְ / הוֹלֶכֶת', ata: 'הוֹלֵךְ', at: 'הוֹלֶכֶת', hu: 'הוֹלֵךְ', hi: 'הוֹלֶכֶת', anachnu: 'הוֹלְכִים / הוֹלְכוֹת', atem: 'הוֹלְכִים / הוֹלְכוֹת', hem: 'הוֹלְכִים / הוֹלְכוֹת' },
@@ -571,9 +541,9 @@
         }
       },
       {
-        lemma: 'אָכַל', infinitive: 'לֶאֱכֹל (le\'echol)', root: 'א.כ.ל', meaning: 'to eat',
-        binyan: 'Binyan Pa\'al (בִּנְיַן פָּעַל)', binyanBadgeColor: '#58cc02',
-        binyanNote: 'First root letter is Alef (א). In future tense, the Alef quiesces into an "o" vowel: אוֹכַל, תֹּאכַל, יֹאכַל.',
+        lemma: 'אָכַל', infinitive: 'לֶאֱכֹל (leechol)', root: 'א.כ.ל', meaning: 'to eat',
+        binyan: "Binyan Pa'al (בִּנְיַן פָּעַל)", binyanBadgeColor: '#58cc02',
+        binyanNote: "First root letter is Alef (א). In future tense, the Alef turns into an 'o' vowel: אוֹכַל, תֹּאכַל, יֹאכַל.",
         forms: {
           past: { ani: 'אָכַלְתִּי', ata: 'אָכַלְתָּ', at: 'אָכַלְתְּ', hu: 'אָכַל', hi: 'אָכְלָה', anachnu: 'אָכַלְנוּ', atem: 'אֲכַלְתֶּם', hem: 'אָכְלוּ' },
           present: { ani: 'אוֹכֵל / אוֹכֶלֶת', ata: 'אוֹכֵל', at: 'אוֹכֶלֶת', hu: 'אוֹכֵל', hi: 'אוֹכֶלֶת', anachnu: 'אוֹכְלִים / אוֹכְלוֹת', atem: 'אוֹכְלִים / אוֹכְלוֹת', hem: 'אוֹכְלִים / אוֹכְלוֹת' },
@@ -582,8 +552,8 @@
       },
       {
         lemma: 'שָׁתָה', infinitive: 'לִשְׁתּוֹת (lishtot)', root: 'ש.ת.ה', meaning: 'to drink',
-        binyan: 'Binyan Pa\'al • Lamed-He (גִּזְרַת ל״ה)', binyanBadgeColor: '#1cb0f6',
-        binyanNote: 'Verbs ending in ה have an "-ot" infinitive (לִשְׁתּוֹת) and end in "-eh / -ah" in singular present (שׁוֹתֶה / שׁוֹתָה).',
+        binyan: "Binyan Pa'al • Lamed-He (גִּזְרַת ל״ה)", binyanBadgeColor: '#1cb0f6',
+        binyanNote: "Verbs ending in ה have an '-ot' infinitive (לִשְׁתּוֹת) and end in '-eh / -ah' in singular present (שׁוֹתֶה / שׁוֹתָה).",
         forms: {
           past: { ani: 'שָׁתִיתִי', ata: 'שָׁתִיתָ', at: 'שָׁתִית', hu: 'שָׁתָה', hi: 'שָׁתְתָה', anachnu: 'שָׁתִינוּ', atem: 'שְׁתִיתֶם', hem: 'שָׁתוּ' },
           present: { ani: 'שׁוֹתֶה / שׁוֹתָה', ata: 'שׁוֹתֶה', at: 'שׁוֹתָה', hu: 'שׁוֹתֶה', hi: 'שׁוֹתָה', anachnu: 'שׁוֹתִים / שׁוֹתוֹת', atem: 'שׁוֹתִים / שׁוֹתוֹת', hem: 'שׁוֹתִים / שׁוֹתוֹת' },
@@ -592,8 +562,8 @@
       },
       {
         lemma: 'רָצָה', infinitive: 'לִרְצוֹת (lirtzot)', root: 'ר.צ.ה', meaning: 'to want',
-        binyan: 'Binyan Pa\'al • Lamed-He (גִּזְרַת ל״ה)', binyanBadgeColor: '#1cb0f6',
-        binyanNote: 'Followed directly by a noun or an infinitive verb: אֲנִי רוֹצֶה לִלְמֹד עִבְרִית (I want to learn Hebrew).',
+        binyan: "Binyan Pa'al • Lamed-He (גִּזְרַת ל״ה)", binyanBadgeColor: '#1cb0f6',
+        binyanNote: "Followed directly by a noun or an infinitive verb: אֲנִי רוֹצֶה לִלְמֹד עִבְרִית (I want to learn Hebrew).",
         forms: {
           past: { ani: 'רָצִיתִי', ata: 'רָצִיתָ', at: 'רָצִית', hu: 'רָצָה', hi: 'רָצְתָה', anachnu: 'רָצִינוּ', atem: 'רְצִיתֶם', hem: 'רָצוּ' },
           present: { ani: 'רוֹצֶה / רוֹצָה', ata: 'רוֹצֶה', at: 'רוֹצָה', hu: 'רוֹצֶה', hi: 'רוֹצָה', anachnu: 'רוֹצִים / רוֹצוֹת', atem: 'רוֹצִים / רוֹצוֹת', hem: 'רוֹצִים / רוֹצוֹת' },
@@ -602,8 +572,8 @@
       },
       {
         lemma: 'גָּר', infinitive: 'לָגוּר (lagur)', root: 'ג.ו.ר', meaning: 'to live / reside (בְּ־)',
-        binyan: 'Binyan Pa\'al • Hollow Verb (גִּזְרַת ע״ו)', binyanBadgeColor: '#ff9600',
-        binyanNote: 'Hollow verbs have a Vav or Yud as their middle root letter. Notice how the present and 3rd-person past look identical: הוּא גָּר (he lives / he lived).',
+        binyan: "Binyan Pa'al • Hollow Verb (גִּזְרַת ע״ו)", binyanBadgeColor: '#ff9600',
+        binyanNote: "Hollow verbs have a Vav or Yud as their middle root letter. Notice how the present and 3rd-person past look identical: הוּא גָּר (he lives / he lived).",
         forms: {
           past: { ani: 'גַּרְתִּי', ata: 'גַּרְתָּ', at: 'גַּרְתְּ', hu: 'גָּר', hi: 'גָּרָה', anachnu: 'גַּרְנוּ', atem: 'גַּרְתֶּם', hem: 'גָּרוּ' },
           present: { ani: 'גָּר / גָּרָה', ata: 'גָּר', at: 'גָּרָה', hu: 'גָּר', hi: 'גָּרָה', anachnu: 'גָּרִים / גָּרוֹת', atem: 'גָּרִים / גָּרוֹת', hem: 'גָּרִים / גָּרוֹת' },
@@ -612,8 +582,8 @@
       },
       {
         lemma: 'דִּבֵּר', infinitive: 'לְדַבֵּר (ledaber)', root: 'ד.ב.ר', meaning: 'to speak / talk (עִם / עַל)',
-        binyan: 'Binyan Pi\'el (בִּנְיַן פִּעֵל)', binyanBadgeColor: '#ce82ff',
-        binyanNote: 'Binyan Pi\'el features a મ-prefix (מְ) in the present tense: מְדַבֵּר / מְדַבֶּרֶת.',
+        binyan: "Binyan Pi'el (בִּנְיַן פִּעֵל)", binyanBadgeColor: '#ce82ff',
+        binyanNote: "Binyan Pi'el features a מְ-prefix in the present tense: מְדַבֵּר / מְדַבֶּרֶת.",
         forms: {
           past: { ani: 'דִּבַּרְתִּי', ata: 'דִּבַּרְתָּ', at: 'דִּבַּרְתְּ', hu: 'דִּבֵּר', hi: 'דִּבְּרָה', anachnu: 'דִּבַּרְנוּ', atem: 'דִּבַּרְתֶּם', hem: 'דִּבְּרוּ' },
           present: { ani: 'מְדַבֵּר / מְדַבֶּרֶת', ata: 'מְדַבֵּר', at: 'מְדַבֶּרֶת', hu: 'מְדַבֵּר', hi: 'מְדַבֶּרֶת', anachnu: 'מְדַבְּרִים / מְדַבְּרוֹת', atem: 'מְדַבְּרִים / מְדַבְּרוֹת', hem: 'מְדַבְּרִים / מְדַבְּרוֹת' },
@@ -622,8 +592,8 @@
       },
       {
         lemma: 'הִזְמִין', infinitive: 'לְהַזְמִין (lehazmin)', root: 'ז.מ.נ', meaning: 'to order (food) / invite',
-        binyan: 'Binyan Hif\'il (בִּנְיַן הִפְעִיל)', binyanBadgeColor: '#ff4b4b',
-        binyanNote: 'Binyan Hif\'il has הִ־ in the past and מַ־ in the present, with a characteristic "i" vowel (י) before the last root letter.',
+        binyan: "Binyan Hif'il (בִּנְיַן הִפְעִיל)", binyanBadgeColor: '#ff4b4b',
+        binyanNote: "Binyan Hif'il has הִ־ in the past and מַ־ in the present, with a characteristic 'i' vowel (י) before the last root letter.",
         forms: {
           past: { ani: 'הִזְמַנְתִּי', ata: 'הִזְמַנְתָּ', at: 'הִזְמַנְתְּ', hu: 'הִזְמִין', hi: 'הִזְמִינָה', anachnu: 'הִזְמַנּוּ', atem: 'הִזְמַנְתֶּם', hem: 'הִזְמִינוּ' },
           present: { ani: 'מַזְמִין / מַזְמִינָה', ata: 'מַזְמִין', at: 'מַזְמִינָה', hu: 'מַזְמִין', hi: 'מַזְמִינָה', anachnu: 'מַזְמִינִים / מַזְמִינוֹת', atem: 'מַזְמִינִים / מַזְמִינוֹת', hem: 'מַזְמִינִים / מַזְמִינוֹת' },
@@ -633,87 +603,87 @@
     ];
 
     // ============================================================================
-    // GRAMMAR ENCYCLOPEDIA (ENGLISH EXPLANATIONS FOR HEBREW GRAMMAR)
+    // GRAMMAR ENCYCLOPEDIA
     // ============================================================================
-    const GRAMMAR_ENCYCLOPEDIA = [
+    var GRAMMAR_ENCYCLOPEDIA = [
       {
-        title: '1. The Definite Article (הַיִּדּוּעַ - הַ־) & Preposition Merging',
-        badge: 'Definiteness',
-        color: '#1cb0f6',
-        summary: 'In Hebrew, "the" is the prefix הַ־ attached directly to the word (סֵפֶר ← הַסֵּפֶר). When an adjective describes a definite noun, BOTH the noun and the adjective must take הַ־! Also, when the prepositions בְּ־ (in), לְ־ (to), or כְּ־ (like) attach to a definite noun, the ה drops and its vowel transfers to the preposition (בַּ־, לַ־, כַּ־).',
-        formula: 'סֵפֶר טוֹב (a good book)  ←  הַסֵּפֶר הַטּוֹב (the good book)  |  בְּ + הַבַּיִת = בַּבַּיִת (in the house)',
-        headers: ['Structure', 'Hebrew Example', 'English Meaning & Rule'],
+        title: "1. The Definite Article (הַיִּדּוּעַ - הַ־) & Preposition Merging",
+        badge: "Definiteness",
+        color: "#1cb0f6",
+        summary: "In Hebrew, 'the' is the prefix הַ־ attached directly to the word (סֵפֶר ← הַסֵּפֶר). When an adjective describes a definite noun, BOTH the noun and the adjective must take הַ־! Also, when the prepositions בְּ־ (in), לְ־ (to), or כְּ־ (like) attach to a definite noun, the ה drops and its vowel transfers to the preposition (בַּ־, לַ־, כַּ־).",
+        formula: "סֵפֶר טוֹב (a good book)  ←  הַסֵּפֶר הַטּוֹב (the good book)  |  בְּ + הַבַּיִת = בַּבַּיִת (in the house)",
+        headers: ["Structure", "Hebrew Example", "English Meaning & Rule"],
         rows: [
-          ['Indefinite Noun + Adj.', 'סְטוּדֶנְט חָדָשׁ / עִיר יָפָה', 'A new student / A beautiful city (no הַ־)'],
-          ['Definite Noun + Adj.', 'הַסְּטוּדֶנְט הֶחָדָשׁ / הָעִיר הַיָּפָה', 'The new student / The beautiful city (both take הַ־)'],
-          ['Definite Noun + Indef. Adj.', 'הַסֵּפֶר חָדָשׁ / הָעִיר יָפָה', 'The book IS new / The city IS beautiful (Full sentence!)'],
-          ['בְּ־ / לְ־ + Indefinite', 'בְּבַיִת / לְמִסְעָדָה', 'In a house / To a restaurant (Sheva vowel)'],
-          ['בַּ־ / לַ־ + Definite', 'בַּבַּיִת / לַמִּסְעָדָה', 'In THE house / To THE restaurant (Patach/Kamatz vowel)']
+          ["Indefinite Noun + Adj.", "סְטוּדֶנְט חָדָשׁ / עִיר יָפָה", "A new student / A beautiful city (no הַ־)"],
+          ["Definite Noun + Adj.", "הַסְּטוּדֶנְט הֶחָדָשׁ / הָעִיר הַיָּפָה", "The new student / The beautiful city (both take הַ־)"],
+          ["Definite Noun + Indef. Adj.", "הַסֵּפֶר חָדָשׁ / הָעִיר יָפָה", "The book IS new / The city IS beautiful (Full sentence!)"],
+          ["בְּ־ / לְ־ + Indefinite", "בְּבַיִת / לְמִסְעָדָה", "In a house / To a restaurant (Sheva vowel)"],
+          ["בַּ־ / לַ־ + Definite", "בַּבַּיִת / לַמִּסְעָדָה", "In THE house / To THE restaurant (Patach/Kamatz vowel)"]
         ]
       },
       {
-        title: '2. Direct Object Marker אֶת (מִלַּת הַיַּחַס ״אֶת״)',
-        badge: 'Syntax & Objects',
-        color: '#ff9600',
-        summary: 'Hebrew uses the special untranslatable particle אֶת before a DEFINITE direct object (a noun with הַ־, a proper name like יְרוּשָׁלַיִם or דָּנִי, or a possessed noun). Never use אֶת before an indefinite direct object!',
-        formula: 'Definite Object: קָרָאתִי אֶת הַסֵּפֶר (I read the book)  |  Indefinite Object: קָרָאתִי סֵפֶר (I read a book)',
-        headers: ['Object Type', 'Hebrew Sentence', 'Explanation'],
+        title: "2. Direct Object Marker אֶת (מִלַּת הַיַּחַס ״אֶת״)",
+        badge: "Syntax & Objects",
+        color: "#ff9600",
+        summary: "Hebrew uses the special untranslatable particle אֶת before a DEFINITE direct object (a noun with הַ־, a proper name like יְרוּשָׁלַיִם or דָּנִי, or a possessed noun). Never use אֶת before an indefinite direct object!",
+        formula: "Definite Object: קָרָאתִי אֶת הַסֵּפֶר (I read the book)  |  Indefinite Object: קָרָאתִי סֵפֶר (I read a book)",
+        headers: ["Object Type", "Hebrew Sentence", "Explanation"],
         rows: [
-          ['Indefinite Object (No אֶת)', 'שָׁתִיתִי קָפֶה חַם', 'I drank hot coffee (general, no הַ־ → no אֶת)'],
-          ['Definite with הַ־ (Requires אֶת)', 'שָׁתִיתִי אֶת הַקָּפֶה', 'I drank THE coffee (specific → requires אֶת)'],
-          ['Proper Noun / Name (Requires אֶת)', 'פָּגַשְׁתִּי אֶת שָׂרָה בַּשּׁוּק', 'I met Sarah at the market (names are definite → אֶת)'],
-          ['City / Country Name (Requires אֶת)', 'אֲנִי אוֹהֵב אֶת יְרוּשָׁלַיִם', 'I love Jerusalem (proper place name → אֶת)']
+          ["Indefinite Object (No אֶת)", "שָׁתִיתִי קָפֶה חַם", "I drank hot coffee (general, no הַ־ → no אֶת)"],
+          ["Definite with הַ־ (Requires אֶת)", "שָׁתִיתִי אֶת הַקָּפֶה", "I drank THE coffee (specific → requires אֶת)"],
+          ["Proper Noun / Name (Requires אֶת)", "פָּגַשְׁתִּי אֶת שָׂרָה בַּשּׁוּק", "I met Sarah at the market (names are definite → אֶת)"],
+          ["City / Country Name (Requires אֶת)", "אֲנִי אוֹהֵב אֶת יְרוּשָׁלַיִם", "I love Jerusalem (proper place name → אֶת)"]
         ]
       },
       {
-        title: '3. Construct State (סְמִיכוּת - Smichut)',
-        badge: 'Nouns & Smichut',
-        color: '#ce82ff',
-        summary: 'Smichut links two nouns together into a single unit ("noun of noun"). The first noun (נִסְמָךְ) never takes הַ־; to make the whole phrase definite, place הַ־ on the SECOND noun (הַסּוֹמֵךְ). Feminine singular nouns ending in ־ָה change to ־ַת in the first position!',
-        formula: 'בֵּית קָפֶה (a coffee shop) ← בֵּית הַקָּפֶה (the coffee shop) | עוּגָה ← עוּגַת שׁוֹקוֹלָד (chocolate cake)',
-        headers: ['Base Word', 'In Smichut (Indefinite)', 'Definite Smichut & Meaning'],
+        title: "3. Construct State (סְמִיכוּת - Smichut)",
+        badge: "Nouns & Smichut",
+        color: "#ce82ff",
+        summary: "Smichut links two nouns together into a single unit ('noun of noun'). The first noun (נִסְמָךְ) never takes הַ־; to make the whole phrase definite, place הַ־ on the SECOND noun (הַסּוֹמֵךְ). Feminine singular nouns ending in ־ָה change to ־ַת in the first position!",
+        formula: "בֵּית קָפֶה (a coffee shop) ← בֵּית הַקָּפֶה (the coffee shop) | עוּגָה ← עוּגַת שׁוֹקוֹלָד (chocolate cake)",
+        headers: ["Base Word", "In Smichut (Indefinite)", "Definite Smichut & Meaning"],
         rows: [
-          ['בַּיִת (house)', 'בֵּית סֵפֶר / בֵּית קָפֶה', 'בֵּית הַסֵּפֶר (the school) / בֵּית הַקָּפֶה (the cafe)'],
-          ['עוּגָה (cake - ends in ־ָה)', 'עוּגַת תַּפּוּחִים', 'עוּגַת הַתַּפּוּחִים (the apple cake — ה becomes ת)'],
-          ['מִשְׁפָּחָה (family)', 'מִשְׁפַּחַת כֹּהֵן', 'The Cohen family'],
-          ['חֲנוּת (store)', 'חֲנוּת סְפָרִים', 'חֲנוּת הַסְּפָרִים (the bookstore)']
+          ["בַּיִת (house)", "בֵּית סֵפֶר / בֵּית קָפֶה", "בֵּית הַסֵּפֶר (the school) / בֵּית הַקָּפֶה (the cafe)"],
+          ["עוּגָה (cake - ends in ־ָה)", "עוּגַת תַּפּוּחִים", "עוּגַת הַתַּפּוּחִים (the apple cake — ה becomes ת)"],
+          ["מִשְׁפָּחָה (family)", "מִשְׁפַּחַת כֹּהֵן", "The Cohen family"],
+          ["חֲנוּת (store)", "חֲנוּת סְפָרִים", "חֲנוּת הַסְּפָרִים (the bookstore)"]
         ]
       },
       {
-        title: '4. Existence & Possession: יֵשׁ (Yesh) vs. אֵין (Ein)',
-        badge: 'Existence & Have',
-        color: '#58cc02',
-        summary: 'Hebrew has no verb "to have" in the present tense. Instead, it uses יֵשׁ ("there is/are") + לְ־ ("to") + person: יֵשׁ לִי (I have, lit. "there is to me"). The negative is אֵין ("there is not"): אֵין לִי (I don\'t have).',
-        formula: 'Positive: יֵשׁ לִי זְמַן (I have time)  |  Negative: אֵין לִי זְמַן (I don\'t have time)',
-        headers: ['Pronoun', 'Positive (I have...)', 'Negative (I don\'t have...)'],
+        title: "4. Existence & Possession: יֵשׁ (Yesh) vs. אֵין (Ein)",
+        badge: "Existence & Have",
+        color: "#58cc02",
+        summary: "Hebrew has no verb 'to have' in the present tense. Instead, it uses יֵשׁ ('there is/are') + לְ־ ('to') + person: יֵשׁ לִי (I have, lit. 'there is to me'). The negative is אֵין ('there is not'): אֵין לִי (I do not have).",
+        formula: "Positive: יֵשׁ לִי זְמַן (I have time)  |  Negative: אֵין לִי זְמַן (I do not have time)",
+        headers: ["Pronoun", "Positive (I have...)", "Negative (I do not have...)"],
         rows: [
-          ['אֲנִי (I)', 'יֵשׁ לִי סֵפֶר', 'אֵין לִי סֵפֶר'],
-          ['אַתָּה / אַתְּ (You m./f.)', 'יֵשׁ לְךָ / יֵשׁ לָךְ', 'אֵין לְךָ / אֵין לָךְ'],
-          ['הוּא / הִיא (He / She)', 'יֵשׁ לוֹ / יֵשׁ לָהּ', 'אֵין לוֹ / אֵין לָהּ'],
-          ['אֲנַחְנוּ (We)', 'יֵשׁ לָנוּ שִׁעוּר', 'אֵין לָנוּ שִׁעוּר'],
-          ['הֵם / הֵן (They)', 'יֵשׁ לָהֶם / יֵשׁ לָהֶן', 'אֵין לָהֶם / אֵין לָהֶן']
+          ["אֲנִי (I)", "יֵשׁ לִי סֵפֶר", "אֵין לִי סֵפֶר"],
+          ["אַתָּה / אַתְּ (You m./f.)", "יֵשׁ לְךָ / יֵשׁ לָךְ", "אֵין לְךָ / אֵין לָךְ"],
+          ["הוּא / הִיא (He / She)", "יֵשׁ לוֹ / יֵשׁ לָהּ", "אֵין לוֹ / אֵין לָהּ"],
+          ["אֲנַחְנוּ (We)", "יֵשׁ לָנוּ שִׁעוּר", "אֵין לָנוּ שִׁעוּר"],
+          ["הֵם / הֵן (They)", "יֵשׁ לָהֶם / יֵשׁ לָהֶן", "אֵין לָהֶם / אֵין לָהֶן"]
         ]
       },
       {
-        title: '5. The Hebrew Verb System (שִׁבְעַת הַבִּנְיָנִים - Binyanim)',
-        badge: 'Verbs',
-        color: '#ff4b4b',
-        summary: 'Hebrew verbs are built by combining a 3-letter root (שֹׁרֶשׁ) with a pattern (בִּנְיָן). In the Present Tense, verbs agree ONLY in gender and number (4 forms: m.sg, f.sg, m.pl, f.pl). In Past and Future, verbs conjugate for person, gender, and number.',
-        formula: 'Root ל.מ.ד:  לָמַד (Pa\'al: learned)  |  לִמֵּד (Pi\'el: taught)',
-        headers: ['Binyan', 'Past (הוּא)', 'Present (הוּא / הִיא)', 'Infinitive & Core Function'],
+        title: "5. The Hebrew Verb System (שִׁבְעַת הַבִּנְיָנִים - Binyanim)",
+        badge: "Verbs",
+        color: "#ff4b4b",
+        summary: "Hebrew verbs are built by combining a 3-letter root (שֹׁרֶשׁ) with a pattern (בִּנְיָן). In the Present Tense, verbs agree ONLY in gender and number (4 forms: m.sg, f.sg, m.pl, f.pl). In Past and Future, verbs conjugate for person, gender, and number.",
+        formula: "Root ל.מ.ד:  לָמַד (Pa'al: learned)  |  לִמֵּד (Pi'el: taught)",
+        headers: ["Binyan", "Past (הוּא)", "Present (הוּא / הִיא)", "Infinitive & Core Function"],
         rows: [
-          ['פָּעַל (Pa\'al)', 'כָּתַב / לָמַד', 'כּוֹתֵב / כּוֹתֶבֶת', 'לִכְתֹּב — Basic active verbs'],
-          ['פִּעֵל (Pi\'el)', 'דִּבֵּר / שִׁלֵּם', 'מְדַבֵּר / מְדַבֶּרֶת', 'לְדַבֵּר — Intensive / active verbs (מְ־ in present)'],
-          ['הִפְעִיל (Hif\'il)', 'הִזְמִין / הֵבִין', 'מַזְמִין / מַזְמִינָה', 'לְהַזְמִין — Causative / active (מַ־ in present)'],
-          ['הִתְפַּעֵל (Hitpa\'el)', 'הִתְקַשֵּׁר / הִשְׁתַּתֵּף', 'מִתְקַשֵּׁר / מִתְקַשֶּׁרֶת', 'לְהִתְקַשֵּׁר — Reflexive / mutual actions']
+          ["פָּעַל (Pa'al)", "כָּתַב / לָמַד", "כּוֹתֵב / כּוֹתֶבֶת", "לִכְתֹּב — Basic active verbs"],
+          ["פִּעֵל (Pi'el)", "דִּבֵּר / שִׁלֵּם", "מְדַבֵּר / מְדַבֶּרֶת", "לְדַבֵּר — Intensive / active verbs (מְ־ in present)"],
+          ["הִפְעִיל (Hif'il)", "הִזְמִין / הֵבִין", "מַזְמִין / מַזְמִינָה", "לְהַזְמִין — Causative / active (מַ־ in present)"],
+          ["הִתְפַּעֵל (Hitpa'el)", "הִתְקַשֵּׁר / הִשְׁתַּתֵּף", "מִתְקַשֵּׁר / מִתְקַשֶּׁרֶת", "לְהִתְקַשֵּׁר — Reflexive / mutual actions"]
         ]
       }
     ];
 
     // ============================================================================
-    // INTERACTIVE BILINGUAL STORIES (WITH HOVER DICTIONARY & COMPREHENSION QUIZ)
+    // INTERACTIVE BILINGUAL STORIES
     // ============================================================================
-    const STORIES_DB = [
+    var STORIES_DB = [
       {
         id: 'story1',
         titleHe: 'בְּבֵית הַקָּפֶה בִּירוּשָׁלַיִם',
@@ -778,7 +748,7 @@
     // ============================================================================
     // STRUCTURED LEARNING UNITS & INTERACTIVE STEPS (ENGLISH -> HEBREW)
     // ============================================================================
-    const COURSE_UNITS = [
+    var COURSE_UNITS = [
       {
         id: 'u1', unitNumber: 'UNIT 1', sectionTitle: 'First Steps in Hebrew',
         title: 'Greetings, Pronouns & Simple Nominal Sentences (שָׁלוֹם וְהֶכֵּרוּת)',
@@ -791,7 +761,7 @@
             questions: [
               { type: 'multiple_choice', prompt: 'What does this Hebrew greeting mean?', hebrewPrompt: 'בֹּקֶר טוֹב', translit: 'boker tov', options: ['Good morning', 'Good night', 'Thank you very much', 'Excuse me'], correctAnswer: 'Good morning', grammarTip: 'בֹּקֶר (morning) + טוֹב (good) = Good morning!' },
               { type: 'irab_detective', prompt: 'How do you say "Thank you very much" in Hebrew?', sentenceBefore: 'Say:', targetWordBase: '', sentenceAfter: '', translation: 'Thank you very much', options: [{ value: 'תּוֹדָה רַבָּה' }, { value: 'סְלִיחָה' }, { value: 'לַיְלָה טוֹב' }, { value: 'מַה שְּׁלוֹמְךָ' }], correctValue: 'תּוֹדָה רַבָּה', grammarTip: 'תּוֹדָה רַבָּה (toda raba) = Thank you very much.' },
-              { type: 'matching', prompt: 'Match the Hebrew greetings to their English meanings:', pairs: [{ he: 'שָׁלוֹם', en: 'Hello / Peace' }, { he: 'בְּבַקָּשָׁה', en: 'Please / You\'re welcome' }, { he: 'סְלִיחָה', en: 'Excuse me / Sorry' }, { he: 'לְהִתְרָאוֹת', en: 'See you later' }], grammarTip: 'Great job! These 4 expressions are used in almost every Hebrew conversation.' },
+              { type: 'matching', prompt: 'Match the Hebrew greetings to their English meanings:', pairs: [{ he: 'שָׁלוֹם', en: 'Hello / Peace' }, { he: 'בְּבַקָּשָׁה', en: 'Please / You are welcome' }, { he: 'סְלִיחָה', en: 'Excuse me / Sorry' }, { he: 'לְהִתְרָאוֹת', en: 'See you later' }], grammarTip: 'Great job! These 4 expressions are used in almost every Hebrew conversation.' },
               { type: 'sentence_builder', prompt: 'Build the Hebrew phrase for: "Nice to meet you, everything is alright"', englishSentence: 'Nice to meet you, everything is alright', words: ['נָעִים', 'מְאוֹד', 'הַכֹּל', 'בְּסֵדֶר', 'מָחָר'], correctOrder: ['נָעִים', 'מְאוֹד', 'הַכֹּל', 'בְּסֵדֶר'], grammarTip: 'נָעִים מְאוֹד (Nice to meet you), הַכֹּל בְּסֵדֶר (Everything is alright).' }
             ]
           },
@@ -834,7 +804,7 @@
             questions: [
               { type: 'irab_detective', prompt: 'Choose the right word: "The student wrote THE lesson"', sentenceBefore: 'הַסְּטוּדֶנְט כָּתַב', targetWordBase: 'הַשִּׁעוּר', sentenceAfter: '.', translation: 'The student wrote the lesson.', options: [{ value: 'אֶת' }, { value: 'שֶׁל' }, { value: 'עַל' }, { value: 'מִן' }], correctValue: 'אֶת', grammarTip: 'הַשִּׁעוּר (the lesson) is a definite direct object, so it requires אֶת right before it!' },
               { type: 'word_tap', isErr: true, prompt: 'Tap the grammatical error in this sentence:', translation: 'Intended: I drank hot coffee (indefinite).', words: ['אֲנִי', 'שָׁתִיתִי', 'אֶת', 'קָפֶה', 'חַם'], correctValue: 'אֶת', grammarTip: 'Never use אֶת before an indefinite noun! Since קָפֶה חַם has no הַ־, we simply say: שָׁתִיתִי קָפֶה חַם.' },
-              { type: 'sentence_builder', prompt: 'Build the sentence: "I love Jerusalem"', englishSentence: 'I love Jerusalem', words: ['אֲנִי', 'אוֹהֵב', 'אֶת', 'יְרוּשָׁלַיִם', 'שֶׁל'], correctOrder: ['אֲנִי', 'אוֹהֵב', 'אֶת', 'יְרוּשָׁלַיִם'], grammarTip: 'City names and people\'s names are inherently definite, so they require אֶת as direct objects!' }
+              { type: 'sentence_builder', prompt: 'Build the sentence: "I love Jerusalem"', englishSentence: 'I love Jerusalem', words: ['אֲנִי', 'אוֹהֵב', 'אֶת', 'יְרוּשָׁלַיִם', 'שֶׁל'], correctOrder: ['אֲנִי', 'אוֹהֵב', 'אֶת', 'יְרוּשָׁלַיִם'], grammarTip: 'City names and people names are inherently definite, so they require אֶת as direct objects!' }
             ]
           }
         ]
@@ -844,7 +814,7 @@
         title: 'Ordering at a Cafe, יֵשׁ / אֵין & Construct State (סְמִיכוּת)',
         description: 'Order food in Hebrew, express what you have with יֵשׁ לִי / אֵין לִי, and build Smichut compounds.',
         color: 'rgb(255, 150, 0)', shadowColor: 'rgb(205, 121, 0)',
-        ruleSummary: 'Use יֵשׁ לִי (I have) and אֵין לִי (I don\'t have). In Smichut (construct state), feminine nouns ending in ־ָה change to ־ַת: עוּגָה (cake) ← עוּגַת תַּפּוּחִים (apple cake).',
+        ruleSummary: 'Use יֵשׁ לִי (I have) and אֵין לִי (I do not have). In Smichut (construct state), feminine nouns ending in ־ָה change to ־ַת: עוּגָה (cake) ← עוּגַת תַּפּוּחִים (apple cake).',
         nodes: [
           {
             id: 'u3-s1', title: 'Step 1 • At the Israeli Cafe', offset: 0,
@@ -859,7 +829,7 @@
             questions: [
               { type: 'multiple_choice', prompt: 'How do you say "the coffee shop" in Hebrew (definite Smichut)?', hebrewPrompt: 'בֵּית קָפֶה ← ?', options: ['בֵּית הַקָּפֶה', 'הַבַּיִת קָפֶה', 'הַבֵּית הַקָּפֶה', 'בַּיִת קָפֶה'], correctAnswer: 'בֵּית הַקָּפֶה', grammarTip: 'In Smichut, הַ־ is placed ONLY on the second word: בֵּית הַקָּפֶה!' },
               { type: 'word_tap', isErr: true, prompt: 'Spot the error in this Smichut phrase ("the student dormitories"):', translation: 'Intended: the student dormitories', words: ['אֲנִי', 'גָּר', 'בְּ־', 'הַמְּעוֹנוֹת', 'הַסְּטוּדֶנְטִים'], correctValue: 'הַמְּעוֹנוֹת', grammarTip: 'The first word in a Smichut construct NEVER takes הַ־! Correct: מְעוֹנוֹת הַסְּטוּדֶנְטִים.' },
-              { type: 'irab_detective', prompt: 'Complete: "We do NOT have an exam today"', sentenceBefore: '', targetWordBase: 'לָנוּ מִבְחָן הַיּוֹם.', sentenceAfter: '', translation: 'We don\'t have an exam today.', options: [{ value: 'אֵין' }, { value: 'יֵשׁ' }, { value: 'לֹא' }, { value: 'אַל' }], correctValue: 'אֵין', grammarTip: 'The opposite of יֵשׁ לָנוּ (we have) is אֵין לָנוּ (we do not have).' }
+              { type: 'irab_detective', prompt: 'Complete: "We do NOT have an exam today"', sentenceBefore: '', targetWordBase: 'לָנוּ מִבְחָן הַיּוֹם.', sentenceAfter: '', translation: 'We do not have an exam today.', options: [{ value: 'אֵין' }, { value: 'יֵשׁ' }, { value: 'לֹא' }, { value: 'אַל' }], correctValue: 'אֵין', grammarTip: 'The opposite of יֵשׁ לָנוּ (we have) is אֵין לָנוּ (we do not have).' }
             ]
           }
         ]
@@ -867,7 +837,7 @@
       {
         id: 'u4', unitNumber: 'UNIT 4', sectionTitle: 'Verbs & Binyanim',
         title: 'Hebrew Verbs in Present, Past & Infinitive (פְּעָלִים וּבִנְיָנִים)',
-        description: 'Conjugate core verbs in Pa\'al, Pi\'el, and Hif\'il across tenses and build modal sentences with רוֹצֶה + Infinitive.',
+        description: 'Conjugate core verbs in Paal, Piel, and Hifil across tenses and build modal sentences with רוֹצֶה + Infinitive.',
         color: 'rgb(206, 130, 255)', shadowColor: 'rgb(165, 104, 204)',
         ruleSummary: 'Present tense has 4 forms (m.sg, f.sg, m.pl, f.pl). Past tense adds personal suffixes (־תִּי for I, ־תָּ for you m., ־נוּ for we). After רוֹצֶה (want), use the infinitive starting with לְ־ (לִלְמֹד, לֶאֱכֹל, לְדַבֵּר).',
         nodes: [
@@ -876,7 +846,7 @@
             questions: [
               { type: 'irab_detective', prompt: 'Complete with the infinitive: "We want to speak Hebrew"', sentenceBefore: 'אֲנַחְנוּ רוֹצִים', targetWordBase: 'עִבְרִית.', sentenceAfter: '', translation: 'We want to speak Hebrew.', options: [{ value: 'לְדַבֵּר' }, { value: 'מְדַבֵּר' }, { value: 'דִּבַּרְתִּי' }, { value: 'לִכְתֹּב' }], correctValue: 'לְדַבֵּר', grammarTip: 'After רוֹצֶה / רוֹצִים, always use the infinitive (שֵׁם הַפֹּעַל): לְדַבֵּר (to speak).' },
               { type: 'matching', prompt: 'Match each verb infinitive to its meaning:', pairs: [{ he: 'לִלְמֹד', en: 'To study / learn' }, { he: 'לִכְתֹּב', en: 'To write' }, { he: 'לֶאֱכֹל', en: 'To eat' }, { he: 'לִשְׁתּוֹת', en: 'To drink' }], grammarTip: 'All Hebrew infinitives start with the prefix ל־!' },
-              { type: 'multiple_choice', prompt: 'Which pronoun matches the past-tense verb לָמַדְתִּי?', hebrewPrompt: 'לָמַדְתִּי עִבְרִית בָּאוּנִיבֶרְסִיטָה', translit: 'lamadeti Ivrit ba\'universita', options: ['אֲנִי (I)', 'הוּא (He)', 'אֲנַחְנוּ (We)', 'הֵם (They)'], correctAnswer: 'אֲנִי (I)', grammarTip: 'The past-tense suffix ־תִּי (-ti) always indicates "I" (אֲנִי).' },
+              { type: 'multiple_choice', prompt: 'Which pronoun matches the past-tense verb לָמַדְתִּי?', hebrewPrompt: 'לָמַדְתִּי עִבְרִית בָּאוּנִיבֶרְסִיטָה', translit: 'lamadeti Ivrit ba-universita', options: ['אֲנִי (I)', 'הוּא (He)', 'אֲנַחְנוּ (We)', 'הֵם (They)'], correctAnswer: 'אֲנִי (I)', grammarTip: 'The past-tense suffix ־תִּי (-ti) always indicates "I" (אֲנִי).' },
               { type: 'sentence_builder', prompt: 'Build the sentence: "Yesterday we went to the market"', englishSentence: 'Yesterday we went to the market', words: ['אֶתְמוֹל', 'הָלַכְנוּ', 'לַשּׁוּק', 'הָלַכְתִּי', 'מָחָר'], correctOrder: ['אֶתְמוֹל', 'הָלַכְנוּ', 'לַשּׁוּק'], grammarTip: 'הָלַכְנוּ = we went (suffix ־נוּ). לַשּׁוּק = to the market.' }
             ]
           }
@@ -885,41 +855,37 @@
     ];
 
     // ============================================================================
-    // APPLICATION STATE & STORAGE
+    // APPLICATION STATE
     // ============================================================================
-    const state = {
-      activeTab: 'learn', // 'learn' | 'verbs' | 'dictionary' | 'grammar' | 'stories' | 'flashcards'
-      xp: parseInt(localStorage.getItem('yafasafa_xp') || '120', 10),
-      streak: parseInt(localStorage.getItem('yafasafa_streak') || '5', 10),
-      completedNodes: JSON.parse(localStorage.getItem('yafasafa_completed') || '["u1-s1"]'),
-      // Dictionary state
+    var parsedCompleted = ['u1-s1'];
+    try {
+      parsedCompleted = JSON.parse(safeGet('yafasafa_completed', '["u1-s1"]')) || ['u1-s1'];
+    } catch (e) { parsedCompleted = ['u1-s1']; }
+
+    var state = {
+      activeTab: 'learn',
+      xp: parseInt(safeGet('yafasafa_xp', '120'), 10) || 120,
+      streak: parseInt(safeGet('yafasafa_streak', '5'), 10) || 5,
+      completedNodes: parsedCompleted,
       dictSearch: '',
       dictCategory: 'All',
-      // Verbs state
       selectedVerbIdx: 0,
-      verbQuizMode: false,
-      // Stories state
       selectedStoryId: 'story1',
       storyQuizAnswers: {},
-      // Flashcards state
       fcIndex: 0,
       fcFlipped: false,
-      // Active Lesson Session
       session: null,
-      // Keyboard & Chat
       kbOpen: false,
       chatOpen: false,
       chatMessages: [
-        { from: 'srulik', text: 'שָׁלוֹם! I\'m **Srulik** (שְׂרוּלִיק), your Israeli Hebrew buddy! Ask me about any Hebrew word, root (שֹׁרֶשׁ), verb conjugation, or grammar rule — like when to use **אֶת** or how **סְמִיכוּת** works!' }
+        { from: 'srulik', text: "שָׁלוֹם! I am **Srulik** (שְׂרוּלִיק), your Israeli Hebrew buddy! Ask me about any Hebrew word, root (שֹׁרֶשׁ), verb conjugation, or grammar rule — like when to use **אֶת** or how **סְמִיכוּת** works!" }
       ]
     };
 
     function saveProgress() {
-      try {
-        localStorage.setItem('yafasafa_xp', String(state.xp));
-        localStorage.setItem('yafasafa_streak', String(state.streak));
-        localStorage.setItem('yafasafa_completed', JSON.stringify(state.completedNodes));
-      } catch (e) {}
+      safeSet('yafasafa_xp', String(state.xp));
+      safeSet('yafasafa_streak', String(state.streak));
+      safeSet('yafasafa_completed', JSON.stringify(state.completedNodes));
     }
 
     // ============================================================================
@@ -932,7 +898,7 @@
     };
 
     function renderSidebar() {
-      const navItems = [
+      var navItems = [
         { id: 'learn', icon: '🗺️', label: 'Learn Path', sub: 'מַסְלוּל' },
         { id: 'stories', icon: '📖', label: 'Stories', sub: 'סִפּוּרִים' },
         { id: 'verbs', icon: '⚡', label: 'Verb Lab', sub: 'בִּנְיָנִים' },
@@ -941,118 +907,115 @@
         { id: 'flashcards', icon: '🃏', label: 'Flashcards', sub: 'כַּרְטִיסִיּוֹת' }
       ];
 
-      const buttonsHtml = navItems.map(function(item) {
-        const active = state.activeTab === item.id;
-        return `<button onclick="setTab('${item.id}')" class="w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl font-extrabold text-sm transition-all ${active ? 'duo-btn-selected' : 'text-[#4b4b4b] hover:bg-[#f7f7f7] border-2 border-transparent'}">
-          <span class="text-2xl">${item.icon}</span>
-          <span class="text-left leading-tight">
-            <span class="block">${item.label}</span>
-            <span class="text-[11px] font-bold text-[#777777] font-hebrew">${item.sub}</span>
-          </span>
-        </button>`;
+      var buttonsHtml = navItems.map(function(item) {
+        var active = state.activeTab === item.id;
+        return '<button onclick="setTab(\'' + item.id + '\')" class="w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl font-extrabold text-sm transition-all ' + (active ? 'duo-btn-selected' : 'text-[#4b4b4b] hover:bg-[#f7f7f7] border-2 border-transparent') + '">' +
+          '<span class="text-2xl">' + item.icon + '</span>' +
+          '<span class="text-left leading-tight">' +
+            '<span class="block">' + item.label + '</span>' +
+            '<span class="text-[11px] font-bold text-[#777777] font-hebrew">' + item.sub + '</span>' +
+          '</span>' +
+        '</button>';
       }).join('');
 
-      return `<aside id="primary-sidebar" class="w-64 shrink-0 border-r-2 border-[#e5e5e5] bg-white p-5 flex flex-col justify-between sticky top-0 h-screen select-none">
-        <div>
-          <!-- Brand Header: Blue & Green with Red Accent -->
-          <div class="brand-header flex items-center gap-2.5 px-2 pb-6 mb-4 border-b-2 border-[#f0f0f0]">
-            <div class="w-11 h-11 rounded-2xl bg-[#ddf4ff] border-2 border-[#84d8ff] flex items-center justify-center font-hebrew font-black text-2xl text-[#1cb0f6] shadow-sm">י</div>
-            <div>
-              <div class="text-2xl font-black tracking-tight leading-none">
-                <span class="brand-yafa">YAFA</span> <span class="brand-safa">SAFA</span><span class="brand-dot">.</span>
-              </div>
-              <div class="flex items-center gap-1.5 mt-1">
-                <span class="font-hebrew text-xs font-extrabold text-[#1899d6]">יָפָה שָׂפָה</span>
-                <span class="px-1.5 py-0.5 text-[10px] font-extrabold rounded-md bg-[#ff4b4b] text-white">HEBREW</span>
-              </div>
-            </div>
-          </div>
-          <nav class="space-y-2">${buttonsHtml}</nav>
-        </div>
-
-        <div class="sidebar-footer space-y-3 pt-4 border-t-2 border-[#f0f0f0]">
-          <button onclick="toggleKeyboard()" class="kb-toggle-btn ${state.kbOpen ? 'kb-on' : ''} w-full py-2.5 px-3 rounded-2xl font-extrabold text-xs flex items-center justify-center gap-2">
-            <span>⌨️</span>
-            <span>Hebrew Keyboard (מִקְלֶדֶת)</span>
-          </button>
-          <div class="p-3 rounded-2xl bg-[#f7f7f7] border-2 border-[#e5e5e5] flex items-center justify-between text-xs font-extrabold">
-            <span class="flex items-center gap-1.5 text-[#ff9600]">🔥 ${state.streak} Day Streak</span>
-            <span class="flex items-center gap-1.5 text-[#58cc02]">⭐ ${state.xp} XP</span>
-          </div>
-        </div>
-      </aside>`;
+      return '<aside id="primary-sidebar" class="w-64 shrink-0 border-r-2 border-[#e5e5e5] bg-white p-5 flex flex-col justify-between sticky top-0 h-screen select-none">' +
+        '<div>' +
+          '<div class="brand-header flex items-center gap-2.5 px-2 pb-6 mb-4 border-b-2 border-[#f0f0f0]">' +
+            '<div class="w-11 h-11 rounded-2xl bg-[#ddf4ff] border-2 border-[#84d8ff] flex items-center justify-center font-hebrew font-black text-2xl text-[#1cb0f6] shadow-sm">י</div>' +
+            '<div>' +
+              '<div class="text-2xl font-black tracking-tight leading-none">' +
+                '<span class="brand-yafa">YAFA</span> <span class="brand-safa">SAFA</span><span class="brand-dot">.</span>' +
+              '</div>' +
+              '<div class="flex items-center gap-1.5 mt-1">' +
+                '<span class="font-hebrew text-xs font-extrabold text-[#1899d6]">יָפָה שָׂפָה</span>' +
+                '<span class="px-1.5 py-0.5 text-[10px] font-extrabold rounded-md bg-[#ff4b4b] text-white">HEBREW</span>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<nav class="space-y-2">' + buttonsHtml + '</nav>' +
+        '</div>' +
+        '<div class="sidebar-footer space-y-3 pt-4 border-t-2 border-[#f0f0f0]">' +
+          '<button onclick="toggleKeyboard()" class="kb-toggle-btn ' + (state.kbOpen ? 'kb-on' : '') + ' w-full py-2.5 px-3 rounded-2xl font-extrabold text-xs flex items-center justify-center gap-2">' +
+            '<span>⌨️</span><span>Hebrew Keyboard (מִקְלֶדֶת)</span>' +
+          '</button>' +
+          '<div class="p-3 rounded-2xl bg-[#f7f7f7] border-2 border-[#e5e5e5] flex items-center justify-between text-xs font-extrabold">' +
+            '<span class="flex items-center gap-1.5 text-[#ff9600]">🔥 ' + state.streak + ' Day Streak</span>' +
+            '<span class="flex items-center gap-1.5 text-[#58cc02]">⭐ ' + state.xp + ' XP</span>' +
+          '</div>' +
+        '</div>' +
+      '</aside>';
     }
 
     function renderHeroPamphlet() {
-      return `<div class="rounded-3xl border-2 border-[#e5e5e5] bg-gradient-to-r from-[#f0f9ff] via-white to-[#f2ffe6] p-6 mb-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="space-y-2.5 max-w-xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border-2 border-[#84d8ff] text-xs font-extrabold">
-            <span class="text-[#1cb0f6]">BLUE</span>
-            <span class="text-[#58cc02]">& GREEN</span>
-            <span class="text-[#ff4b4b]">• ISRAELI HEBREW COURSE</span>
-          </div>
-          <h1 class="text-2xl sm:text-3xl font-black text-[#3c3c3c] leading-tight">
-            Welcome to <span class="brand-yafa">Yafa</span> <span class="brand-safa">Safa</span> <span class="text-[#ff4b4b] font-hebrew text-2xl">(יָפָה שָׂפָה)</span>!
-          </h1>
-          <p class="text-sm font-bold text-[#555555] leading-relaxed">
-            Learn Modern & Literary Hebrew from English step-by-step with <strong>Srulik</strong> — featuring full <em>Nikud</em> (vowel points), audio pronunciation, Binyanim verb tables, and interactive Jerusalem & Tel Aviv dialogues.
-          </p>
-          <div class="flex flex-wrap gap-2.5 pt-1">
-            <button onclick="startNodeSession('u1', 0)" class="duo-btn-green px-5 py-2.5 rounded-2xl font-extrabold text-sm">▶ Start Next Lesson</button>
-            <button onclick="toggleSrulikChat()" class="duo-btn-blue px-4 py-2.5 rounded-2xl font-extrabold text-sm">💬 Ask Srulik (Tutor)</button>
-            <button onclick="toggleKeyboard()" class="kb-toggle-btn ${state.kbOpen ? 'kb-on' : ''} px-4 py-2.5 rounded-2xl font-extrabold text-sm">⌨️ Hebrew Keyboard</button>
-          </div>
-        </div>
-        <div class="flex flex-col items-center shrink-0">
-          ${getSrulikMascotHTML('w-36 h-40')}
-          <span class="text-[11px] font-extrabold text-[#777777] mt-1">Click Srulik for Hebrew tips!</span>
-        </div>
-      </div>`;
+      return '<div class="rounded-3xl border-2 border-[#e5e5e5] bg-gradient-to-r from-[#f0f9ff] via-white to-[#f2ffe6] p-6 mb-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">' +
+        '<div class="space-y-2.5 max-w-xl">' +
+          '<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border-2 border-[#84d8ff] text-xs font-extrabold">' +
+            '<span class="text-[#1cb0f6]">BLUE</span>' +
+            '<span class="text-[#58cc02]">& GREEN</span>' +
+            '<span class="text-[#ff4b4b]">• ISRAELI HEBREW COURSE</span>' +
+          '</div>' +
+          '<h1 class="text-2xl sm:text-3xl font-black text-[#3c3c3c] leading-tight">' +
+            'Welcome to <span class="brand-yafa">Yafa</span> <span class="brand-safa">Safa</span> <span class="text-[#ff4b4b] font-hebrew text-2xl">(יָפָה שָׂפָה)</span>!' +
+          '</h1>' +
+          '<p class="text-sm font-bold text-[#555555] leading-relaxed">' +
+            'Learn Modern & Literary Hebrew from English step-by-step with <strong>Srulik</strong> — featuring full <em>Nikud</em> (vowel points), audio pronunciation, Binyanim verb tables, and interactive Jerusalem & Tel Aviv dialogues.' +
+          '</p>' +
+          '<div class="flex flex-wrap gap-2.5 pt-1">' +
+            '<button onclick="startNodeSession(\'u1\', 0)" class="duo-btn-green px-5 py-2.5 rounded-2xl font-extrabold text-sm">▶ Start Next Lesson</button>' +
+            '<button onclick="toggleSrulikChat()" class="duo-btn-blue px-4 py-2.5 rounded-2xl font-extrabold text-sm">💬 Ask Srulik (Tutor)</button>' +
+            '<button onclick="toggleKeyboard()" class="kb-toggle-btn ' + (state.kbOpen ? 'kb-on' : '') + ' px-4 py-2.5 rounded-2xl font-extrabold text-sm">⌨️ Hebrew Keyboard</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="flex flex-col items-center shrink-0">' +
+          getSrulikMascotHTML('w-36 h-40') +
+          '<span class="text-[11px] font-extrabold text-[#777777] mt-1">Click Srulik for Hebrew tips!</span>' +
+        '</div>' +
+      '</div>';
     }
 
     // ============================================================================
-    // TAB 1: LEARN PATH (DUOLINGO-STYLE WINDING PATH)
+    // TAB 1: LEARN PATH
     // ============================================================================
     function renderLearnTab() {
-      const unitsHtml = COURSE_UNITS.map(function(unit, uIdx) {
-        const nodesHtml = unit.nodes.map(function(node, nIdx) {
-          const isCompleted = state.completedNodes.indexOf(node.id) !== -1;
-          const isFirst = (uIdx === 0 && nIdx === 0);
-          return `<div class="flex flex-col items-center my-3" style="transform: translateX(${node.offset || 0}px)">
-            ${isFirst && !isCompleted ? `<div class="duo-start-tooltip mb-2 px-3.5 py-1.5 rounded-xl bg-white border-2 border-[#e5e5e5] font-extrabold text-xs text-[#58cc02] shadow-md">START HERE!</div>` : ''}
-            <button onclick="startNodeSession('${unit.id}', ${nIdx})"
-              style="background-color:${isCompleted ? '#ffc800' : unit.color}; box-shadow: 0 6px 0 ${isCompleted ? '#e7a601' : unit.shadowColor};"
-              class="w-20 h-20 rounded-full flex items-center justify-center text-white text-3xl font-black transition-transform active:translate-y-1 hover:scale-105 relative">
-              ${isCompleted ? '⭐' : (nIdx + 1)}
-            </button>
-            <div class="mt-2 text-center max-w-[210px]">
-              <div class="text-xs font-extrabold text-[#3c3c3c]">${escapeHtml(node.title)}</div>
-              <div class="text-[11px] font-bold text-[#777777]">${node.questions.length} exercises</div>
-            </div>
-          </div>`;
+      var unitsHtml = COURSE_UNITS.map(function(unit, uIdx) {
+        var nodesHtml = unit.nodes.map(function(node, nIdx) {
+          var isCompleted = state.completedNodes.indexOf(node.id) !== -1;
+          var isFirst = (uIdx === 0 && nIdx === 0);
+          return '<div class="flex flex-col items-center my-3" style="transform: translateX(' + (node.offset || 0) + 'px)">' +
+            (isFirst && !isCompleted ? '<div class="duo-start-tooltip mb-2 px-3.5 py-1.5 rounded-xl bg-white border-2 border-[#e5e5e5] font-extrabold text-xs text-[#58cc02] shadow-md">START HERE!</div>' : '') +
+            '<button onclick="startNodeSession(\'' + unit.id + '\', ' + nIdx + ')" ' +
+              'style="background-color:' + (isCompleted ? '#ffc800' : unit.color) + '; box-shadow: 0 6px 0 ' + (isCompleted ? '#e7a601' : unit.shadowColor) + ';" ' +
+              'class="w-20 h-20 rounded-full flex items-center justify-center text-white text-3xl font-black transition-transform active:translate-y-1 hover:scale-105 relative border-none cursor-pointer">' +
+              (isCompleted ? '⭐' : (nIdx + 1)) +
+            '</button>' +
+            '<div class="mt-2 text-center max-w-[210px]">' +
+              '<div class="text-xs font-extrabold text-[#3c3c3c]">' + escapeHtml(node.title) + '</div>' +
+              '<div class="text-[11px] font-bold text-[#777777]">' + node.questions.length + ' exercises</div>' +
+            '</div>' +
+          '</div>';
         }).join('');
 
-        return `<section class="mb-10">
-          <div class="rounded-3xl p-5 text-white mb-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4" style="background-color:${unit.color}; box-shadow: 0 5px 0 ${unit.shadowColor}">
-            <div>
-              <div class="text-xs font-black uppercase tracking-wider opacity-90">${escapeHtml(unit.unitNumber)} • ${escapeHtml(unit.sectionTitle)}</div>
-              <h2 class="text-xl font-black mt-0.5">${escapeHtml(unit.title)}</h2>
-              <p class="text-xs font-bold opacity-95 mt-1">${escapeHtml(unit.description)}</p>
-            </div>
-            <button onclick="setTab('grammar')" class="duo-btn-outline px-4 py-2.5 rounded-2xl font-extrabold text-xs shrink-0">📖 Grammar Guide</button>
-          </div>
-          <div class="p-4 mb-6 rounded-2xl bg-[#fffbeb] border-2 border-[#fde68a] text-xs font-bold text-[#92400e]">
-            <strong>💡 Unit Grammar Key:</strong> ${escapeHtml(unit.ruleSummary)}
-          </div>
-          <div class="flex flex-col items-center py-2">${nodesHtml}</div>
-        </section>`;
+        return '<section class="mb-10">' +
+          '<div class="rounded-3xl p-5 text-white mb-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4" style="background-color:' + unit.color + '; box-shadow: 0 5px 0 ' + unit.shadowColor + '">' +
+            '<div>' +
+              '<div class="text-xs font-black uppercase tracking-wider opacity-90">' + escapeHtml(unit.unitNumber) + ' • ' + escapeHtml(unit.sectionTitle) + '</div>' +
+              '<h2 class="text-xl font-black mt-0.5">' + escapeHtml(unit.title) + '</h2>' +
+              '<p class="text-xs font-bold opacity-95 mt-1">' + escapeHtml(unit.description) + '</p>' +
+            '</div>' +
+            '<button onclick="setTab(\'grammar\')" class="duo-btn-outline px-4 py-2.5 rounded-2xl font-extrabold text-xs shrink-0">📖 Grammar Guide</button>' +
+          '</div>' +
+          '<div class="p-4 mb-6 rounded-2xl bg-[#fffbeb] border-2 border-[#fde68a] text-xs font-bold text-[#92400e]">' +
+            '<strong>💡 Unit Grammar Key:</strong> ' + escapeHtml(unit.ruleSummary) +
+          '</div>' +
+          '<div class="flex flex-col items-center py-2">' + nodesHtml + '</div>' +
+        '</section>';
       }).join('');
 
       return renderHeroPamphlet() + unitsHtml;
     }
 
     // ============================================================================
-    // TAB 2: INTERACTIVE BILINGUAL STORIES
+    // TAB 2: STORIES
     // ============================================================================
     window.selectStory = function(id) {
       state.selectedStoryId = id;
@@ -1060,7 +1023,7 @@
     };
 
     window.answerStoryQuiz = function(storyId, optionIdx) {
-      const story = STORIES_DB.find(function(s) { return s.id === storyId; });
+      var story = STORIES_DB.find(function(s) { return s.id === storyId; });
       if (!story) return;
       state.storyQuizAnswers[storyId] = optionIdx;
       if (optionIdx === story.quiz.correctIndex) {
@@ -1074,77 +1037,74 @@
     };
 
     function renderAnnotatedHebrewLine(text, glossary) {
-      const tokens = text.split(/(\s+)/);
+      var tokens = text.split(/(\s+)/);
       return tokens.map(function(tok) {
         if (/^\s+$/.test(tok)) return tok;
-        const clean = tok.replace(/[.,?!:;״"]/g, '');
-        const meaning = glossary[clean] || glossary[stripNikud(clean)];
+        var clean = tok.replace(/[.,?!:;״"]/g, '');
+        var meaning = glossary[clean] || glossary[stripNikud(clean)];
         if (!meaning) return escapeHtml(tok);
-        return `<span class="story-word" onclick="speakHebrew('${escapeHtml(clean)}')" title="${escapeHtml(meaning)} (click for audio)">${escapeHtml(tok)}</span>`;
+        return '<span class="story-word" data-he="' + escapeHtml(clean) + '" onclick="speakHebrew(this.dataset.he)" title="' + escapeHtml(meaning) + ' (click for audio)">' + escapeHtml(tok) + '</span>';
       }).join('');
     }
 
     function renderStoriesTab() {
-      const current = STORIES_DB.find(function(s) { return s.id === state.selectedStoryId; }) || STORIES_DB[0];
-      const tabsHtml = STORIES_DB.map(function(s) {
-        const active = s.id === current.id;
-        return `<button onclick="selectStory('${s.id}')" class="px-4 py-3 rounded-2xl font-extrabold text-sm transition-all ${active ? 'duo-btn-blue' : 'duo-btn-outline'}">
-          <span class="font-hebrew text-base mr-1.5">${escapeHtml(s.titleHe)}</span> • ${escapeHtml(s.titleEn)}
-        </button>`;
+      var current = STORIES_DB.find(function(s) { return s.id === state.selectedStoryId; }) || STORIES_DB[0];
+      var tabsHtml = STORIES_DB.map(function(s) {
+        var active = s.id === current.id;
+        return '<button onclick="selectStory(\'' + s.id + '\')" class="px-4 py-3 rounded-2xl font-extrabold text-sm transition-all ' + (active ? 'duo-btn-blue' : 'duo-btn-outline') + '">' +
+          '<span class="font-hebrew text-base mr-1.5">' + escapeHtml(s.titleHe) + '</span> • ' + escapeHtml(s.titleEn) +
+        '</button>';
       }).join('');
 
-      const linesHtml = current.lines.map(function(line) {
-        return `<div class="p-4 rounded-2xl border-2 border-[#e5e5e5] bg-white hover:border-[#84d8ff] transition-all">
-          <div class="flex items-center justify-between gap-2 mb-2">
-            <span class="text-xs font-extrabold px-2.5 py-1 rounded-lg bg-[#ddf4ff] text-[#1899d6]">${escapeHtml(line.speaker)}</span>
-            <button onclick="speakHebrew('${escapeHtml(line.he)}')" class="duo-btn-outline px-3 py-1 rounded-xl text-xs font-extrabold">🔊 Listen</button>
-          </div>
-          <div class="font-hebrew text-2xl font-bold text-[#3c3c3c] leading-relaxed text-right" dir="rtl">
-            ${renderAnnotatedHebrewLine(line.he, current.glossary)}
-          </div>
-          <div class="text-xs font-bold text-[#777777] mt-2">${escapeHtml(line.en)}</div>
-        </div>`;
+      var linesHtml = current.lines.map(function(line) {
+        return '<div class="p-4 rounded-2xl border-2 border-[#e5e5e5] bg-white hover:border-[#84d8ff] transition-all">' +
+          '<div class="flex items-center justify-between gap-2 mb-2">' +
+            '<span class="text-xs font-extrabold px-2.5 py-1 rounded-lg bg-[#ddf4ff] text-[#1899d6]">' + escapeHtml(line.speaker) + '</span>' +
+            '<button data-he="' + escapeHtml(line.he) + '" onclick="speakHebrew(this.dataset.he)" class="duo-btn-outline px-3 py-1 rounded-xl text-xs font-extrabold">🔊 Listen</button>' +
+          '</div>' +
+          '<div class="font-hebrew text-2xl font-bold text-[#3c3c3c] leading-relaxed text-right" dir="rtl">' +
+            renderAnnotatedHebrewLine(line.he, current.glossary) +
+          '</div>' +
+          '<div class="text-xs font-bold text-[#777777] mt-2">' + escapeHtml(line.en) + '</div>' +
+        '</div>';
       }).join('');
 
-      const chosenIdx = state.storyQuizAnswers[current.id];
-      const quizOptsHtml = current.quiz.options.map(function(opt, idx) {
-        let btnCls = 'duo-btn-outline';
+      var chosenIdx = state.storyQuizAnswers[current.id];
+      var quizOptsHtml = current.quiz.options.map(function(opt, idx) {
+        var btnCls = 'duo-btn-outline';
         if (chosenIdx !== undefined) {
           if (idx === current.quiz.correctIndex) btnCls = 'duo-btn-green';
           else if (idx === chosenIdx) btnCls = 'duo-btn-red';
         }
-        return `<button onclick="answerStoryQuiz('${current.id}', ${idx})" class="${btnCls} p-3.5 rounded-2xl font-extrabold text-sm text-left">${escapeHtml(opt)}</button>`;
+        return '<button onclick="answerStoryQuiz(\'' + current.id + '\', ' + idx + ')" class="' + btnCls + ' p-3.5 rounded-2xl font-extrabold text-sm text-left">' + escapeHtml(opt) + '</button>';
       }).join('');
 
-      return `<div class="space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-[#e5e5e5] pb-4">
-          <div>
-            <h1 class="text-2xl font-black text-[#3c3c3c]">📖 Interactive Hebrew Stories (סִפּוּרִים וְדִיאָלוֹגִים)</h1>
-            <p class="text-xs font-bold text-[#777777] mt-1">Hover over any underlined Hebrew word for its English meaning, or click it to hear its pronunciation!</p>
-          </div>
-          <div class="flex flex-wrap gap-2">${tabsHtml}</div>
-        </div>
-
-        <div class="rounded-3xl border-2 border-[#84d8ff] bg-[#f4fbff] p-5 flex items-center justify-between">
-          <div>
-            <span class="text-xs font-extrabold uppercase text-[#1899d6]">${escapeHtml(current.level)}</span>
-            <h2 class="text-2xl font-black text-[#3c3c3c] mt-0.5">${escapeHtml(current.titleEn)} — <span class="font-hebrew">${escapeHtml(current.titleHe)}</span></h2>
-          </div>
-          <button onclick="speakHebrew('${escapeHtml(current.titleHe)}')" class="duo-btn-blue px-4 py-2.5 rounded-2xl font-extrabold text-xs">🔊 Read Title</button>
-        </div>
-
-        <div class="space-y-3.5">${linesHtml}</div>
-
-        <div class="rounded-3xl border-2 border-[#e5e5e5] bg-[#fafafa] p-5 space-y-3">
-          <div class="text-xs font-extrabold uppercase text-[#58cc02]">Comprehension Check (+15 XP)</div>
-          <h3 class="text-lg font-extrabold text-[#3c3c3c]">${escapeHtml(current.quiz.question)}</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${quizOptsHtml}</div>
-        </div>
-      </div>`;
+      return '<div class="space-y-6">' +
+        '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-[#e5e5e5] pb-4">' +
+          '<div>' +
+            '<h1 class="text-2xl font-black text-[#3c3c3c]">📖 Interactive Hebrew Stories (סִפּוּרִים וְדִיאָלוֹגִים)</h1>' +
+            '<p class="text-xs font-bold text-[#777777] mt-1">Hover over any underlined Hebrew word for its English meaning, or click it to hear its pronunciation!</p>' +
+          '</div>' +
+          '<div class="flex flex-wrap gap-2">' + tabsHtml + '</div>' +
+        '</div>' +
+        '<div class="rounded-3xl border-2 border-[#84d8ff] bg-[#f4fbff] p-5 flex items-center justify-between">' +
+          '<div>' +
+            '<span class="text-xs font-extrabold uppercase text-[#1899d6]">' + escapeHtml(current.level) + '</span>' +
+            '<h2 class="text-2xl font-black text-[#3c3c3c] mt-0.5">' + escapeHtml(current.titleEn) + ' — <span class="font-hebrew">' + escapeHtml(current.titleHe) + '</span></h2>' +
+          '</div>' +
+          '<button data-he="' + escapeHtml(current.titleHe) + '" onclick="speakHebrew(this.dataset.he)" class="duo-btn-blue px-4 py-2.5 rounded-2xl font-extrabold text-xs">🔊 Read Title</button>' +
+        '</div>' +
+        '<div class="space-y-3.5">' + linesHtml + '</div>' +
+        '<div class="rounded-3xl border-2 border-[#e5e5e5] bg-[#fafafa] p-5 space-y-3">' +
+          '<div class="text-xs font-extrabold uppercase text-[#58cc02]">Comprehension Check (+15 XP)</div>' +
+          '<h3 class="text-lg font-extrabold text-[#3c3c3c]">' + escapeHtml(current.quiz.question) + '</h3>' +
+          '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">' + quizOptsHtml + '</div>' +
+        '</div>' +
+      '</div>';
     }
 
     // ============================================================================
-    // TAB 3: HEBREW VERB CONJUGATION LAB (BINYANIM)
+    // TAB 3: HEBREW VERB CONJUGATION LAB
     // ============================================================================
     window.selectVerb = function(idx) {
       state.selectedVerbIdx = idx;
@@ -1152,79 +1112,75 @@
     };
 
     function renderVerbsTab() {
-      const verb = VERB_CONJUGATION_DB[state.selectedVerbIdx] || VERB_CONJUGATION_DB[0];
-      const pillsHtml = VERB_CONJUGATION_DB.map(function(v, idx) {
-        const active = idx === state.selectedVerbIdx;
-        return `<button onclick="selectVerb(${idx})" class="px-4 py-2.5 rounded-2xl font-extrabold text-sm transition-all ${active ? 'duo-btn-selected' : 'duo-btn-outline'}">
-          <span class="font-hebrew text-lg mr-1">${escapeHtml(v.lemma)}</span>
-          <span class="text-xs text-[#777777]">(${escapeHtml(v.meaning)})</span>
-        </button>`;
+      var verb = VERB_CONJUGATION_DB[state.selectedVerbIdx] || VERB_CONJUGATION_DB[0];
+      var pillsHtml = VERB_CONJUGATION_DB.map(function(v, idx) {
+        var active = idx === state.selectedVerbIdx;
+        return '<button onclick="selectVerb(' + idx + ')" class="px-4 py-2.5 rounded-2xl font-extrabold text-sm transition-all ' + (active ? 'duo-btn-selected' : 'duo-btn-outline') + '">' +
+          '<span class="font-hebrew text-lg mr-1">' + escapeHtml(v.lemma) + '</span>' +
+          '<span class="text-xs text-[#777777]">(' + escapeHtml(v.meaning) + ')</span>' +
+        '</button>';
       }).join('');
 
-      const rowsHtml = PRONOUN_LIST.map(function(p) {
-        const pastForm = verb.forms.past[p.id];
-        const presForm = verb.forms.present[p.id];
-        const futForm = verb.forms.future[p.id];
-        return `<tr class="hover:bg-[#f7f7f7]/80 border-b border-[#eeeeee]">
-          <td class="py-3 px-4 font-extrabold text-sm text-[#4b4b4b]">
-            <span class="font-hebrew text-lg text-[#1cb0f6] mr-2">${escapeHtml(p.he)}</span> ${escapeHtml(p.en)}
-          </td>
-          <td class="py-3 px-4 font-hebrew text-xl font-bold text-[#3c3c3c] cursor-pointer hover:text-[#58cc02]" onclick="speakHebrew('${escapeHtml(pastForm)}')">${escapeHtml(pastForm)} 🔊</td>
-          <td class="py-3 px-4 font-hebrew text-xl font-bold text-[#1899d6] cursor-pointer hover:text-[#58cc02]" onclick="speakHebrew('${escapeHtml(presForm)}')">${escapeHtml(presForm)} 🔊</td>
-          <td class="py-3 px-4 font-hebrew text-xl font-bold text-[#9333ea] cursor-pointer hover:text-[#58cc02]" onclick="speakHebrew('${escapeHtml(futForm)}')">${escapeHtml(futForm)} 🔊</td>
-        </tr>`;
+      var rowsHtml = PRONOUN_LIST.map(function(p) {
+        var pastForm = verb.forms.past[p.id];
+        var presForm = verb.forms.present[p.id];
+        var futForm = verb.forms.future[p.id];
+        return '<tr class="hover:bg-[#f7f7f7]/80 border-b border-[#eeeeee]">' +
+          '<td class="py-3 px-4 font-extrabold text-sm text-[#4b4b4b]">' +
+            '<span class="font-hebrew text-lg text-[#1cb0f6] mr-2">' + escapeHtml(p.he) + '</span> ' + escapeHtml(p.en) +
+          '</td>' +
+          '<td class="py-3 px-4 font-hebrew text-xl font-bold text-[#3c3c3c] cursor-pointer hover:text-[#58cc02]" data-he="' + escapeHtml(pastForm) + '" onclick="speakHebrew(this.dataset.he)">' + escapeHtml(pastForm) + ' 🔊</td>' +
+          '<td class="py-3 px-4 font-hebrew text-xl font-bold text-[#1899d6] cursor-pointer hover:text-[#58cc02]" data-he="' + escapeHtml(presForm) + '" onclick="speakHebrew(this.dataset.he)">' + escapeHtml(presForm) + ' 🔊</td>' +
+          '<td class="py-3 px-4 font-hebrew text-xl font-bold text-[#9333ea] cursor-pointer hover:text-[#58cc02]" data-he="' + escapeHtml(futForm) + '" onclick="speakHebrew(this.dataset.he)">' + escapeHtml(futForm) + ' 🔊</td>' +
+        '</tr>';
       }).join('');
 
-      return `<div class="space-y-6">
-        <div>
-          <h1 class="text-2xl font-black text-[#3c3c3c]">⚡ Hebrew Verb Conjugator — Binyanim Lab (לוּחַ פְּעָלִים)</h1>
-          <p class="text-xs font-bold text-[#777777] mt-1">Select any Hebrew verb below to inspect its root (שֹׁרֶשׁ), Binyan pattern, and full Past, Present, and Future conjugations. Click any form to hear it!</p>
-        </div>
-
-        <div class="flex flex-wrap gap-2">${pillsHtml}</div>
-
-        <div class="rounded-3xl border-2 border-[#e5e5e5] bg-white p-6 space-y-4 shadow-sm">
-          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#f0f0f0] pb-4">
-            <div>
-              <span class="px-3 py-1 rounded-full text-xs font-extrabold text-white" style="background:${verb.binyanBadgeColor}">${escapeHtml(verb.binyan)}</span>
-              <div class="flex items-baseline gap-4 mt-2">
-                <h2 class="font-hebrew text-4xl font-black text-[#3c3c3c]">${escapeHtml(verb.lemma)}</h2>
-                <span class="text-lg font-extrabold text-[#58cc02]">"${escapeHtml(verb.meaning)}"</span>
-                <span class="text-sm font-bold text-[#777777]">Root: <strong class="font-hebrew text-[#3c3c3c]">${escapeHtml(verb.root)}</strong></span>
-                <span class="text-sm font-bold text-[#1899d6]">Infinitive: <strong class="font-hebrew">${escapeHtml(verb.infinitive)}</strong></span>
-              </div>
-            </div>
-            <button onclick="speakHebrew('${escapeHtml(verb.lemma)}')" class="duo-btn-blue px-4 py-2.5 rounded-2xl font-extrabold text-xs">🔊 Pronounce Verb</button>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-[#f0f9ff] border-2 border-[#bae6fd] text-xs font-bold text-[#0369a1]">
-            💡 <strong>Grammar Note:</strong> ${escapeHtml(verb.binyanNote)}
-          </div>
-
-          <div class="overflow-x-auto rounded-2xl border-2 border-[#e5e5e5]">
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="bg-[#f7f7f7] border-b-2 border-[#e5e5e5] text-xs font-extrabold text-[#777777]">
-                  <th class="py-3.5 px-4">Pronoun (גּוּף)</th>
-                  <th class="py-3.5 px-4">Past Tense (עָבָר)</th>
-                  <th class="py-3.5 px-4">Present Tense (הוֹוֶה)</th>
-                  <th class="py-3.5 px-4">Future Tense (עָתִיד)</th>
-                </tr>
-              </thead>
-              <tbody>${rowsHtml}</tbody>
-            </table>
-          </div>
-        </div>
-      </div>`;
+      return '<div class="space-y-6">' +
+        '<div>' +
+          '<h1 class="text-2xl font-black text-[#3c3c3c]">⚡ Hebrew Verb Conjugator — Binyanim Lab (לוּחַ פְּעָלִים)</h1>' +
+          '<p class="text-xs font-bold text-[#777777] mt-1">Select any Hebrew verb below to inspect its root (שֹׁרֶשׁ), Binyan pattern, and full Past, Present, and Future conjugations. Click any form to hear it!</p>' +
+        '</div>' +
+        '<div class="flex flex-wrap gap-2">' + pillsHtml + '</div>' +
+        '<div class="rounded-3xl border-2 border-[#e5e5e5] bg-white p-6 space-y-4 shadow-sm">' +
+          '<div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#f0f0f0] pb-4">' +
+            '<div>' +
+              '<span class="px-3 py-1 rounded-full text-xs font-extrabold text-white" style="background:' + verb.binyanBadgeColor + '">' + escapeHtml(verb.binyan) + '</span>' +
+              '<div class="flex flex-wrap items-baseline gap-4 mt-2">' +
+                '<h2 class="font-hebrew text-4xl font-black text-[#3c3c3c]">' + escapeHtml(verb.lemma) + '</h2>' +
+                '<span class="text-lg font-extrabold text-[#58cc02]">"' + escapeHtml(verb.meaning) + '"</span>' +
+                '<span class="text-sm font-bold text-[#777777]">Root: <strong class="font-hebrew text-[#3c3c3c]">' + escapeHtml(verb.root) + '</strong></span>' +
+                '<span class="text-sm font-bold text-[#1899d6]">Infinitive: <strong class="font-hebrew">' + escapeHtml(verb.infinitive) + '</strong></span>' +
+              '</div>' +
+            '</div>' +
+            '<button data-he="' + escapeHtml(verb.lemma) + '" onclick="speakHebrew(this.dataset.he)" class="duo-btn-blue px-4 py-2.5 rounded-2xl font-extrabold text-xs">🔊 Pronounce Verb</button>' +
+          '</div>' +
+          '<div class="p-3.5 rounded-2xl bg-[#f0f9ff] border-2 border-[#bae6fd] text-xs font-bold text-[#0369a1]">' +
+            '💡 <strong>Grammar Note:</strong> ' + escapeHtml(verb.binyanNote) +
+          '</div>' +
+          '<div class="overflow-x-auto rounded-2xl border-2 border-[#e5e5e5]">' +
+            '<table class="w-full text-left border-collapse">' +
+              '<thead>' +
+                '<tr class="bg-[#f7f7f7] border-b-2 border-[#e5e5e5] text-xs font-extrabold text-[#777777]">' +
+                  '<th class="py-3.5 px-4">Pronoun (גּוּף)</th>' +
+                  '<th class="py-3.5 px-4">Past Tense (עָבָר)</th>' +
+                  '<th class="py-3.5 px-4">Present Tense (הוֹוֶה)</th>' +
+                  '<th class="py-3.5 px-4">Future Tense (עָתִיד)</th>' +
+                '</tr>' +
+              '</thead>' +
+              '<tbody>' + rowsHtml + '</tbody>' +
+            '</table>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
     }
 
     // ============================================================================
-    // TAB 4: BILINGUAL DICTIONARY (SEARCHABLE BY ENGLISH, HEBREW OR TRANSLITERATION)
+    // TAB 4: DICTIONARY
     // ============================================================================
     window.updateDictSearch = function(val) {
       state.dictSearch = val;
       renderApp();
-      const input = document.getElementById('dict-search-input');
+      var input = document.getElementById('dict-search-input');
       if (input) { input.focus(); input.setSelectionRange(val.length, val.length); }
     };
 
@@ -1234,16 +1190,16 @@
     };
 
     function renderDictionaryTab() {
-      const categories = ['All', 'Pronouns & People', 'Greetings & Expressions', 'University & Classroom', 'Food & Nature', 'City & Places', 'Adjectives', 'Time & Connectors'];
-      const catBtns = categories.map(function(c) {
-        const active = state.dictCategory === c;
-        return `<button onclick="setDictCategory('${escapeHtml(c)}')" class="px-3.5 py-2 rounded-xl font-extrabold text-xs ${active ? 'duo-btn-blue' : 'duo-btn-outline'}">${escapeHtml(c)}</button>`;
+      var categories = ['All', 'Pronouns & People', 'Greetings & Expressions', 'University & Classroom', 'Food & Nature', 'City & Places', 'Adjectives', 'Time & Connectors'];
+      var catBtns = categories.map(function(c) {
+        var active = state.dictCategory === c;
+        return '<button data-cat="' + escapeHtml(c) + '" onclick="setDictCategory(this.dataset.cat)" class="px-3.5 py-2 rounded-xl font-extrabold text-xs ' + (active ? 'duo-btn-blue' : 'duo-btn-outline') + '">' + escapeHtml(c) + '</button>';
       }).join('');
 
-      const q = state.dictSearch.trim().toLowerCase();
-      const qCleanHe = stripNikud(state.dictSearch.trim());
+      var q = state.dictSearch.trim().toLowerCase();
+      var qCleanHe = stripNikud(state.dictSearch.trim());
 
-      const filtered = CATEGORIZED_VOCABULARY.filter(function(item) {
+      var filtered = CATEGORIZED_VOCABULARY.filter(function(item) {
         if (state.dictCategory !== 'All' && item.category !== state.dictCategory) return false;
         if (!q) return true;
         return item.en.toLowerCase().indexOf(q) !== -1 ||
@@ -1252,101 +1208,96 @@
                (qCleanHe && stripNikud(item.he).indexOf(qCleanHe) !== -1);
       });
 
-      const cardsHtml = filtered.map(function(item) {
-        const cleanW = stripNikud(item.he).split(' ')[0];
-        return `<div class="rounded-2xl border-2 border-[#e5e5e5] bg-white p-4 hover:border-[#84d8ff] transition-all flex flex-col justify-between gap-3">
-          <div>
-            <div class="flex items-start justify-between gap-2">
-              <span class="px-2.5 py-0.5 rounded-lg bg-[#f7f7f7] text-[11px] font-extrabold text-[#777777]">${escapeHtml(item.category)}</span>
-              <button onclick="speakHebrew('${escapeHtml(item.he)}')" class="duo-btn-outline px-2.5 py-1 rounded-xl text-xs font-extrabold">🔊</button>
-            </div>
-            <div class="font-hebrew text-3xl font-black text-[#3c3c3c] mt-2 text-right" dir="rtl">${escapeHtml(item.he)}</div>
-            <div class="text-xs font-bold text-[#1cb0f6] mt-0.5">${escapeHtml(item.translit)}</div>
-            <div class="text-base font-extrabold text-[#3c3c3c] mt-1">${escapeHtml(item.en)}</div>
-          </div>
-          <div class="pt-2 border-t border-[#f0f0f0] flex flex-wrap items-center justify-between gap-2 text-[11px] font-bold text-[#777777]">
-            <div class="space-x-2">
-              ${item.plural !== '-' ? `<span>Plural: <strong class="font-hebrew text-sm text-[#3c3c3c]">${escapeHtml(item.plural)}</strong></span>` : ''}
-              ${item.fem !== '-' ? `<span>Fem: <strong class="font-hebrew text-sm text-[#e0408a]">${escapeHtml(item.fem)}</strong></span>` : ''}
-            </div>
-            <div class="flex gap-1.5">
-              <a href="https://www.pealim.com/search/?q=${encodeURIComponent(cleanW)}" target="_blank" rel="noopener" class="text-[#1899d6] hover:underline font-extrabold">Pealim ↗</a>
-              <span>•</span>
-              <a href="https://en.wiktionary.org/wiki/${encodeURIComponent(cleanW)}#Hebrew" target="_blank" rel="noopener" class="text-[#58a700] hover:underline font-extrabold">Wiktionary ↗</a>
-            </div>
-          </div>
-        </div>`;
+      var cardsHtml = filtered.map(function(item) {
+        var cleanW = stripNikud(item.he).split(' ')[0];
+        return '<div class="rounded-2xl border-2 border-[#e5e5e5] bg-white p-4 hover:border-[#84d8ff] transition-all flex flex-col justify-between gap-3">' +
+          '<div>' +
+            '<div class="flex items-start justify-between gap-2">' +
+              '<span class="px-2.5 py-0.5 rounded-lg bg-[#f7f7f7] text-[11px] font-extrabold text-[#777777]">' + escapeHtml(item.category) + '</span>' +
+              '<button data-he="' + escapeHtml(item.he) + '" onclick="speakHebrew(this.dataset.he)" class="duo-btn-outline px-2.5 py-1 rounded-xl text-xs font-extrabold">🔊</button>' +
+            '</div>' +
+            '<div class="font-hebrew text-3xl font-black text-[#3c3c3c] mt-2 text-right" dir="rtl">' + escapeHtml(item.he) + '</div>' +
+            '<div class="text-xs font-bold text-[#1cb0f6] mt-0.5">' + escapeHtml(item.translit) + '</div>' +
+            '<div class="text-base font-extrabold text-[#3c3c3c] mt-1">' + escapeHtml(item.en) + '</div>' +
+          '</div>' +
+          '<div class="pt-2 border-t border-[#f0f0f0] flex flex-wrap items-center justify-between gap-2 text-[11px] font-bold text-[#777777]">' +
+            '<div class="space-x-2">' +
+              (item.plural !== '-' ? '<span>Plural: <strong class="font-hebrew text-sm text-[#3c3c3c]">' + escapeHtml(item.plural) + '</strong></span>' : '') +
+              (item.fem !== '-' ? '<span>Fem: <strong class="font-hebrew text-sm text-[#e0408a]">' + escapeHtml(item.fem) + '</strong></span>' : '') +
+            '</div>' +
+            '<div class="flex gap-1.5">' +
+              '<a href="https://www.pealim.com/search/?q=' + encodeURIComponent(cleanW) + '" target="_blank" rel="noopener" class="text-[#1899d6] hover:underline font-extrabold">Pealim ↗</a>' +
+              '<span>•</span>' +
+              '<a href="https://en.wiktionary.org/wiki/' + encodeURIComponent(cleanW) + '#Hebrew" target="_blank" rel="noopener" class="text-[#58a700] hover:underline font-extrabold">Wiktionary ↗</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
       }).join('');
 
-      return `<div class="space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h1 class="text-2xl font-black text-[#3c3c3c]">📚 Hebrew-English Dictionary (${CATEGORIZED_VOCABULARY.length} Core Entries)</h1>
-            <p class="text-xs font-bold text-[#777777] mt-1">Search in English, Hebrew (with or without Nikud), or transliteration. Use the keyboard button to type in Hebrew!</p>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-3">
-          <input id="dict-search-input" type="text" value="${escapeHtml(state.dictSearch)}" oninput="updateDictSearch(this.value)"
-            placeholder="Search English ('coffee', 'university'), transliteration ('shalom'), or Hebrew ('שלום')..."
-            class="flex-1 px-4 py-3 rounded-2xl border-2 border-[#e5e5e5] font-bold text-sm focus:outline-none focus:border-[#1cb0f6]" />
-          <button onclick="toggleKeyboard()" class="kb-toggle-btn ${state.kbOpen ? 'kb-on' : ''} px-4 py-3 rounded-2xl font-extrabold text-xs shrink-0">⌨️ Hebrew Keyboard</button>
-        </div>
-
-        <div class="flex flex-wrap gap-2">${catBtns}</div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">${cardsHtml}</div>
-      </div>`;
+      return '<div class="space-y-6">' +
+        '<div>' +
+          '<h1 class="text-2xl font-black text-[#3c3c3c]">📚 Hebrew-English Dictionary (' + CATEGORIZED_VOCABULARY.length + ' Core Entries)</h1>' +
+          '<p class="text-xs font-bold text-[#777777] mt-1">Search in English, Hebrew (with or without Nikud), or transliteration. Use the keyboard button to type in Hebrew!</p>' +
+        '</div>' +
+        '<div class="flex flex-col sm:flex-row gap-3">' +
+          '<input id="dict-search-input" type="text" value="' + escapeHtml(state.dictSearch) + '" oninput="updateDictSearch(this.value)" ' +
+            'placeholder="Search English (coffee, university), transliteration (shalom), or Hebrew (שלום)..." ' +
+            'class="flex-1 px-4 py-3 rounded-2xl border-2 border-[#e5e5e5] font-bold text-sm focus:outline-none focus:border-[#1cb0f6]" />' +
+          '<button onclick="toggleKeyboard()" class="kb-toggle-btn ' + (state.kbOpen ? 'kb-on' : '') + ' px-4 py-3 rounded-2xl font-extrabold text-xs shrink-0">⌨️ Hebrew Keyboard</button>' +
+        '</div>' +
+        '<div class="flex flex-wrap gap-2">' + catBtns + '</div>' +
+        '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">' + cardsHtml + '</div>' +
+      '</div>';
     }
 
     // ============================================================================
-    // TAB 5: HEBREW GRAMMAR ENCYCLOPEDIA
+    // TAB 5: GRAMMAR ENCYCLOPEDIA
     // ============================================================================
     function renderGrammarTab() {
-      const cards = GRAMMAR_ENCYCLOPEDIA.map(function(topic) {
-        const th = topic.headers.map(function(h) { return `<th class="py-3 px-4 text-left">${escapeHtml(h)}</th>`; }).join('');
-        const tr = topic.rows.map(function(row) {
-          return `<tr class="border-b border-[#eeeeee] hover:bg-[#f7f7f7]/60">
-            <td class="py-3 px-4 text-xs font-extrabold text-[#4b4b4b]">${escapeHtml(row[0])}</td>
-            <td class="py-3 px-4 font-hebrew text-xl font-bold text-[#1453a3]" dir="rtl">${escapeHtml(row[1])}</td>
-            <td class="py-3 px-4 text-xs font-bold text-[#4b4b4b]">${escapeHtml(row[2])}</td>
-          </tr>`;
+      var cards = GRAMMAR_ENCYCLOPEDIA.map(function(topic) {
+        var th = topic.headers.map(function(h) { return '<th class="py-3 px-4 text-left">' + escapeHtml(h) + '</th>'; }).join('');
+        var tr = topic.rows.map(function(row) {
+          return '<tr class="border-b border-[#eeeeee] hover:bg-[#f7f7f7]/60">' +
+            '<td class="py-3 px-4 text-xs font-extrabold text-[#4b4b4b]">' + escapeHtml(row[0]) + '</td>' +
+            '<td class="py-3 px-4 font-hebrew text-xl font-bold text-[#1453a3]" dir="rtl">' + escapeHtml(row[1]) + '</td>' +
+            '<td class="py-3 px-4 text-xs font-bold text-[#4b4b4b]">' + escapeHtml(row[2]) + '</td>' +
+          '</tr>';
         }).join('');
 
-        return `<details open class="rounded-3xl border-2 border-[#e5e5e5] bg-white overflow-hidden shadow-sm">
-          <summary class="cursor-pointer p-5 flex items-center justify-between gap-4 select-none hover:bg-[#fafafa]">
-            <div class="space-y-1">
-              <span class="px-2.5 py-0.5 rounded-lg text-xs font-extrabold text-white" style="background:${topic.color}">${escapeHtml(topic.badge)}</span>
-              <h2 class="text-lg font-black text-[#3c3c3c]">${escapeHtml(topic.title)}</h2>
-            </div>
-            <span class="text-xl font-black text-[#777777]">▾</span>
-          </summary>
-          <div class="px-5 pb-5 pt-2 border-t-2 border-[#f0f0f0] space-y-4">
-            <p class="text-sm font-bold text-[#4b4b4b] leading-relaxed">${escapeHtml(topic.summary)}</p>
-            <div class="p-3.5 rounded-2xl bg-[#f0f9ff] border-2 border-[#bae6fd] text-center font-extrabold text-sm text-[#1453a3]">
-              ${escapeHtml(topic.formula)}
-            </div>
-            <div class="overflow-x-auto rounded-2xl border-2 border-[#e5e5e5]">
-              <table class="w-full border-collapse">
-                <thead><tr class="bg-[#f7f7f7] border-b-2 border-[#e5e5e5] text-xs font-extrabold text-[#777777]">${th}</tr></thead>
-                <tbody>${tr}</tbody>
-              </table>
-            </div>
-          </div>
-        </details>`;
+        return '<details open class="rounded-3xl border-2 border-[#e5e5e5] bg-white overflow-hidden shadow-sm">' +
+          '<summary class="cursor-pointer p-5 flex items-center justify-between gap-4 select-none hover:bg-[#fafafa]">' +
+            '<div class="space-y-1">' +
+              '<span class="px-2.5 py-0.5 rounded-lg text-xs font-extrabold text-white" style="background:' + topic.color + '">' + escapeHtml(topic.badge) + '</span>' +
+              '<h2 class="text-lg font-black text-[#3c3c3c]">' + escapeHtml(topic.title) + '</h2>' +
+            '</div>' +
+            '<span class="text-xl font-black text-[#777777]">▾</span>' +
+          '</summary>' +
+          '<div class="px-5 pb-5 pt-2 border-t-2 border-[#f0f0f0] space-y-4">' +
+            '<p class="text-sm font-bold text-[#4b4b4b] leading-relaxed">' + escapeHtml(topic.summary) + '</p>' +
+            '<div class="p-3.5 rounded-2xl bg-[#f0f9ff] border-2 border-[#bae6fd] text-center font-extrabold text-sm text-[#1453a3]">' +
+              escapeHtml(topic.formula) +
+            '</div>' +
+            '<div class="overflow-x-auto rounded-2xl border-2 border-[#e5e5e5]">' +
+              '<table class="w-full border-collapse">' +
+                '<thead><tr class="bg-[#f7f7f7] border-b-2 border-[#e5e5e5] text-xs font-extrabold text-[#777777]">' + th + '</tr></thead>' +
+                '<tbody>' + tr + '</tbody>' +
+              '</table>' +
+            '</div>' +
+          '</div>' +
+        '</details>';
       }).join('');
 
-      return `<div class="space-y-6">
-        <div>
-          <h1 class="text-2xl font-black text-[#3c3c3c]">🏛️ Hebrew Grammar Encyclopedia (דִּקְדּוּק וְתַחְבִּיר)</h1>
-          <p class="text-xs font-bold text-[#777777] mt-1">Clear, structured explanations of Hebrew definiteness (הַ־), direct object marker (אֶת), Smichut construct state, יֵשׁ / אֵין, and the Binyanim verb system.</p>
-        </div>
-        <div class="space-y-5">${cards}</div>
-      </div>`;
+      return '<div class="space-y-6">' +
+        '<div>' +
+          '<h1 class="text-2xl font-black text-[#3c3c3c]">🏛️ Hebrew Grammar Encyclopedia (דִּקְדּוּק וְתַחְבִּיר)</h1>' +
+          '<p class="text-xs font-bold text-[#777777] mt-1">Clear, structured explanations of Hebrew definiteness (הַ־), direct object marker (אֶת), Smichut construct state, יֵשׁ / אֵין, and the Binyanim verb system.</p>' +
+        '</div>' +
+        '<div class="space-y-5">' + cards + '</div>' +
+      '</div>';
     }
 
     // ============================================================================
-    // TAB 6: INTERACTIVE FLASHCARDS
+    // TAB 6: FLASHCARDS
     // ============================================================================
     window.flipFlashcard = function() {
       state.fcFlipped = !state.fcFlipped;
@@ -1359,43 +1310,41 @@
     };
 
     function renderFlashcardsTab() {
-      const card = CATEGORIZED_VOCABULARY[state.fcIndex];
-      return `<div class="max-w-xl mx-auto space-y-6 text-center py-4">
-        <div>
-          <h1 class="text-2xl font-black text-[#3c3c3c]">🃏 Hebrew Vocabulary Flashcards (כַּרְטִיסִיּוֹת)</h1>
-          <p class="text-xs font-bold text-[#777777] mt-1">Card ${state.fcIndex + 1} of ${CATEGORIZED_VOCABULARY.length} • Click the card to flip between Hebrew and English!</p>
-        </div>
-
-        <div onclick="flipFlashcard()" class="cursor-pointer rounded-3xl border-2 border-[#84d8ff] bg-gradient-to-b from-white to-[#f4fbff] p-10 min-h-[270px] flex flex-col items-center justify-center shadow-md hover:shadow-lg transition-all select-none">
-          <span class="px-3 py-1 rounded-full bg-[#ddf4ff] text-[#1899d6] text-xs font-extrabold mb-4">${escapeHtml(card.category)}</span>
-          ${!state.fcFlipped ? `
-            <div class="font-hebrew text-6xl font-black text-[#3c3c3c] mb-3" dir="rtl">${escapeHtml(card.he)}</div>
-            <div class="text-sm font-extrabold text-[#1cb0f6]">${escapeHtml(card.translit)}</div>
-            <div class="text-xs font-bold text-[#999999] mt-6">Click to reveal English translation ↻</div>
-          ` : `
-            <div class="text-3xl font-black text-[#58cc02] mb-2">${escapeHtml(card.en)}</div>
-            <div class="font-hebrew text-2xl font-bold text-[#3c3c3c]" dir="rtl">${escapeHtml(card.he)} (${escapeHtml(card.translit)})</div>
-            <div class="text-xs font-bold text-[#777777] mt-4">
-              ${card.plural !== '-' ? `Plural: <span class="font-hebrew">${escapeHtml(card.plural)}</span>` : ''}
-              ${card.fem !== '-' ? ` • Fem: <span class="font-hebrew">${escapeHtml(card.fem)}</span>` : ''}
-            </div>
-          `}
-        </div>
-
-        <div class="flex items-center justify-center gap-3">
-          <button onclick="nextFlashcard(-1)" class="duo-btn-outline px-5 py-3 rounded-2xl font-extrabold text-sm">← Previous</button>
-          <button onclick="speakHebrew('${escapeHtml(card.he)}')" class="duo-btn-blue px-5 py-3 rounded-2xl font-extrabold text-sm">🔊 Listen</button>
-          <button onclick="nextFlashcard(1)" class="duo-btn-green px-5 py-3 rounded-2xl font-extrabold text-sm">Next Card →</button>
-        </div>
-      </div>`;
+      var card = CATEGORIZED_VOCABULARY[state.fcIndex];
+      return '<div class="max-w-xl mx-auto space-y-6 text-center py-4">' +
+        '<div>' +
+          '<h1 class="text-2xl font-black text-[#3c3c3c]">🃏 Hebrew Vocabulary Flashcards (כַּרְטִיסִיּוֹת)</h1>' +
+          '<p class="text-xs font-bold text-[#777777] mt-1">Card ' + (state.fcIndex + 1) + ' of ' + CATEGORIZED_VOCABULARY.length + ' • Click the card to flip between Hebrew and English!</p>' +
+        '</div>' +
+        '<div onclick="flipFlashcard()" class="cursor-pointer rounded-3xl border-2 border-[#84d8ff] bg-gradient-to-b from-white to-[#f4fbff] p-10 min-h-[270px] flex flex-col items-center justify-center shadow-md hover:shadow-lg transition-all select-none">' +
+          '<span class="px-3 py-1 rounded-full bg-[#ddf4ff] text-[#1899d6] text-xs font-extrabold mb-4">' + escapeHtml(card.category) + '</span>' +
+          (!state.fcFlipped ? (
+            '<div class="font-hebrew text-6xl font-black text-[#3c3c3c] mb-3" dir="rtl">' + escapeHtml(card.he) + '</div>' +
+            '<div class="text-sm font-extrabold text-[#1cb0f6]">' + escapeHtml(card.translit) + '</div>' +
+            '<div class="text-xs font-bold text-[#999999] mt-6">Click to reveal English translation ↻</div>'
+          ) : (
+            '<div class="text-3xl font-black text-[#58cc02] mb-2">' + escapeHtml(card.en) + '</div>' +
+            '<div class="font-hebrew text-2xl font-bold text-[#3c3c3c]" dir="rtl">' + escapeHtml(card.he) + ' (' + escapeHtml(card.translit) + ')</div>' +
+            '<div class="text-xs font-bold text-[#777777] mt-4">' +
+              (card.plural !== '-' ? 'Plural: <span class="font-hebrew">' + escapeHtml(card.plural) + '</span>' : '') +
+              (card.fem !== '-' ? ' • Fem: <span class="font-hebrew">' + escapeHtml(card.fem) + '</span>' : '') +
+            '</div>'
+          )) +
+        '</div>' +
+        '<div class="flex items-center justify-center gap-3">' +
+          '<button onclick="nextFlashcard(-1)" class="duo-btn-outline px-5 py-3 rounded-2xl font-extrabold text-sm">← Previous</button>' +
+          '<button data-he="' + escapeHtml(card.he) + '" onclick="speakHebrew(this.dataset.he)" class="duo-btn-blue px-5 py-3 rounded-2xl font-extrabold text-sm">🔊 Listen</button>' +
+          '<button onclick="nextFlashcard(1)" class="duo-btn-green px-5 py-3 rounded-2xl font-extrabold text-sm">Next Card →</button>' +
+        '</div>' +
+      '</div>';
     }
 
     // ============================================================================
-    // INTERACTIVE LESSON SESSION ENGINE (MODAL OVERLAY)
+    // INTERACTIVE LESSON SESSION ENGINE
     // ============================================================================
     window.startNodeSession = function(unitId, nodeIdx) {
-      const unit = COURSE_UNITS.find(function(u) { return u.id === unitId; }) || COURSE_UNITS[0];
-      const node = unit.nodes[nodeIdx] || unit.nodes[0];
+      var unit = COURSE_UNITS.find(function(u) { return u.id === unitId; }) || COURSE_UNITS[0];
+      var node = unit.nodes[nodeIdx] || unit.nodes[0];
       state.session = {
         unitId: unit.id,
         nodeId: node.id,
@@ -1427,7 +1376,7 @@
 
     window.toggleBuilderWord = function(word) {
       if (!state.session || state.session.checked) return;
-      const idx = state.session.builderChosen.indexOf(word);
+      var idx = state.session.builderChosen.indexOf(word);
       if (idx === -1) state.session.builderChosen.push(word);
       else state.session.builderChosen.splice(idx, 1);
       renderSessionOverlay();
@@ -1435,13 +1384,13 @@
 
     window.clickMatchItem = function(side, val) {
       if (!state.session || state.session.checked) return;
-      const s = state.session;
-      const q = s.questions[s.qIndex];
+      var s = state.session;
+      var q = s.questions[s.qIndex];
       if (side === 'he') {
         s.matchLeft = val;
         speakHebrew(val);
       } else if (side === 'en' && s.matchLeft) {
-        const pair = q.pairs.find(function(p) { return p.he === s.matchLeft && p.en === val; });
+        var pair = q.pairs.find(function(p) { return p.he === s.matchLeft && p.en === val; });
         if (pair) {
           s.matchedPairs.push(pair.he);
           s.matchLeft = null;
@@ -1459,10 +1408,10 @@
     };
 
     window.checkSessionAnswer = function() {
-      const s = state.session;
+      var s = state.session;
       if (!s || s.checked) return;
-      const q = s.questions[s.qIndex];
-      let ok = false;
+      var q = s.questions[s.qIndex];
+      var ok = false;
       if (q.type === 'multiple_choice') {
         ok = s.selectedValue === q.correctAnswer;
       } else if (q.type === 'irab_detective' || q.type === 'word_tap') {
@@ -1478,7 +1427,7 @@
     };
 
     window.nextSessionQuestion = function() {
-      const s = state.session;
+      var s = state.session;
       if (!s) return;
       if (s.qIndex + 1 < s.questions.length) {
         s.qIndex++;
@@ -1499,126 +1448,121 @@
     };
 
     function renderSessionOverlay() {
-      const root = document.getElementById('session-overlay-root');
+      var root = document.getElementById('session-overlay-root');
       if (!root) return;
-      const s = state.session;
+      var s = state.session;
       if (!s) { root.innerHTML = ''; return; }
 
       if (s.finished) {
-        root.innerHTML = `<div class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-6 text-center">
-          ${getSrulikMascotHTML('w-40 h-44', true)}
-          <h2 class="text-3xl font-black text-[#58cc02] mt-4">כָּל הַכָּבוֹד! Lesson Complete!</h2>
-          <p class="text-sm font-bold text-[#777777] mt-2">You finished <strong>${escapeHtml(s.title)}</strong> and earned <strong>+25 XP</strong>!</p>
-          <button onclick="closeSession()" class="duo-btn-green px-8 py-3.5 rounded-2xl font-extrabold text-base mt-6">Continue to Path →</button>
-        </div>`;
+        root.innerHTML = '<div class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-6 text-center">' +
+          getSrulikMascotHTML('w-40 h-44', true) +
+          '<h2 class="text-3xl font-black text-[#58cc02] mt-4">כָּל הַכָּבוֹד! Lesson Complete!</h2>' +
+          '<p class="text-sm font-bold text-[#777777] mt-2">You finished <strong>' + escapeHtml(s.title) + '</strong> and earned <strong>+25 XP</strong>!</p>' +
+          '<button onclick="closeSession()" class="duo-btn-green px-8 py-3.5 rounded-2xl font-extrabold text-base mt-6">Continue to Path →</button>' +
+        '</div>';
         return;
       }
 
-      const q = s.questions[s.qIndex];
-      const pct = Math.round(((s.qIndex + (s.checked ? 1 : 0)) / s.questions.length) * 100);
-      let bodyHtml = '';
+      var q = s.questions[s.qIndex];
+      var pct = Math.round(((s.qIndex + (s.checked ? 1 : 0)) / s.questions.length) * 100);
+      var bodyHtml = '';
 
       if (q.type === 'multiple_choice') {
-        const opts = q.options.map(function(opt) {
-          const sel = s.selectedValue === opt;
-          return `<button onclick="selectSessionOption('${escapeHtml(opt)}')" class="p-4 rounded-2xl font-extrabold text-sm text-left ${sel ? 'duo-btn-selected' : 'duo-btn-outline'}">${escapeHtml(opt)}</button>`;
+        var opts = q.options.map(function(opt) {
+          var sel = s.selectedValue === opt;
+          return '<button data-val="' + escapeHtml(opt) + '" onclick="selectSessionOption(this.dataset.val)" class="p-4 rounded-2xl font-extrabold text-sm text-left ' + (sel ? 'duo-btn-selected' : 'duo-btn-outline') + '">' + escapeHtml(opt) + '</button>';
         }).join('');
-        bodyHtml = `<div class="space-y-5">
-          <div class="p-5 rounded-3xl border-2 border-[#e5e5e5] bg-[#f7f7f7] flex items-center justify-between gap-4">
-            <div>
-              <div class="font-hebrew text-3xl font-black text-[#3c3c3c]" dir="rtl">${escapeHtml(q.hebrewPrompt || '')}</div>
-              ${q.translit ? `<div class="text-xs font-extrabold text-[#1cb0f6] mt-1">${escapeHtml(q.translit)}</div>` : ''}
-            </div>
-            <button onclick="speakHebrew('${escapeHtml(q.hebrewPrompt || '')}')" class="duo-btn-blue px-4 py-2.5 rounded-2xl font-extrabold text-xs">🔊 Listen</button>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${opts}</div>
-        </div>`;
+        bodyHtml = '<div class="space-y-5">' +
+          '<div class="p-5 rounded-3xl border-2 border-[#e5e5e5] bg-[#f7f7f7] flex items-center justify-between gap-4">' +
+            '<div>' +
+              '<div class="font-hebrew text-3xl font-black text-[#3c3c3c]" dir="rtl">' + escapeHtml(q.hebrewPrompt || '') + '</div>' +
+              (q.translit ? '<div class="text-xs font-extrabold text-[#1cb0f6] mt-1">' + escapeHtml(q.translit) + '</div>' : '') +
+            '</div>' +
+            '<button data-he="' + escapeHtml(q.hebrewPrompt || '') + '" onclick="speakHebrew(this.dataset.he)" class="duo-btn-blue px-4 py-2.5 rounded-2xl font-extrabold text-xs">🔊 Listen</button>' +
+          '</div>' +
+          '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">' + opts + '</div>' +
+        '</div>';
       } else if (q.type === 'irab_detective') {
-        const opts = q.options.map(function(o) {
-          const sel = s.selectedValue === o.value;
-          return `<button onclick="selectSessionOption('${escapeHtml(o.value)}'); speakHebrew('${escapeHtml(o.value)}')" class="p-4 rounded-2xl font-hebrew text-2xl font-bold ${sel ? 'duo-btn-selected' : 'duo-btn-outline'}" dir="rtl">${escapeHtml(o.value)}</button>`;
+        var opts2 = q.options.map(function(o) {
+          var sel = s.selectedValue === o.value;
+          return '<button data-val="' + escapeHtml(o.value) + '" onclick="selectSessionOption(this.dataset.val); speakHebrew(this.dataset.val)" class="p-4 rounded-2xl font-hebrew text-2xl font-bold ' + (sel ? 'duo-btn-selected' : 'duo-btn-outline') + '" dir="rtl">' + escapeHtml(o.value) + '</button>';
         }).join('');
-        bodyHtml = `<div class="space-y-5">
-          <div class="p-5 rounded-3xl border-2 border-[#e5e5e5] bg-[#f7f7f7] text-center space-y-2">
-            <div class="font-hebrew text-3xl font-black text-[#3c3c3c]" dir="rtl">
-              ${escapeHtml(q.sentenceBefore)} <span class="px-3 py-0.5 rounded-xl bg-[#ddf4ff] text-[#1899d6] border-b-4 border-[#1cb0f6]">${escapeHtml(s.selectedValue || '___')}</span> ${escapeHtml(q.targetWordBase)} ${escapeHtml(q.sentenceAfter)}
-            </div>
-            <div class="text-xs font-bold text-[#777777]">${escapeHtml(q.translation)}</div>
-          </div>
-          <div class="grid grid-cols-2 gap-3">${opts}</div>
-        </div>`;
+        bodyHtml = '<div class="space-y-5">' +
+          '<div class="p-5 rounded-3xl border-2 border-[#e5e5e5] bg-[#f7f7f7] text-center space-y-2">' +
+            '<div class="font-hebrew text-3xl font-black text-[#3c3c3c]" dir="rtl">' +
+              escapeHtml(q.sentenceBefore) + ' <span class="px-3 py-0.5 rounded-xl bg-[#ddf4ff] text-[#1899d6] border-b-4 border-[#1cb0f6]">' + escapeHtml(s.selectedValue || '___') + '</span> ' + escapeHtml(q.targetWordBase) + ' ' + escapeHtml(q.sentenceAfter) +
+            '</div>' +
+            '<div class="text-xs font-bold text-[#777777]">' + escapeHtml(q.translation) + '</div>' +
+          '</div>' +
+          '<div class="grid grid-cols-2 gap-3">' + opts2 + '</div>' +
+        '</div>';
       } else if (q.type === 'sentence_builder') {
-        const chosenHtml = s.builderChosen.map(function(w) {
-          return `<button onclick="toggleBuilderWord('${escapeHtml(w)}')" class="duo-btn-selected px-4 py-2 rounded-xl font-hebrew text-xl font-bold">${escapeHtml(w)}</button>`;
+        var chosenHtml = s.builderChosen.map(function(w) {
+          return '<button data-w="' + escapeHtml(w) + '" onclick="toggleBuilderWord(this.dataset.w)" class="duo-btn-selected px-4 py-2 rounded-xl font-hebrew text-xl font-bold">' + escapeHtml(w) + '</button>';
         }).join('');
-        const bankHtml = q.words.map(function(w) {
-          const used = s.builderChosen.indexOf(w) !== -1;
-          return `<button ${used ? 'disabled' : ''} onclick="toggleBuilderWord('${escapeHtml(w)}'); speakHebrew('${escapeHtml(w)}')" class="duo-btn-outline px-4 py-2.5 rounded-xl font-hebrew text-xl font-bold ${used ? 'opacity-30' : ''}">${escapeHtml(w)}</button>`;
+        var bankHtml = q.words.map(function(w) {
+          var used = s.builderChosen.indexOf(w) !== -1;
+          return '<button ' + (used ? 'disabled' : '') + ' data-w="' + escapeHtml(w) + '" onclick="toggleBuilderWord(this.dataset.w); speakHebrew(this.dataset.w)" class="duo-btn-outline px-4 py-2.5 rounded-xl font-hebrew text-xl font-bold ' + (used ? 'opacity-30' : '') + '">' + escapeHtml(w) + '</button>';
         }).join('');
-        bodyHtml = `<div class="space-y-5">
-          <div class="p-4 rounded-2xl bg-[#f7f7f7] border-2 border-[#e5e5e5] font-extrabold text-base text-[#3c3c3c]">"${escapeHtml(q.englishSentence)}"</div>
-          <div class="min-h-[68px] p-3 rounded-2xl border-2 border-dashed border-[#84d8ff] bg-[#f4fbff] flex flex-wrap gap-2 items-center" dir="rtl">${chosenHtml || '<span class="text-xs font-bold text-[#999999]" dir="ltr">Tap Hebrew words below to build the sentence...</span>'}</div>
-          <div class="flex flex-wrap gap-2.5 justify-center" dir="rtl">${bankHtml}</div>
-        </div>`;
+        bodyHtml = '<div class="space-y-5">' +
+          '<div class="p-4 rounded-2xl bg-[#f7f7f7] border-2 border-[#e5e5e5] font-extrabold text-base text-[#3c3c3c]">"' + escapeHtml(q.englishSentence) + '"</div>' +
+          '<div class="min-h-[68px] p-3 rounded-2xl border-2 border-dashed border-[#84d8ff] bg-[#f4fbff] flex flex-wrap gap-2 items-center" dir="rtl">' + (chosenHtml || '<span class="text-xs font-bold text-[#999999]" dir="ltr">Tap Hebrew words below to build the sentence...</span>') + '</div>' +
+          '<div class="flex flex-wrap gap-2.5 justify-center" dir="rtl">' + bankHtml + '</div>' +
+        '</div>';
       } else if (q.type === 'word_tap') {
-        const wordsHtml = q.words.map(function(w) {
-          const sel = s.selectedValue === w;
-          return `<button onclick="selectSessionOption('${escapeHtml(w)}'); speakHebrew('${escapeHtml(w)}')" class="px-4 py-3 rounded-2xl font-hebrew text-2xl font-bold ${sel ? 'duo-btn-red' : 'duo-btn-outline'}">${escapeHtml(w)}</button>`;
+        var wordsHtml = q.words.map(function(w) {
+          var sel = s.selectedValue === w;
+          return '<button data-val="' + escapeHtml(w) + '" onclick="selectSessionOption(this.dataset.val); speakHebrew(this.dataset.val)" class="px-4 py-3 rounded-2xl font-hebrew text-2xl font-bold ' + (sel ? 'duo-btn-red' : 'duo-btn-outline') + '">' + escapeHtml(w) + '</button>';
         }).join('');
-        bodyHtml = `<div class="space-y-5 text-center">
-          <div class="text-xs font-bold text-[#777777]">${escapeHtml(q.translation)}</div>
-          <div class="flex flex-wrap gap-3 justify-center p-5 rounded-3xl border-2 border-[#e5e5e5] bg-[#f7f7f7]" dir="rtl">${wordsHtml}</div>
-        </div>`;
+        bodyHtml = '<div class="space-y-5 text-center">' +
+          '<div class="text-xs font-bold text-[#777777]">' + escapeHtml(q.translation) + '</div>' +
+          '<div class="flex flex-wrap gap-3 justify-center p-5 rounded-3xl border-2 border-[#e5e5e5] bg-[#f7f7f7]" dir="rtl">' + wordsHtml + '</div>' +
+        '</div>';
       } else if (q.type === 'matching') {
-        const leftHtml = q.pairs.map(function(p) {
-          const done = s.matchedPairs.indexOf(p.he) !== -1;
-          const active = s.matchLeft === p.he;
-          return `<button ${done ? 'disabled' : ''} onclick="clickMatchItem('he', '${escapeHtml(p.he)}')" class="w-full p-3.5 rounded-2xl font-hebrew text-xl font-bold ${done ? 'opacity-30 duo-btn-outline' : active ? 'duo-btn-selected' : 'duo-btn-outline'}">${escapeHtml(p.he)}</button>`;
+        var leftHtml = q.pairs.map(function(p) {
+          var done = s.matchedPairs.indexOf(p.he) !== -1;
+          var active = s.matchLeft === p.he;
+          return '<button ' + (done ? 'disabled' : '') + ' data-val="' + escapeHtml(p.he) + '" onclick="clickMatchItem(\'he\', this.dataset.val)" class="w-full p-3.5 rounded-2xl font-hebrew text-xl font-bold ' + (done ? 'opacity-30 duo-btn-outline' : active ? 'duo-btn-selected' : 'duo-btn-outline') + '">' + escapeHtml(p.he) + '</button>';
         }).join('');
-        const rightHtml = q.pairs.slice().reverse().map(function(p) {
-          const done = s.matchedPairs.indexOf(p.he) !== -1;
-          return `<button ${done ? 'disabled' : ''} onclick="clickMatchItem('en', '${escapeHtml(p.en)}')" class="w-full p-3.5 rounded-2xl font-extrabold text-sm ${done ? 'opacity-30 duo-btn-outline' : 'duo-btn-outline'}">${escapeHtml(p.en)}</button>`;
+        var rightHtml = q.pairs.slice().reverse().map(function(p) {
+          var done = s.matchedPairs.indexOf(p.he) !== -1;
+          return '<button ' + (done ? 'disabled' : '') + ' data-val="' + escapeHtml(p.en) + '" onclick="clickMatchItem(\'en\', this.dataset.val)" class="w-full p-3.5 rounded-2xl font-extrabold text-sm ' + (done ? 'opacity-30 duo-btn-outline' : 'duo-btn-outline') + '">' + escapeHtml(p.en) + '</button>';
         }).join('');
-        bodyHtml = `<div class="grid grid-cols-2 gap-4">
-          <div class="space-y-2.5">${leftHtml}</div>
-          <div class="space-y-2.5">${rightHtml}</div>
-        </div>`;
+        bodyHtml = '<div class="grid grid-cols-2 gap-4">' +
+          '<div class="space-y-2.5">' + leftHtml + '</div>' +
+          '<div class="space-y-2.5">' + rightHtml + '</div>' +
+        '</div>';
       }
 
-      root.innerHTML = `<div class="fixed inset-0 z-[100] bg-white flex flex-col justify-between">
-        <!-- Top Progress Header -->
-        <div class="max-w-3xl w-full mx-auto px-5 pt-5 pb-3 flex items-center gap-4">
-          <button onclick="closeSession()" class="text-2xl font-black text-[#afafaf] hover:text-[#4b4b4b]">✕</button>
-          <div class="flex-1 h-4 rounded-full bg-[#e5e5e5] overflow-hidden">
-            <div class="duo-progress-fill h-full bg-[#58cc02] rounded-full" style="width:${pct}%"></div>
-          </div>
-          <span class="text-xs font-extrabold text-[#777777]">${s.qIndex + 1} / ${s.questions.length}</span>
-        </div>
-
-        <!-- Question Body -->
-        <div class="max-w-2xl w-full mx-auto px-5 py-4 flex-1 flex flex-col justify-center space-y-5 overflow-y-auto">
-          <h2 class="text-xl sm:text-2xl font-black text-[#3c3c3c]">${escapeHtml(q.prompt)}</h2>
-          ${bodyHtml}
-        </div>
-
-        <!-- Footer Feedback & Check Button -->
-        <div class="border-t-2 ${s.checked ? (s.isCorrect ? 'bg-[#d7ffb8] border-[#58cc02]' : 'bg-[#ffdfe0] border-[#ff4b4b]') : 'bg-white border-[#e5e5e5]'} p-5">
-          <div class="max-w-3xl w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            ${s.checked ? `
-              <div class="space-y-1 text-left">
-                <div class="text-lg font-black ${s.isCorrect ? 'text-[#58a700]' : 'text-[#ea2b2b]'}">
-                  ${s.isCorrect ? '✅ מְצֻיָּן! Correct!' : '❌ Not quite right'}
-                </div>
-                <div class="text-xs font-bold text-[#3c3c3c]">${escapeHtml(q.grammarTip || '')}</div>
-              </div>
-              <button onclick="nextSessionQuestion()" class="${s.isCorrect ? 'duo-btn-green' : 'duo-btn-red'} px-8 py-3.5 rounded-2xl font-extrabold text-sm shrink-0">Continue →</button>
-            ` : `
-              <div class="text-xs font-bold text-[#777777]">Select your answer and press Check</div>
-              <button onclick="checkSessionAnswer()" class="duo-btn-green px-8 py-3.5 rounded-2xl font-extrabold text-sm shrink-0">Check Answer</button>
-            `}
-          </div>
-        </div>
-      </div>`;
+      root.innerHTML = '<div class="fixed inset-0 z-[100] bg-white flex flex-col justify-between">' +
+        '<div class="max-w-3xl w-full mx-auto px-5 pt-5 pb-3 flex items-center gap-4">' +
+          '<button onclick="closeSession()" class="text-2xl font-black text-[#afafaf] hover:text-[#4b4b4b] bg-transparent border-none cursor-pointer">✕</button>' +
+          '<div class="flex-1 h-4 rounded-full bg-[#e5e5e5] overflow-hidden">' +
+            '<div class="duo-progress-fill h-full bg-[#58cc02] rounded-full" style="width:' + pct + '%"></div>' +
+          '</div>' +
+          '<span class="text-xs font-extrabold text-[#777777]">' + (s.qIndex + 1) + ' / ' + s.questions.length + '</span>' +
+        '</div>' +
+        '<div class="max-w-2xl w-full mx-auto px-5 py-4 flex-1 flex flex-col justify-center space-y-5 overflow-y-auto">' +
+          '<h2 class="text-xl sm:text-2xl font-black text-[#3c3c3c]">' + escapeHtml(q.prompt) + '</h2>' +
+          bodyHtml +
+        '</div>' +
+        '<div class="border-t-2 ' + (s.checked ? (s.isCorrect ? 'bg-[#d7ffb8] border-[#58cc02]' : 'bg-[#ffdfe0] border-[#ff4b4b]') : 'bg-white border-[#e5e5e5]') + ' p-5">' +
+          '<div class="max-w-3xl w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">' +
+            (s.checked ? (
+              '<div class="space-y-1 text-left">' +
+                '<div class="text-lg font-black ' + (s.isCorrect ? 'text-[#58a700]' : 'text-[#ea2b2b]') + '">' +
+                  (s.isCorrect ? '✅ מְצֻיָּן! Correct!' : '❌ Not quite right') +
+                '</div>' +
+                '<div class="text-xs font-bold text-[#3c3c3c]">' + escapeHtml(q.grammarTip || '') + '</div>' +
+              '</div>' +
+              '<button onclick="nextSessionQuestion()" class="' + (s.isCorrect ? 'duo-btn-green' : 'duo-btn-red') + ' px-8 py-3.5 rounded-2xl font-extrabold text-sm shrink-0">Continue →</button>'
+            ) : (
+              '<div class="text-xs font-bold text-[#777777]">Select your answer and press Check</div>' +
+              '<button onclick="checkSessionAnswer()" class="duo-btn-green px-8 py-3.5 rounded-2xl font-extrabold text-sm shrink-0">Check Answer</button>'
+            )) +
+          '</div>' +
+        '</div>' +
+      '</div>';
     }
 
     // ============================================================================
@@ -1631,7 +1575,7 @@
     };
 
     window.insertHebrewChar = function(ch) {
-      const input = document.getElementById('dict-search-input') || document.getElementById('srulik-chat-input');
+      var input = document.getElementById('dict-search-input') || document.getElementById('srulik-chat-input');
       if (!input) return;
       input.value += ch;
       input.dispatchEvent(new Event('input'));
@@ -1639,34 +1583,34 @@
     };
 
     function renderKeyboard() {
-      const root = document.getElementById('he-keyboard-root');
+      var root = document.getElementById('he-keyboard-root');
       if (!root) return;
       if (!state.kbOpen) { root.innerHTML = ''; return; }
-      const rows = [
+      var rows = [
         ['ק','ר','א','ט','ו','ן','ם','פ'],
         ['ש','ד','ג','כ','ע','י','ח','ל','ך','ף'],
         ['ז','ס','ב','ה','נ','מ','צ','ת','ץ']
       ];
-      const nikud = ['ָ','ַ','ֵ','ֶ','ִ','ֹ','ֻ','ְ','ּ'];
+      var nikud = ['ָ','ַ','ֵ','ֶ','ִ','ֹ','ֻ','ְ','ּ'];
 
-      const rowsHtml = rows.map(function(r) {
-        return `<div class="flex justify-center gap-1.5" dir="rtl">` + r.map(function(k) {
-          return `<button type="button" onclick="insertHebrewChar('${k}')" class="kb-key w-8 h-9 rounded-lg font-hebrew font-bold text-lg">${k}</button>`;
-        }).join('') + `</div>`;
+      var rowsHtml = rows.map(function(r) {
+        return '<div class="flex justify-center gap-1.5" dir="rtl">' + r.map(function(k) {
+          return '<button type="button" data-ch="' + k + '" onclick="insertHebrewChar(this.dataset.ch)" class="kb-key w-8 h-9 rounded-lg font-hebrew font-bold text-lg">' + k + '</button>';
+        }).join('') + '</div>';
       }).join('');
 
-      const nikudHtml = nikud.map(function(n) {
-        return `<button type="button" onclick="insertHebrewChar('${n}')" class="kb-key kb-key-mark w-8 h-8 rounded-lg font-hebrew font-bold text-lg">א${n}</button>`;
+      var nikudHtml = nikud.map(function(n) {
+        return '<button type="button" data-ch="' + n + '" onclick="insertHebrewChar(this.dataset.ch)" class="kb-key kb-key-mark w-8 h-8 rounded-lg font-hebrew font-bold text-lg">א' + n + '</button>';
       }).join('');
 
-      root.innerHTML = `<div class="kb-panel fixed bottom-5 right-5 z-[85] p-3.5 w-[350px] space-y-2">
-        <div class="flex items-center justify-between text-xs font-extrabold text-[#1899d6] pb-1">
-          <span>⌨️ Hebrew Keyboard (מִקְלֶדֶת עִבְרִית)</span>
-          <button onclick="toggleKeyboard()" class="px-2 py-0.5 rounded-lg bg-white border border-[#84d8ff]">✕</button>
-        </div>
-        ${rowsHtml}
-        <div class="flex justify-center gap-1 pt-1 border-t border-[#bfe8fd]" dir="rtl">${nikudHtml}</div>
-      </div>`;
+      root.innerHTML = '<div class="kb-panel fixed bottom-5 right-5 z-[85] p-3.5 w-[350px] space-y-2">' +
+        '<div class="flex items-center justify-between text-xs font-extrabold text-[#1899d6] pb-1">' +
+          '<span>⌨️ Hebrew Keyboard (מִקְלֶדֶת עִבְרִית)</span>' +
+          '<button onclick="toggleKeyboard()" class="px-2 py-0.5 rounded-lg bg-white border border-[#84d8ff] cursor-pointer">✕</button>' +
+        '</div>' +
+        rowsHtml +
+        '<div class="flex justify-center gap-1 pt-1 border-t border-[#bfe8fd]" dir="rtl">' + nikudHtml + '</div>' +
+      '</div>';
     }
 
     window.toggleSrulikChat = function() {
@@ -1676,21 +1620,20 @@
 
     window.sendSrulikMessage = function(e) {
       if (e) e.preventDefault();
-      const input = document.getElementById('srulik-chat-input');
+      var input = document.getElementById('srulik-chat-input');
       if (!input || !input.value.trim()) return;
-      const q = input.value.trim();
+      var q = input.value.trim();
       state.chatMessages.push({ from: 'user', text: q });
       input.value = '';
 
-      // Instant smart lookup in Dictionary + Verbs + Grammar
-      const qLow = q.toLowerCase();
-      const qClean = stripNikud(q);
-      let reply = '';
+      var qLow = q.toLowerCase();
+      var qClean = stripNikud(q);
+      var reply = '';
 
-      const foundVocab = CATEGORIZED_VOCABULARY.find(function(v) {
+      var foundVocab = CATEGORIZED_VOCABULARY.find(function(v) {
         return v.en.toLowerCase().indexOf(qLow) !== -1 || v.translit.toLowerCase() === qLow || stripNikud(v.he) === qClean;
       });
-      const foundVerb = VERB_CONJUGATION_DB.find(function(v) {
+      var foundVerb = VERB_CONJUGATION_DB.find(function(v) {
         return v.meaning.toLowerCase().indexOf(qLow) !== -1 || stripNikud(v.lemma) === qClean;
       });
 
@@ -1699,9 +1642,9 @@
       } else if (qLow.indexOf('smichut') !== -1 || qLow.indexOf('construct') !== -1) {
         reply = '**סְמִיכוּת (Smichut)** links two nouns together! Only the second noun takes **הַ־** (e.g., **בֵּית הַקָּפֶה** = the coffee shop), and feminine singular **־ָה** changes to **־ַת** (e.g., **עוּגַת תַּפּוּחִים** = apple cake).';
       } else if (foundVerb) {
-        reply = `**${foundVerb.lemma}** (${foundVerb.infinitive}) means **"${foundVerb.meaning}"** • Root: **${foundVerb.root}** (${foundVerb.binyan}). Present: **${foundVerb.forms.present.hu}** | Past (I): **${foundVerb.forms.past.ani}** | Future (I): **${foundVerb.forms.future.ani}**.`;
+        reply = '**' + foundVerb.lemma + '** (' + foundVerb.infinitive + ') means **"' + foundVerb.meaning + '"** • Root: **' + foundVerb.root + '** (' + foundVerb.binyan + '). Present: **' + foundVerb.forms.present.hu + '** | Past (I): **' + foundVerb.forms.past.ani + '** | Future (I): **' + foundVerb.forms.future.ani + '**.';
       } else if (foundVocab) {
-        reply = `In Hebrew, **"${foundVocab.en}"** is **${foundVocab.he}** (*${foundVocab.translit}*). ${foundVocab.plural !== '-' ? 'Plural: **' + foundVocab.plural + '**.' : ''}`;
+        reply = 'In Hebrew, **"' + foundVocab.en + '"** is **' + foundVocab.he + '** (*' + foundVocab.translit + '*). ' + (foundVocab.plural !== '-' ? 'Plural: **' + foundVocab.plural + '**.' : '');
       } else {
         reply = 'יוֹפִי שֶׁל שְׁאֵלָה! (Great question!) Try asking me about any English word (like *"coffee"*, *"university"*, *"write"*), a Hebrew word, or grammar rules like **אֶת** and **Smichut**!';
       }
@@ -1711,50 +1654,50 @@
     };
 
     function renderSrulikChat() {
-      const root = document.getElementById('srulik-chat-root');
+      var root = document.getElementById('srulik-chat-root');
       if (!root) return;
       if (!state.chatOpen) {
-        root.innerHTML = `<button onclick="toggleSrulikChat()" title="Chat with Srulik" class="fixed bottom-5 left-5 z-[80] w-16 h-16 rounded-2xl bg-[#fff5d3] border-2 border-[#ffc800] shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
-          ${getSrulikMascotHTML('w-14 h-14', true)}
-        </button>`;
+        root.innerHTML = '<button onclick="toggleSrulikChat()" title="Chat with Srulik" class="fixed bottom-5 left-5 z-[80] w-16 h-16 rounded-2xl bg-[#fff5d3] border-2 border-[#ffc800] shadow-lg flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">' +
+          getSrulikMascotHTML('w-14 h-14', true) +
+        '</button>';
         return;
       }
 
-      const msgsHtml = state.chatMessages.map(function(m) {
-        const isUser = m.from === 'user';
-        return `<div class="flex ${isUser ? 'justify-end' : 'justify-start'}">
-          <div class="max-w-[85%] p-3 rounded-2xl text-xs font-bold leading-relaxed ${isUser ? 'bg-[#1cb0f6] text-white' : 'bg-white border-2 border-[#e5e5e5] text-[#3c3c3c]'}">
-            ${escapeHtml(m.text).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
-          </div>
-        </div>`;
+      var msgsHtml = state.chatMessages.map(function(m) {
+        var isUser = m.from === 'user';
+        return '<div class="flex ' + (isUser ? 'justify-end' : 'justify-start') + '">' +
+          '<div class="max-w-[85%] p-3 rounded-2xl text-xs font-bold leading-relaxed ' + (isUser ? 'bg-[#1cb0f6] text-white' : 'bg-white border-2 border-[#e5e5e5] text-[#3c3c3c]') + '">' +
+            escapeHtml(m.text).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') +
+          '</div>' +
+        '</div>';
       }).join('');
 
-      root.innerHTML = `<div class="fixed bottom-5 left-5 z-[95] w-[360px] max-w-[calc(100vw-24px)] rounded-3xl bg-[#f7f7f7] border-2 border-[#84d8ff] shadow-2xl overflow-hidden flex flex-col max-h-[500px]">
-        <div class="bg-gradient-to-r from-[#1cb0f6] to-[#58cc02] p-3.5 text-white flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="text-lg">🧢</span>
-            <div>
-              <div class="font-black text-sm">Srulik — Hebrew Tutor</div>
-              <div class="text-[10px] font-bold opacity-90">שְׂרוּלִיק • Ask about words, roots & grammar</div>
-            </div>
-          </div>
-          <button onclick="toggleSrulikChat()" class="font-black text-lg px-2">✕</button>
-        </div>
-        <div class="p-3.5 space-y-2.5 overflow-y-auto flex-1">${msgsHtml}</div>
-        <form onsubmit="sendSrulikMessage(event)" class="p-2.5 bg-white border-t-2 border-[#e5e5e5] flex gap-2">
-          <input id="srulik-chat-input" type="text" placeholder="Ask Srulik (e.g. 'coffee', 'et', 'smichut')..." class="flex-1 px-3 py-2 rounded-xl border-2 border-[#e5e5e5] text-xs font-bold focus:outline-none focus:border-[#1cb0f6]" />
-          <button type="submit" class="duo-btn-green px-3.5 py-2 rounded-xl font-extrabold text-xs">Send</button>
-        </form>
-      </div>`;
+      root.innerHTML = '<div class="fixed bottom-5 left-5 z-[95] w-[360px] max-w-[calc(100vw-24px)] rounded-3xl bg-[#f7f7f7] border-2 border-[#84d8ff] shadow-2xl overflow-hidden flex flex-col max-h-[500px]">' +
+        '<div class="bg-gradient-to-r from-[#1cb0f6] to-[#58cc02] p-3.5 text-white flex items-center justify-between">' +
+          '<div class="flex items-center gap-2">' +
+            '<span class="text-lg">🧢</span>' +
+            '<div>' +
+              '<div class="font-black text-sm">Srulik — Hebrew Tutor</div>' +
+              '<div class="text-[10px] font-bold opacity-90">שְׂרוּלִיק • Ask about words, roots & grammar</div>' +
+            '</div>' +
+          '</div>' +
+          '<button onclick="toggleSrulikChat()" class="font-black text-lg px-2 bg-transparent border-none text-white cursor-pointer">✕</button>' +
+        '</div>' +
+        '<div class="p-3.5 space-y-2.5 overflow-y-auto flex-1">' + msgsHtml + '</div>' +
+        '<form onsubmit="sendSrulikMessage(event)" class="p-2.5 bg-white border-t-2 border-[#e5e5e5] flex gap-2">' +
+          '<input id="srulik-chat-input" type="text" placeholder="Ask Srulik (e.g. coffee, et, smichut)..." class="flex-1 px-3 py-2 rounded-xl border-2 border-[#e5e5e5] text-xs font-bold focus:outline-none focus:border-[#1cb0f6]" />' +
+          '<button type="submit" class="duo-btn-green px-3.5 py-2 rounded-xl font-extrabold text-xs">Send</button>' +
+        '</form>' +
+      '</div>';
     }
 
     // ============================================================================
     // MASTER APP RENDER
     // ============================================================================
     function renderApp() {
-      const app = document.getElementById('app');
+      var app = document.getElementById('app');
       if (!app) return;
-      let mainContent = '';
+      var mainContent = '';
       if (state.activeTab === 'learn') mainContent = renderLearnTab();
       else if (state.activeTab === 'stories') mainContent = renderStoriesTab();
       else if (state.activeTab === 'verbs') mainContent = renderVerbsTab();
@@ -1762,16 +1705,24 @@
       else if (state.activeTab === 'grammar') mainContent = renderGrammarTab();
       else if (state.activeTab === 'flashcards') mainContent = renderFlashcardsTab();
 
-      app.innerHTML = `<div class="min-h-screen flex flex-col md:flex-row">
-        ${renderSidebar()}
-        <main class="yafa-main flex-1 max-w-5xl w-full mx-auto p-5 sm:p-8">${mainContent}</main>
-      </div>`;
+      app.innerHTML = '<div class="min-h-screen flex flex-col md:flex-row">' +
+        renderSidebar() +
+        '<main class="yafa-main flex-1 max-w-5xl w-full mx-auto p-5 sm:p-8">' + mainContent + '</main>' +
+      '</div>';
     }
 
-    // Initialize Application
-    renderApp();
-    renderKeyboard();
-    renderSrulikChat();
+    // Initialize Application safely once DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        renderApp();
+        renderKeyboard();
+        renderSrulikChat();
+      });
+    } else {
+      renderApp();
+      renderKeyboard();
+      renderSrulikChat();
+    }
   </script>
 </body>
 </html>
