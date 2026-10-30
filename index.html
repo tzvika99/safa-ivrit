@@ -28,6 +28,19 @@
       --color-sea-sponge: 215, 255, 184;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: radial-gradient(1200px 500px at 85% -10%, #e6f6ff 0, transparent 60%), radial-gradient(900px 500px at -10% 110%, #effcdf 0, transparent 60%), #ffffff !important; background-attachment: fixed; }
+    #primary-sidebar { background: linear-gradient(180deg, #ffffff 0%, #f5fbff 100%) !important; box-shadow: 4px 0 24px rgba(28,176,246,.08); }
+    main .rounded-3xl, main .rounded-2xl.border-2 { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    main .grid > .rounded-2xl:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(28,176,246,.14); }
+    main h1 { letter-spacing: -.01em; }
+    .yafa-main > div, .yafa-main > section { animation: fadeUp .35s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .gz-typing span { display:inline-block; width:7px; height:7px; margin:0 2px; border-radius:50%; background:#84d8ff; animation: tp 1s infinite; }
+    .gz-typing span:nth-child(2){ animation-delay:.15s } .gz-typing span:nth-child(3){ animation-delay:.3s }
+    @keyframes tp { 0%,80%,100%{ transform: translateY(0); opacity:.5 } 40%{ transform: translateY(-5px); opacity:1 } }
+    .chat-bubble i { font-style: italic; color: #1899d6; }
+    .chip { cursor:pointer; transition: background .15s; } .chip:hover { background:#ddf4ff; }
     body { font-family: 'Rubik', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: #ffffff; color: #3c3c3c; overflow-x: hidden; }
     .font-hebrew { font-family: 'Rubik', 'Assistant', Arial, sans-serif; direction: rtl; }
 
@@ -148,6 +161,7 @@
       #primary-sidebar nav { display: grid !important; grid-template-columns: repeat(6, minmax(0, 1fr)) !important; gap: 4px !important; width: 100%; }
       #primary-sidebar nav button { flex-direction: column !important; padding: 6px 2px !important; font-size: 10px !important; gap: 2px !important; }
       .yafa-main { padding-bottom: 110px !important; }
+      #srulik-chat-root > div { bottom: 84px !important; }
     }
   </style>
 </head>
@@ -483,6 +497,62 @@
       ["עֲשָׂרָה / עֶשֶׂר", "asara / eser", "ten (m. / f.)", "Time & Connectors", "-", "עֶשֶׂר", "-"]
     ];
 
+
+    var EXTRA_VOCAB = [
+      ["אֶחָד / אַחַת", "echad / achat", "one (m. / f.)", "Numbers", "-", "אַחַת", "-"],
+      ["שְׁנַיִם / שְׁתַּיִם", "shnayim / shtayim", "two (m. / f.)", "Numbers", "-", "שְׁתַּיִם", "-"],
+      ["אַרְבָּעָה / אַרְבַּע", "arba'a / arba", "four (m. / f.)", "Numbers", "-", "אַרְבַּע", "-"],
+      ["שִׁשָּׁה / שֵׁשׁ", "shisha / shesh", "six (m. / f.)", "Numbers", "-", "שֵׁשׁ", "-"],
+      ["שִׁבְעָה / שֶׁבַע", "shiv'a / sheva", "seven (m. / f.)", "Numbers", "-", "שֶׁבַע", "-"],
+      ["שְׁמוֹנָה / שְׁמוֹנֶה", "shmona / shmone", "eight (m. / f.)", "Numbers", "-", "שְׁמוֹנֶה", "-"],
+      ["תִּשְׁעָה / תֵּשַׁע", "tish'a / tesha", "nine (m. / f.)", "Numbers", "-", "תֵּשַׁע", "-"],
+      ["מֵאָה", "me'a", "hundred", "Numbers", "מֵאוֹת", "מֵאָה", "מָאתַיִם"],
+      ["אֶלֶף", "elef", "thousand", "Numbers", "אֲלָפִים", "-", "אַלְפַּיִם"],
+      ["יוֹם רִאשׁוֹן", "yom rishon", "Sunday", "Days & Months", "-", "-", "-"],
+      ["יוֹם שֵׁנִי", "yom sheni", "Monday", "Days & Months", "-", "-", "-"],
+      ["יוֹם שְׁלִישִׁי", "yom shlishi", "Tuesday", "Days & Months", "-", "-", "-"],
+      ["יוֹם רְבִיעִי", "yom revi'i", "Wednesday", "Days & Months", "-", "-", "-"],
+      ["יוֹם חֲמִישִׁי", "yom chamishi", "Thursday", "Days & Months", "-", "-", "-"],
+      ["יוֹם שִׁשִּׁי", "yom shishi", "Friday", "Days & Months", "-", "-", "-"],
+      ["שַׁבָּת", "shabbat", "Saturday / Sabbath", "Days & Months", "שַׁבָּתוֹת", "שַׁבָּת", "-"],
+      ["חֹדֶשׁ", "chodesh", "month", "Days & Months", "חֳדָשִׁים", "-", "חֹדְשַׁיִם"],
+      ["שָׁנָה", "shana", "year", "Days & Months", "שָׁנִים", "שָׁנָה", "שְׁנָתַיִם"],
+      ["בֹּקֶר", "boker", "morning", "Days & Months", "בְּקָרִים", "-", "-"],
+      ["עֶרֶב", "erev", "evening", "Days & Months", "עֲרָבִים", "-", "-"],
+      ["לַיְלָה", "layla", "night", "Days & Months", "לֵילוֹת", "לַיְלָה", "-"],
+      ["רֹאשׁ", "rosh", "head", "Body & Health", "רָאשִׁים", "-", "-"],
+      ["יָד", "yad", "hand", "Body & Health", "יָדַיִם", "יָד", "יָדַיִם"],
+      ["עַיִן", "ayin", "eye", "Body & Health", "עֵינַיִם", "עַיִן", "עֵינַיִם"],
+      ["אֹזֶן", "ozen", "ear", "Body & Health", "אָזְנַיִם", "אֹזֶן", "אָזְנַיִם"],
+      ["לֵב", "lev", "heart", "Body & Health", "לְבָבוֹת", "-", "-"],
+      ["רֶגֶל", "regel", "foot / leg", "Body & Health", "רַגְלַיִם", "רֶגֶל", "רַגְלַיִם"],
+      ["רוֹפֵא", "rofe", "doctor", "Body & Health", "רוֹפְאִים", "רוֹפֵאָה", "-"],
+      ["בֵּית חוֹלִים", "beit cholim", "hospital (construct)", "Body & Health", "בָּתֵּי חוֹלִים", "-", "-"],
+      ["חוֹלֶה", "choleh", "sick", "Body & Health", "חוֹלִים", "חוֹלָה", "-"],
+      ["עֲבוֹדָה", "avoda", "work / job", "Work & Daily Life", "עֲבוֹדוֹת", "עֲבוֹדָה", "-"],
+      ["כֶּסֶף", "kesef", "money / silver", "Work & Daily Life", "-", "-", "-"],
+      ["מַתָּנָה", "matana", "gift", "Work & Daily Life", "מַתָּנוֹת", "מַתָּנָה", "-"],
+      ["חַג", "chag", "holiday / festival", "Work & Daily Life", "חַגִּים", "-", "-"],
+      ["טִיּוּל", "tiyul", "trip / hike", "Work & Daily Life", "טִיּוּלִים", "-", "-"],
+      ["שִׁיר", "shir", "song / poem", "Work & Daily Life", "שִׁירִים", "-", "-"],
+      ["מַדּוּעַ / לָמָּה", "madua / lama", "why", "Question Words", "-", "-", "-"],
+      ["אֵיפֹה", "eifo", "where", "Question Words", "-", "-", "-"],
+      ["מָתַי", "matai", "when", "Question Words", "-", "-", "-"],
+      ["מִי", "mi", "who", "Question Words", "-", "-", "-"],
+      ["כַּמָּה", "kama", "how much / how many", "Question Words", "-", "-", "-"],
+      ["אֵיךְ", "eich", "how", "Question Words", "-", "-", "-"],
+      ["אֵיזֶה / אֵיזוֹ", "eize / eizo", "which (m. / f.)", "Question Words", "-", "אֵיזוֹ", "-"],
+      ["וְ־", "ve-", "and", "Time & Connectors", "-", "-", "-"],
+      ["אֲבָל", "aval", "but", "Time & Connectors", "-", "-", "-"],
+      ["כִּי", "ki", "because", "Time & Connectors", "-", "-", "-"],
+      ["אוֹ", "o", "or", "Time & Connectors", "-", "-", "-"],
+      ["לֹא", "lo", "no / not", "Time & Connectors", "-", "-", "-"],
+      ["כֵּן", "ken", "yes", "Time & Connectors", "-", "-", "-"],
+      ["מְאוֹד", "meod", "very", "Time & Connectors", "-", "-", "-"],
+      ["גַּם", "gam", "also / too", "Time & Connectors", "-", "-", "-"]
+    ];
+    RAW_VOCAB_LIST = RAW_VOCAB_LIST.concat(EXTRA_VOCAB);
+
     var CATEGORIZED_VOCABULARY = RAW_VOCAB_LIST.map(function(row) {
       return {
         he: row[0],
@@ -677,6 +747,50 @@
           ["הִפְעִיל (Hif'il)", "הִזְמִין / הֵבִין", "מַזְמִין / מַזְמִינָה", "לְהַזְמִין — Causative / active (מַ־ in present)"],
           ["הִתְפַּעֵל (Hitpa'el)", "הִתְקַשֵּׁר / הִשְׁתַּתֵּף", "מִתְקַשֵּׁר / מִתְקַשֶּׁרֶת", "לְהִתְקַשֵּׁר — Reflexive / mutual actions"]
         ]
+      },
+      {
+        title: "6. Adjective Agreement & Plurals (הַתְאָמָה וְרִבּוּי)",
+        badge: "Nouns & Adjectives",
+        color: "#14b8a6",
+        summary: "Adjectives always match the noun in gender, number and definiteness. Masculine plural nouns usually end in ־ִים, feminine plural in ־וֹת — but some nouns break the pattern (בַּיִת ← בָּתִּים, שֻׁלְחָן ← שֻׁלְחָנוֹת), and the adjective follows the noun's GENDER, not its ending.",
+        formula: "סֵפֶר חָדָשׁ ← סְפָרִים חֲדָשִׁים  |  עִיר יָפָה ← עָרִים יָפוֹת",
+        headers: ["Pattern", "Hebrew Example", "Meaning & Rule"],
+        rows: [
+          ["m. sg. → m. pl.", "תַּלְמִיד טוֹב ← תַּלְמִידִים טוֹבִים", "good student → good students (־ִים)"],
+          ["f. sg. → f. pl.", "מוֹרָה טוֹבָה ← מוֹרוֹת טוֹבוֹת", "good teacher → good teachers (־וֹת)"],
+          ["Irregular plural", "שֻׁלְחָנוֹת גְּדוֹלִים", "שֻׁלְחָן is masculine even though its plural ends in ־וֹת: adjective takes ־ִים"],
+          ["Definite phrase", "הַמּוֹרוֹת הַטּוֹבוֹת", "the good teachers (both words take הַ־)"]
+        ]
+      },
+      {
+        title: "7. Past Tense Endings (עָבָר)",
+        badge: "Verbs",
+        color: "#f43f5e",
+        summary: "In the past tense every person has its own ending added to the stem. Memorize the endings once and they work for almost every Pa'al verb: ־תִּי (I), ־תָּ (you m.), ־תְּ (you f.), nothing (he), ־ָה (she), ־נוּ (we), ־תֶּם / ־תֶּן (you pl.), ־וּ (they).",
+        formula: "כָּתַבְתִּי · כָּתַבְתָּ · כָּתַבְתְּ · כָּתַב · כָּתְבָה · כָּתַבְנוּ · כְּתַבְתֶּם · כָּתְבוּ",
+        headers: ["Person", "Ending", "Example (לָמַד - to study)"],
+        rows: [
+          ["אֲנִי (I)", "־תִּי", "לָמַדְתִּי"],
+          ["אַתָּה / אַתְּ (you)", "־תָּ / ־תְּ", "לָמַדְתָּ / לָמַדְתְּ"],
+          ["הוּא / הִיא (he / she)", "— / ־ָה", "לָמַד / לָמְדָה"],
+          ["אֲנַחְנוּ (we)", "־נוּ", "לָמַדְנוּ"],
+          ["אַתֶּם / הֵם (you pl. / they)", "־תֶּם / ־וּ", "לְמַדְתֶּם / לָמְדוּ"]
+        ]
+      },
+      {
+        title: "8. Question Words & Negation (מִלּוֹת שְׁאֵלָה וּשְׁלִילָה)",
+        badge: "Syntax",
+        color: "#8b5cf6",
+        summary: "Hebrew questions use a question word at the start, or just rising intonation for yes/no questions (or הַאִם in formal speech). Verbs are negated with לֹא before the verb; existence is negated with אֵין; and 'don't!' commands use אַל + future.",
+        formula: "מִי? מָה? אֵיפֹה? מָתַי? לָמָּה? אֵיךְ? כַּמָּה?  |  אֲנִי לֹא לוֹמֵד  |  אַל תִּכְתֹּב!",
+        headers: ["Question", "Hebrew Example", "Meaning"],
+        rows: [
+          ["מִי (who)", "מִי הַמּוֹרֶה שֶׁלְּךָ?", "Who is your teacher?"],
+          ["אֵיפֹה (where)", "אֵיפֹה הַסִּפְרִיָּה?", "Where is the library?"],
+          ["מָתַי (when)", "מָתַי הַשִּׁעוּר?", "When is the class?"],
+          ["כַּמָּה (how much)", "כַּמָּה זֶה עוֹלֶה?", "How much does this cost?"],
+          ["Negation", "אֲנִי לֹא רוֹצֶה קָפֶה", "I do not want coffee"]
+        ]
       }
     ];
 
@@ -848,6 +962,31 @@
               { type: 'matching', prompt: 'Match each verb infinitive to its meaning:', pairs: [{ he: 'לִלְמֹד', en: 'To study / learn' }, { he: 'לִכְתֹּב', en: 'To write' }, { he: 'לֶאֱכֹל', en: 'To eat' }, { he: 'לִשְׁתּוֹת', en: 'To drink' }], grammarTip: 'All Hebrew infinitives start with the prefix ל־!' },
               { type: 'multiple_choice', prompt: 'Which pronoun matches the past-tense verb לָמַדְתִּי?', hebrewPrompt: 'לָמַדְתִּי עִבְרִית בָּאוּנִיבֶרְסִיטָה', translit: 'lamadeti Ivrit ba-universita', options: ['אֲנִי (I)', 'הוּא (He)', 'אֲנַחְנוּ (We)', 'הֵם (They)'], correctAnswer: 'אֲנִי (I)', grammarTip: 'The past-tense suffix ־תִּי (-ti) always indicates "I" (אֲנִי).' },
               { type: 'sentence_builder', prompt: 'Build the sentence: "Yesterday we went to the market"', englishSentence: 'Yesterday we went to the market', words: ['אֶתְמוֹל', 'הָלַכְנוּ', 'לַשּׁוּק', 'הָלַכְתִּי', 'מָחָר'], correctOrder: ['אֶתְמוֹל', 'הָלַכְנוּ', 'לַשּׁוּק'], grammarTip: 'הָלַכְנוּ = we went (suffix ־נוּ). לַשּׁוּק = to the market.' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'u5', unitNumber: 'UNIT 5', sectionTitle: 'Time, Numbers & Questions',
+        title: 'Numbers, Days of the Week & Asking Questions (מִסְפָּרִים, יָמִים וּשְׁאֵלוֹת)',
+        description: 'Count, tell the days, and ask who / where / when / how much in everyday Hebrew.',
+        color: 'rgb(20, 184, 166)', shadowColor: 'rgb(15, 140, 125)',
+        ruleSummary: 'Numbers 3–10 have two forms: the masculine (שְׁלוֹשָׁה) is used with masculine nouns, the feminine (שָׁלוֹשׁ) with feminine nouns, and the pattern is reversed from what you expect! Days: יוֹם רִאשׁוֹן = Sunday ... שַׁבָּת = Saturday.',
+        nodes: [
+          {
+            id: 'u5-s1', title: 'Step 1 • Days & Numbers', offset: 0,
+            questions: [
+              { type: 'matching', prompt: 'Match the days of the week:', pairs: [{ he: 'יוֹם רִאשׁוֹן', en: 'Sunday' }, { he: 'יוֹם חֲמִישִׁי', en: 'Thursday' }, { he: 'יוֹם שִׁשִּׁי', en: 'Friday' }, { he: 'שַׁבָּת', en: 'Saturday' }], grammarTip: 'The Israeli week starts on Sunday (יוֹם רִאשׁוֹן = "first day").' },
+              { type: 'multiple_choice', prompt: 'How do you say "a hundred" in Hebrew?', hebrewPrompt: 'מֵאָה', translit: 'me\'a', options: ['One hundred', 'One thousand', 'Ten', 'Twenty'], correctAnswer: 'One hundred', grammarTip: 'מֵאָה = 100, אֶלֶף = 1,000.' },
+              { type: 'sentence_builder', prompt: 'Build: "I have three books"', englishSentence: 'I have three books', words: ['יֵשׁ', 'לִי', 'שְׁלוֹשָׁה', 'סְפָרִים', 'שָׁלוֹשׁ'], correctOrder: ['יֵשׁ', 'לִי', 'שְׁלוֹשָׁה', 'סְפָרִים'], grammarTip: 'סֵפֶר is masculine, so we use שְׁלוֹשָׁה (the "-ה" form) with it.' }
+            ]
+          },
+          {
+            id: 'u5-s2', title: 'Step 2 • Asking Questions', offset: -48,
+            questions: [
+              { type: 'irab_detective', prompt: 'Choose the right question word: "Where is the library?"', sentenceBefore: '', targetWordBase: 'הַסִּפְרִיָּה?', sentenceAfter: '', translation: 'Where is the library?', options: [{ value: 'אֵיפֹה' }, { value: 'מָתַי' }, { value: 'מִי' }, { value: 'כַּמָּה' }], correctValue: 'אֵיפֹה', grammarTip: 'אֵיפֹה = where, מָתַי = when, מִי = who, כַּמָּה = how much.' },
+              { type: 'matching', prompt: 'Match the question words:', pairs: [{ he: 'מִי', en: 'Who' }, { he: 'מָתַי', en: 'When' }, { he: 'אֵיךְ', en: 'How' }, { he: 'כַּמָּה', en: 'How much' }], grammarTip: 'Question words always come first in the sentence.' },
+              { type: 'word_tap', isErr: true, prompt: 'Tap the word that is wrong: "I do not want coffee"', translation: 'Intended: I do not want coffee.', words: ['אֲנִי', 'אֵין', 'רוֹצֶה', 'קָפֶה'], correctValue: 'אֵין', grammarTip: 'Verbs are negated with לֹא, not אֵין: אֲנִי לֹא רוֹצֶה קָפֶה.' }
             ]
           }
         ]
@@ -1190,7 +1329,7 @@
     };
 
     function renderDictionaryTab() {
-      var categories = ['All', 'Pronouns & People', 'Greetings & Expressions', 'University & Classroom', 'Food & Nature', 'City & Places', 'Adjectives', 'Time & Connectors'];
+      var categories = ['All'].concat(CATEGORIZED_VOCABULARY.map(function(v) { return v.category; }).filter(function(c, i, a) { return a.indexOf(c) === i; }));
       var catBtns = categories.map(function(c) {
         var active = state.dictCategory === c;
         return '<button data-cat="' + escapeHtml(c) + '" onclick="setDictCategory(this.dataset.cat)" class="px-3.5 py-2 rounded-xl font-extrabold text-xs ' + (active ? 'duo-btn-blue' : 'duo-btn-outline') + '">' + escapeHtml(c) + '</button>';
@@ -1613,82 +1752,108 @@
       '</div>';
     }
 
-    window.toggleSrulikChat = function() {
-      state.chatOpen = !state.chatOpen;
-      renderSrulikChat();
-    };
-
-    window.sendSrulikMessage = function(e) {
-      if (e) e.preventDefault();
-      var input = document.getElementById('srulik-chat-input');
-      if (!input || !input.value.trim()) return;
-      var q = input.value.trim();
-      state.chatMessages.push({ from: 'user', text: q });
-      input.value = '';
-
-      var qLow = q.toLowerCase();
-      var qClean = stripNikud(q);
-      var reply = '';
-
-      var foundVocab = CATEGORIZED_VOCABULARY.find(function(v) {
-        return v.en.toLowerCase().indexOf(qLow) !== -1 || v.translit.toLowerCase() === qLow || stripNikud(v.he) === qClean;
-      });
-      var foundVerb = VERB_CONJUGATION_DB.find(function(v) {
-        return v.meaning.toLowerCase().indexOf(qLow) !== -1 || stripNikud(v.lemma) === qClean;
-      });
-
-      if (qLow.indexOf('et') !== -1 || qClean === 'את') {
-        reply = 'In Hebrew, **אֶת (et)** is placed right before a **definite direct object** (a noun with הַ־ or a proper name). For example: **קָרָאתִי אֶת הַסֵּפֶר** (I read *the* book), vs. **קָרָאתִי סֵפֶר** (I read *a* book — no אֶת!).';
-      } else if (qLow.indexOf('smichut') !== -1 || qLow.indexOf('construct') !== -1) {
-        reply = '**סְמִיכוּת (Smichut)** links two nouns together! Only the second noun takes **הַ־** (e.g., **בֵּית הַקָּפֶה** = the coffee shop), and feminine singular **־ָה** changes to **־ַת** (e.g., **עוּגַת תַּפּוּחִים** = apple cake).';
-      } else if (foundVerb) {
-        reply = '**' + foundVerb.lemma + '** (' + foundVerb.infinitive + ') means **"' + foundVerb.meaning + '"** • Root: **' + foundVerb.root + '** (' + foundVerb.binyan + '). Present: **' + foundVerb.forms.present.hu + '** | Past (I): **' + foundVerb.forms.past.ani + '** | Future (I): **' + foundVerb.forms.future.ani + '**.';
-      } else if (foundVocab) {
-        reply = 'In Hebrew, **"' + foundVocab.en + '"** is **' + foundVocab.he + '** (*' + foundVocab.translit + '*). ' + (foundVocab.plural !== '-' ? 'Plural: **' + foundVocab.plural + '**.' : '');
-      } else {
-        reply = 'יוֹפִי שֶׁל שְׁאֵלָה! (Great question!) Try asking me about any English word (like *"coffee"*, *"university"*, *"write"*), a Hebrew word, or grammar rules like **אֶת** and **Smichut**!';
+    // ---- Srulik chat: Google Gemini tutor (free API key kept only in this browser) + local fallback ----
+    var SRULIK_KEY = 'srulik_gemini_key';
+    var SRULIK_MODELS = ['gemini-3.5-flash-lite', 'gemini-3.8-flash'];
+    var SRULIK_PROMPT = 'You are Srulik (שְׂרוּלִיק), a friendly Israeli tutor teaching Modern Hebrew to English speakers. Answer in English. Write every Hebrew word with full nikud and put its transliteration in *single asterisks*. Keep answers short and beginner-friendly, with one or two examples. No headings or tables; **bold** is allowed.';
+    var srulikBusy = false;
+    window.toggleSrulikChat = function() { state.chatOpen = !state.chatOpen; renderSrulikChat(); };
+    function srulikFormat(t) {
+      var h = escapeHtml(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<i>$1</i>').replace(/\n/g, '<br>');
+      return h.replace(/[\u0590-\u05FF]+(?:[ \u00A0][\u0590-\u05FF]+)*/g, '<span class="font-hebrew text-[1.15em]" dir="rtl">$&</span>');
+    }
+    function srulikBubble(m) {
+      var u = m.from === 'user';
+      return '<div class="flex ' + (u ? 'justify-end' : 'justify-start') + '"><div class="chat-bubble max-w-[88%] p-3 rounded-2xl text-[13px] font-bold leading-relaxed ' + (u ? 'bg-[#1cb0f6] text-white' : 'bg-white border-2 border-[#e5e5e5] text-[#3c3c3c]') + '">' + srulikFormat(m.text) + '</div></div>';
+    }
+    function srulikLocal(q) {
+      var low = q.toLowerCase().trim(), clean = stripNikud(q);
+      var has = function(re) { return re.test(low); };
+      if (has(/\b(et|direct object)\b/) || clean === 'את') return 'The particle **אֶת** (*et*) goes right before a **definite** direct object: **קָרָאתִי אֶת הַסֵּפֶר** (*kara\'ti et hasefer*) = I read the book. With an indefinite object there is no אֶת: **קָרָאתִי סֵפֶר**.';
+      if (has(/smichut|construct/)) return '**סְמִיכוּת** (*smichut*) joins two nouns. Only the second noun takes הַ־: **בֵּית הַקָּפֶה** (*beit hakafe*) = the coffee shop. Feminine ־ָה becomes ־ַת: **עוּגַת תַּפּוּחִים**.';
+      if (has(/binyan|pa.?al|pi.?el|hif.?il/)) return 'Hebrew verbs follow patterns called **בִּנְיָנִים** (*binyanim*). The three you meet first: **פָּעַל** (*pa\'al*: כָּתַב), **פִּעֵל** (*pi\'el*: דִּבֵּר) and **הִפְעִיל** (*hif\'il*: הִזְמִין). Open the Verb Lab tab to see full tables.';
+      if (has(/\bpast\b|\bfuture\b|conjugat/)) return 'Past tense adds endings: **־תִּי** (I), **־תָּ** (you m.), **־נוּ** (we), **־וּ** (they). Try the verb **כָּתַב** in the Verb Lab: *katavti, katavta, katav, katvu*.';
+      var words = low.split(/[^a-z\u0590-\u05FF\']+/).filter(Boolean);
+      var verb = VERB_CONJUGATION_DB.find(function(v) { return stripNikud(v.lemma) === clean || words.some(function(w) { return v.meaning.toLowerCase().split(/[ \/()]+/).indexOf(w) !== -1 && w !== 'to'; }); });
+      if (verb) return '**' + verb.lemma + '** (' + verb.infinitive + ') means "' + verb.meaning + '". Root: **' + verb.root + '**. Present: **' + verb.forms.present.hu + '**, past (I): **' + verb.forms.past.ani + '**, future (I): **' + verb.forms.future.ani + '**.';
+      var vocab = CATEGORIZED_VOCABULARY.find(function(v) { return stripNikud(v.he) === clean || v.translit.toLowerCase() === low || v.en.toLowerCase().split(/[ \/(),]+/).some(function(w) { return w === low; }) || v.en.toLowerCase() === low; });
+      if (vocab) return '"' + vocab.en + '" in Hebrew is **' + vocab.he + '** (*' + vocab.translit + '*).' + (vocab.plural !== '-' ? ' Plural: **' + vocab.plural + '**.' : '') + (vocab.fem !== '-' ? ' Feminine: **' + vocab.fem + '**.' : '');
+      return 'I can look up any English or Hebrew word, a verb, or explain rules like **אֶת**, **סְמִיכוּת** and **בִּנְיָנִים**. For open questions, add a free Gemini key with the ⚙️ button and I can answer anything!';
+    }
+    async function srulikAsk() {
+      var key = safeGet(SRULIK_KEY, '');
+      var contents = state.chatMessages.filter(function(m) { return m.from === 'user' || m.from === 'srulik'; }).slice(-10).map(function(m) { return { role: m.from === 'user' ? 'user' : 'model', parts: [{ text: m.text }] }; });
+      while (contents.length && contents[0].role !== 'user') contents.shift();
+      var err = 'Could not reach Gemini.';
+      for (var i = 0; i < SRULIK_MODELS.length; i++) {
+        try {
+          var res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + SRULIK_MODELS[i] + ':generateContent', {
+            method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+            body: JSON.stringify({ systemInstruction: { parts: [{ text: SRULIK_PROMPT }] }, contents: contents, generationConfig: { temperature: 0.5, maxOutputTokens: 900 } })
+          });
+          var data = await res.json().catch(function() { return {}; });
+          if (res.ok) { var p = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts; var t = p ? p.map(function(x) { return x.text || ''; }).join('') : ''; if (t) return t; err = 'Empty answer, try rephrasing.'; continue; }
+          err = (data.error && data.error.message) || ('HTTP ' + res.status);
+          if (res.status === 400 || res.status === 401 || res.status === 403) break;
+        } catch (e) { err = 'Network error: check your connection.'; }
       }
-
-      state.chatMessages.push({ from: 'srulik', text: reply });
+      throw new Error(err);
+    }
+    window.srulikSaveKey = function() {
+      var el = document.getElementById('srulik-key-input'); var v = el ? el.value.trim() : '';
+      safeSet(SRULIK_KEY, v); var box = document.getElementById('srulik-key-box'); if (box) box.style.display = 'none';
+      state.chatMessages.push({ from: 'srulik', text: v ? 'Key saved in this browser. Ask me anything about Hebrew!' : 'Key removed. I will use my built-in dictionary.' });
       renderSrulikChat();
     };
-
+    window.srulikToggleKey = function() { var b = document.getElementById('srulik-key-box'); if (b) b.style.display = b.style.display === 'none' ? 'block' : 'none'; };
+    window.srulikChip = function(t) { var i = document.getElementById('srulik-chat-input'); if (i) { i.value = t; sendSrulikMessage(); } };
+    window.sendSrulikMessage = async function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      var input = document.getElementById('srulik-chat-input');
+      if (!input || !input.value.trim() || srulikBusy) return;
+      var q = input.value.trim(); input.value = '';
+      state.chatMessages.push({ from: 'user', text: q });
+      srulikBusy = true; renderSrulikLog(true);
+      var reply;
+      if (safeGet(SRULIK_KEY, '')) {
+        try { reply = await srulikAsk(); }
+        catch (er) { reply = 'Gemini error: ' + er.message + '\n\n' + srulikLocal(q); }
+      } else { reply = srulikLocal(q); }
+      state.chatMessages.push({ from: 'srulik', text: reply });
+      srulikBusy = false; renderSrulikLog(false);
+      var inp = document.getElementById('srulik-chat-input'); if (inp) inp.focus();
+    };
+    function renderSrulikLog(typing) {
+      var log = document.getElementById('srulik-log'); if (!log) return;
+      log.innerHTML = state.chatMessages.map(srulikBubble).join('') + (typing ? '<div class="flex"><div class="gz-typing bg-white border-2 border-[#e5e5e5] rounded-2xl px-3 py-3"><span></span><span></span><span></span></div></div>' : '');
+      log.scrollTop = log.scrollHeight;
+    }
     function renderSrulikChat() {
       var root = document.getElementById('srulik-chat-root');
       if (!root) return;
       if (!state.chatOpen) {
-        root.innerHTML = '<button onclick="toggleSrulikChat()" title="Chat with Srulik" class="fixed bottom-5 left-5 z-[80] w-16 h-16 rounded-2xl bg-[#fff5d3] border-2 border-[#ffc800] shadow-lg flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">' +
-          getSrulikMascotHTML('w-14 h-14', true) +
-        '</button>';
+        root.innerHTML = '<button onclick="toggleSrulikChat()" title="Chat with Srulik" class="fixed bottom-5 left-5 z-[80] w-16 h-16 rounded-2xl bg-[#fff5d3] border-2 border-[#ffc800] shadow-lg flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">' + getSrulikMascotHTML('w-14 h-14', true) + '</button>';
         return;
       }
-
-      var msgsHtml = state.chatMessages.map(function(m) {
-        var isUser = m.from === 'user';
-        return '<div class="flex ' + (isUser ? 'justify-end' : 'justify-start') + '">' +
-          '<div class="max-w-[85%] p-3 rounded-2xl text-xs font-bold leading-relaxed ' + (isUser ? 'bg-[#1cb0f6] text-white' : 'bg-white border-2 border-[#e5e5e5] text-[#3c3c3c]') + '">' +
-            escapeHtml(m.text).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') +
-          '</div>' +
-        '</div>';
-      }).join('');
-
-      root.innerHTML = '<div class="fixed bottom-5 left-5 z-[95] w-[360px] max-w-[calc(100vw-24px)] rounded-3xl bg-[#f7f7f7] border-2 border-[#84d8ff] shadow-2xl overflow-hidden flex flex-col max-h-[500px]">' +
-        '<div class="bg-gradient-to-r from-[#1cb0f6] to-[#58cc02] p-3.5 text-white flex items-center justify-between">' +
-          '<div class="flex items-center gap-2">' +
-            '<span class="text-lg">🧢</span>' +
-            '<div>' +
-              '<div class="font-black text-sm">Srulik — Hebrew Tutor</div>' +
-              '<div class="text-[10px] font-bold opacity-90">שְׂרוּלִיק • Ask about words, roots & grammar</div>' +
-            '</div>' +
-          '</div>' +
-          '<button onclick="toggleSrulikChat()" class="font-black text-lg px-2 bg-transparent border-none text-white cursor-pointer">✕</button>' +
+      var chips = ['How do I use אֶת?', 'What is smichut?', 'coffee', 'to write', 'Explain the past tense'].map(function(c) { return '<button type="button" data-q="' + escapeHtml(c) + '" onclick="srulikChip(this.dataset.q)" class="chip px-2.5 py-1 rounded-xl bg-white border-2 border-[#e5e5e5] text-[11px] font-extrabold text-[#777777]">' + escapeHtml(c) + '</button>'; }).join('');
+      var hasKey = !!safeGet(SRULIK_KEY, '');
+      root.innerHTML = '<div class="fixed bottom-5 left-5 z-[95] w-[380px] max-w-[calc(100vw-24px)] h-[560px] max-h-[calc(100vh-100px)] rounded-3xl bg-[#f7f7f7] border-2 border-[#84d8ff] shadow-2xl overflow-hidden flex flex-col">' +
+        '<div class="bg-gradient-to-r from-[#1cb0f6] to-[#58cc02] p-3 text-white flex items-center justify-between gap-2">' +
+          '<div class="flex items-center gap-2">' + getSrulikMascotHTML('w-9 h-10', true) + '<div><div class="font-black text-sm">Srulik — Hebrew Tutor</div><div class="text-[10px] font-bold opacity-90">' + (hasKey ? '✨ Gemini AI is on' : 'Basic mode • add a key for full AI') + '</div></div></div>' +
+          '<div class="flex gap-1"><button onclick="srulikToggleKey()" title="Gemini key" class="px-2 py-1 rounded-lg bg-white/20 border-none text-white cursor-pointer">⚙️</button><button onclick="toggleSrulikChat()" class="font-black text-lg px-2 bg-transparent border-none text-white cursor-pointer">✕</button></div>' +
         '</div>' +
-        '<div class="p-3.5 space-y-2.5 overflow-y-auto flex-1">' + msgsHtml + '</div>' +
+        '<div id="srulik-key-box" style="display:' + (hasKey ? 'none' : 'block') + '" class="p-3 bg-[#fff5d3] border-b-2 border-[#ffc800] text-[11px] font-bold text-[#8c4103] space-y-2">' +
+          '<div>Free key: open <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" class="underline text-[#1899d6]">Google AI Studio ↗</a>, press <strong>Create API key</strong>, paste it here. It stays only in your browser.</div>' +
+          '<div class="flex gap-2"><input id="srulik-key-input" type="password" dir="ltr" placeholder="AIza..." class="flex-1 min-w-0 px-2 py-1.5 rounded-lg border-2 border-[#e5e5e5] text-xs" /><button onclick="srulikSaveKey()" class="duo-btn-green px-3 rounded-lg font-extrabold text-xs">Save</button></div>' +
+        '</div>' +
+        '<div id="srulik-log" class="flex-1 overflow-y-auto p-3 space-y-2.5"></div>' +
+        '<div class="px-3 pb-2 flex flex-wrap gap-1.5">' + chips + '</div>' +
         '<form onsubmit="sendSrulikMessage(event)" class="p-2.5 bg-white border-t-2 border-[#e5e5e5] flex gap-2">' +
-          '<input id="srulik-chat-input" type="text" placeholder="Ask Srulik (e.g. coffee, et, smichut)..." class="flex-1 px-3 py-2 rounded-xl border-2 border-[#e5e5e5] text-xs font-bold focus:outline-none focus:border-[#1cb0f6]" />' +
-          '<button type="submit" class="duo-btn-green px-3.5 py-2 rounded-xl font-extrabold text-xs">Send</button>' +
-        '</form>' +
-      '</div>';
+          '<input id="srulik-chat-input" type="text" autocomplete="off" placeholder="Ask about a word, verb or rule..." class="flex-1 min-w-0 px-3 py-2 rounded-xl border-2 border-[#e5e5e5] text-sm font-bold focus:outline-none focus:border-[#1cb0f6]" />' +
+          '<button type="submit" class="duo-btn-green px-4 py-2 rounded-xl font-extrabold text-xs">Send</button>' +
+        '</form></div>';
+      renderSrulikLog(srulikBusy);
+      setTimeout(function() { var i = document.getElementById('srulik-chat-input'); if (i) i.focus(); }, 30);
     }
 
     // ============================================================================
