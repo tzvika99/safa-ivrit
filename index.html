@@ -553,6 +553,380 @@
     ];
     RAW_VOCAB_LIST = RAW_VOCAB_LIST.concat(EXTRA_VOCAB);
 
+    // Compact word pack: hebrew|transliteration|english|category (one word per line; add more lines to grow the course)
+    var WORD_PACK = `
+לִקְרֹא|likro|to read|Common Verbs
+לִקְנוֹת|liknot|to buy|Common Verbs
+לִמְכֹּר|limkor|to sell|Common Verbs
+לִפְתֹּחַ|liftoach|to open|Common Verbs
+לִסְגֹּר|lisgor|to close|Common Verbs
+לָקוּם|lakum|to get up|Common Verbs
+לָשֶׁבֶת|lashevet|to sit|Common Verbs
+לַעֲמֹד|la'amod|to stand|Common Verbs
+לִישֹׁן|lishon|to sleep|Common Verbs
+לָבוֹא|lavo|to come|Common Verbs
+לָצֵאת|latzet|to go out|Common Verbs
+לַעֲזֹר|la'azor|to help|Common Verbs
+לִשְׁאֹל|lish'ol|to ask|Common Verbs
+לַעֲנוֹת|la'anot|to answer|Common Verbs
+לִרְאוֹת|lir'ot|to see|Common Verbs
+לִשְׁמֹעַ|lishmoa|to hear / listen|Common Verbs
+לְהָבִין|lehavin|to understand|Common Verbs
+לָדַעַת|lada'at|to know|Common Verbs
+לֶאֱהֹב|le'ehov|to love|Common Verbs
+לִשְׂחוֹת|lisechot|to swim|Common Verbs
+לָרוּץ|laruts|to run|Common Verbs
+לִנְסֹעַ|linsoa|to travel / drive|Common Verbs
+לַחֲזֹר|lachazor|to return|Common Verbs
+לְבַשֵּׁל|levashel|to cook|Common Verbs
+לְשַׁלֵּם|leshalem|to pay|Common Verbs
+לְהַתְחִיל|lehatchil|to start|Common Verbs
+לְסַיֵּם|lesayem|to finish|Common Verbs
+לְחַפֵּשׂ|lechapes|to search|Common Verbs
+לִמְצֹא|limtzo|to find|Common Verbs
+לָתֵת|latet|to give|Common Verbs
+לָקַחַת|lakachat|to take|Common Verbs
+לְטַיֵּל|letayel|to hike / stroll|Common Verbs
+לְשַׂחֵק|lesachek|to play|Common Verbs
+לִצְחֹק|litzchok|to laugh|Common Verbs
+לִבְכּוֹת|livkot|to cry|Common Verbs
+לְחַכּוֹת|lechakot|to wait|Common Verbs
+לְהַגִּיעַ|lehagia|to arrive|Common Verbs
+לִזְכֹּר|lizkor|to remember|Common Verbs
+לִשְׁכֹּחַ|lishkoach|to forget|Common Verbs
+לְנַקּוֹת|lenakot|to clean|Common Verbs
+כֶּלֶב|kelev|dog|Animals
+חָתוּל|chatul|cat|Animals
+סוּס|sus|horse|Animals
+פָּרָה|para|cow|Animals
+צִפּוֹר|tzipor|bird|Animals
+דָּג|dag|fish|Animals
+אַרְיֵה|aryeh|lion|Animals
+פִּיל|pil|elephant|Animals
+קוֹף|kof|monkey|Animals
+כֶּבֶשׂ|keves|sheep|Animals
+גָּמָל|gamal|camel|Animals
+תַּרְנְגוֹל|tarnegol|rooster|Animals
+חֻלְצָה|chultza|shirt|Clothes
+מִכְנָסַיִם|michnasayim|pants|Clothes
+שִׂמְלָה|simla|dress|Clothes
+נַעֲלַיִם|na'alayim|shoes|Clothes
+כּוֹבַע|kova|hat|Clothes
+מְעִיל|me'il|coat|Clothes
+גֶּרֶב|gerev|sock|Clothes
+חֲגוֹרָה|chagora|belt|Clothes
+מִשְׁקָפַיִם|mishkafayim|glasses|Clothes
+תִּיק|tik|bag|Clothes
+מִטָּה|mita|bed|Home & Furniture
+חַלּוֹן|chalon|window|Home & Furniture
+דֶּלֶת|delet|door|Home & Furniture
+מִטְבָּח|mitbach|kitchen|Home & Furniture
+אַמְבַּטְיָה|ambatya|bathroom|Home & Furniture
+סָלוֹן|salon|living room|Home & Furniture
+גַּג|gag|roof|Home & Furniture
+גִּנָּה|gina|garden|Home & Furniture
+קִיר|kir|wall|Home & Furniture
+רִצְפָּה|ritzpa|floor|Home & Furniture
+מַפְתֵּחַ|maftei'ach|key|Home & Furniture
+מְקָרֵר|mekarer|refrigerator|Home & Furniture
+גֶּשֶׁם|geshem|rain|Weather & Nature
+רוּחַ|ru'ach|wind / spirit|Weather & Nature
+שֶׁלֶג|sheleg|snow|Weather & Nature
+עָנָן|anan|cloud|Weather & Nature
+כּוֹכָב|kochav|star|Weather & Nature
+יָרֵחַ|yare'ach|moon|Weather & Nature
+שָׁמַיִם|shamayim|sky / heaven|Weather & Nature
+הַר|har|mountain|Weather & Nature
+נָהָר|nahar|river|Weather & Nature
+פֶּרַח|perach|flower|Weather & Nature
+מִדְבָּר|midbar|desert|Weather & Nature
+קַיִץ|kayitz|summer|Weather & Nature
+חֹרֶף|choref|winter|Weather & Nature
+אָבִיב|aviv|spring|Weather & Nature
+סְתָו|stav|autumn|Weather & Nature
+שׁוֹטֵר|shoter|police officer|Jobs
+נַהָג|nahag|driver|Jobs
+טַבָּח|tabach|cook / chef|Jobs
+מְהַנְדֵּס|mehandes|engineer|Jobs
+חַיָּל|chayal|soldier|Jobs
+צַלָּם|tzalam|photographer|Jobs
+כַּתָּב|katav|reporter|Jobs
+אָמָּן|aman|artist|Jobs
+חַקְלַאי|chakla'i|farmer|Jobs
+עָצוּב|atzuv|sad|Feelings & Opposites
+כּוֹעֵס|koes|angry|Feelings & Opposites
+עָיֵף|ayef|tired|Feelings & Opposites
+רָעֵב|ra'ev|hungry|Feelings & Opposites
+צָמֵא|tzamei|thirsty|Feelings & Opposites
+מְפֻחָד|mefuchad|afraid|Feelings & Opposites
+גֵּאֶה|ge'e|proud|Feelings & Opposites
+רָחָב|rachav|wide|Feelings & Opposites
+צַר|tzar|narrow|Feelings & Opposites
+גָּבוֹהַּ|gavoah|tall / high|Feelings & Opposites
+נָמוּךְ|namuch|short / low|Feelings & Opposites
+יָקָר|yakar|expensive / dear|Feelings & Opposites
+זוֹל|zol|cheap|Feelings & Opposites
+מָהִיר|mahir|fast|Feelings & Opposites
+אִטִּי|iti|slow|Feelings & Opposites
+נָקִי|naki|clean (adj.)|Feelings & Opposites
+מְלֻכְלָךְ|melukhlach|dirty|Feelings & Opposites
+חָכָם|chacham|smart / wise|Feelings & Opposites
+עָשִׁיר|ashir|rich|Feelings & Opposites
+עָנִי|ani|poor|Feelings & Opposites
+חָזָק|chazak|strong|Feelings & Opposites
+חַלָּשׁ|chalash|weak|Feelings & Opposites
+פָּתוּחַ|patu'ach|open (adj.)|Feelings & Opposites
+סָגוּר|sagur|closed|Feelings & Opposites
+מָלֵא|male|full|Feelings & Opposites
+רֵיק|reik|empty|Feelings & Opposites
+בֵּיצָה|beitza|egg|More Food
+אֹרֶז|orez|rice|More Food
+בָּשָׂר|basar|meat|More Food
+עוֹף|of|chicken / bird|More Food
+שׁוֹקוֹלָד|shokolad|chocolate|More Food
+סֻכָּר|sukar|sugar|More Food
+מֶלַח|melach|salt|More Food
+שֶׁמֶן|shemen|oil|More Food
+מִיץ|mitz|juice|More Food
+יַיִן|yayin|wine|More Food
+עַגְבָנִיָּה|agvaniya|tomato|More Food
+מְלָפְפוֹן|melafefon|cucumber|More Food
+בָּצָל|batzal|onion|More Food
+לִימוֹן|limon|lemon|More Food
+תַּפּוּז|tapuz|orange|More Food
+אֲבַטִּיחַ|avatiach|watermelon|More Food
+דְּבַשׁ|dvash|honey|More Food
+פִּיתָה|pita|pita bread|More Food
+מָרָק|marak|soup|More Food
+אֲרוּחָה|aruchah|meal|More Food
+שְׂדֵה תְּעוּפָה|sdeh te'ufa|airport|Travel
+מָטוֹס|matos|airplane|Travel
+כַּרְטִיס|kartis|ticket|Travel
+דַּרְכּוֹן|darkon|passport|Travel
+מִזְוָדָה|mizvada|suitcase|Travel
+מָלוֹן|malon|hotel|Travel
+מַפָּה|mapa|map|Travel
+חוֹף|chof|beach / coast|Travel
+גֶּשֶׁר|gesher|bridge|Travel
+כְּבִישׁ|kvish|road / highway|Travel
+רַמְזוֹר|ramzor|traffic light|Travel
+מוּזֵיאוֹן|muzeon|museum|Travel
+`;
+    WORD_PACK.trim().split('\n').forEach(function(line) {
+      var p = line.split('|');
+      if (p.length >= 4) RAW_VOCAB_LIST.push([p[0], p[1], p[2], p[3], '-', '-', '-']);
+    });
+
+    // Second word pack (basic everyday words); words already in the dictionary are skipped automatically.
+    var WORD_PACK_2 = `
+זֶה|ze|this (m.) / it|Demonstratives & Place
+זֹאת|zot|this (f.)|Demonstratives & Place
+אֵלֶּה|eleh|these / those|Demonstratives & Place
+כָּאן|kan|here|Demonstratives & Place
+שָׁם|sham|there|Demonstratives & Place
+כֹּל|kol|all / every|Demonstratives & Place
+מִישֶׁהוּ|mishehu|someone|Demonstratives & Place
+מַשֶּׁהוּ|mashehu|something|Demonstratives & Place
+כְּלוּם|klum|nothing / anything|Demonstratives & Place
+עוֹד|od|more / still / again|Demonstratives & Place
+כְּבָר|kvar|already|Demonstratives & Place
+רַק|rak|only|Demonstratives & Place
+אוּלַי|ulai|maybe|Demonstratives & Place
+בִּשְׁבִיל|bishvil|for|Demonstratives & Place
+לִפְנֵי|lifnei|before|Demonstratives & Place
+אַחֲרֵי|acharei|after|Demonstratives & Place
+בֵּין|bein|between|Demonstratives & Place
+מִתַּחַת|mitachat|under|Demonstratives & Place
+מֵעַל|me'al|above|Demonstratives & Place
+לְיַד|leyad|next to|Demonstratives & Place
+מוּל|mul|opposite / facing|Demonstratives & Place
+בַּחוּץ|bachutz|outside|Demonstratives & Place
+בִּפְנִים|bifnim|inside|Demonstratives & Place
+עַד|ad|until / up to|Demonstratives & Place
+בִּגְלַל|biglal|because of|Demonstratives & Place
+אִם|im|if|Demonstratives & Place
+כְּמוֹ|kmo|like / as|Demonstratives & Place
+לְמַעְלָה|lemala|up / upstairs|Demonstratives & Place
+לְמַטָּה|lemata|down / downstairs|Demonstratives & Place
+יָמִינָה|yamina|to the right|Demonstratives & Place
+שְׂמֹאלָה|smola|to the left|Demonstratives & Place
+יָשָׁר|yashar|straight|Demonstratives & Place
+עוֹד מְעַט|od me'at|soon / in a bit|Time Words
+מַהֵר|maher|quickly|Time Words
+לְאַט|le'at|slowly|Time Words
+לִפְעָמִים|lif'amim|sometimes|Time Words
+אַף פַּעַם|af pa'am|never|Time Words
+בְּדֶרֶךְ כְּלָל|bederech klal|usually|Time Words
+פַּעַם|pa'am|once / a time|Time Words
+דַּקָּה|daka|minute|Time Words
+שְׁנִיָּה|shniya|second (time)|Time Words
+רֶגַע|rega|moment|Time Words
+צָהֳרַיִם|tzohorayim|noon / afternoon|Time Words
+מוּקְדָּם|mukdam|early|Time Words
+מְאֻחָר|me'uchar|late|Time Words
+סוֹף|sof|end|Time Words
+הַתְחָלָה|hatchala|beginning|Time Words
+רִאשׁוֹן|rishon|first|Time Words
+אַחֲרוֹן|acharon|last|Time Words
+מַה נִּשְׁמָע?|ma nishma?|what's up?|Everyday Phrases
+אֲנִי לֹא מֵבִין|ani lo mevin|I do not understand|Everyday Phrases
+אֶפְשָׁר?|efshar?|is it possible? / may I?|Everyday Phrases
+בְּסֵדֶר|beseder|OK / fine|Everyday Phrases
+אֵין בְּעַד מָה|ein al ma|you are welcome|Everyday Phrases
+מַזָּל טוֹב|mazal tov|congratulations|Everyday Phrases
+שַׁבָּת שָׁלוֹם|shabbat shalom|peaceful Sabbath|Everyday Phrases
+חַג שָׂמֵחַ|chag sameach|happy holiday|Everyday Phrases
+בֶּאֱמֶת|be'emet|really / truly|Everyday Phrases
+מָה זֶה?|ma ze?|what is this?|Everyday Phrases
+כַּמָּה זֶה עוֹלֶה?|kama ze oleh?|how much does it cost?|Everyday Phrases
+אֲנִי מִצְטַעֵר|ani mitzta'er|I am sorry|Everyday Phrases
+בְּתֵאָבוֹן|beteavon|bon appetit|Everyday Phrases
+לְחַיִּים|lechayim|cheers|Everyday Phrases
+רֶגַע אֶחָד|rega echad|one moment|Everyday Phrases
+עִבְרִית|ivrit|Hebrew (language)|Everyday Phrases
+עֲרָבִית|aravit|Arabic (language)|Everyday Phrases
+אַנְגְּלִית|anglit|English (language)|Everyday Phrases
+שָׁעוֹן|sha'on|clock / watch|Everyday Objects
+מַצְלֵמָה|matzlema|camera|Everyday Objects
+מִטְרִיָּה|mitriya|umbrella|Everyday Objects
+כּוֹס|kos|cup / glass|Everyday Objects
+צַלַּחַת|tzalachat|plate|Everyday Objects
+כַּף|kaf|spoon|Everyday Objects
+מַזְלֵג|mazleg|fork|Everyday Objects
+סַכִּין|sakin|knife|Everyday Objects
+בַּקְבּוּק|bakbuk|bottle|Everyday Objects
+שַׂקִּית|sakit|bag (small)|Everyday Objects
+קֻפְסָה|kufsa|box|Everyday Objects
+נְיָר|neyar|paper|Everyday Objects
+מִכְתָּב|michtav|letter|Everyday Objects
+תְּמוּנָה|tmuna|picture|Everyday Objects
+כַּדּוּר|kadur|ball|Everyday Objects
+מִשְׂחָק|miskhak|game|Everyday Objects
+סֶרֶט|seret|movie|Everyday Objects
+מוּזִיקָה|muzika|music|Everyday Objects
+אוֹר|or|light|Everyday Objects
+אֵשׁ|esh|fire|Everyday Objects
+אֲוִיר|avir|air|Everyday Objects
+אֶבֶן|even|stone|Everyday Objects
+זָהָב|zahav|gold|Everyday Objects
+כְּלִי|keli|tool / vessel|Everyday Objects
+פָּנִים|panim|face|Body & People
+שֵׂעָר|se'ar|hair|Body & People
+פֶּה|peh|mouth|Body & People
+אַף|af|nose|Body & People
+שֵׁן|shen|tooth|Body & People
+גַּב|gav|back|Body & People
+בֶּטֶן|beten|stomach|Body & People
+תִּינוֹק|tinok|baby|Body & People
+סַבָּא|saba|grandfather|Body & People
+סַבְתָּא|savta|grandmother|Body & People
+בֵּן|ben|son|Body & People
+בַּת|bat|daughter|Body & People
+בַּעַל|ba'al|husband|Body & People
+דּוֹד|dod|uncle|Body & People
+דּוֹדָה|doda|aunt|Body & People
+בֶּן דּוֹד|ben dod|cousin (m.)|Body & People
+שֵׁם|shem|name|Body & People
+אָדָם|adam|person / human|Body & People
+עוֹבֵד|oved|worker / employee|Body & People
+מְנַהֵל|menahel|manager / principal|Body & People
+עָם|am|people / nation|World & Ideas
+מְדִינָה|medina|country / state|World & Ideas
+כְּפָר|kfar|village|World & Ideas
+אֶרֶץ|eretz|land / country|World & Ideas
+עוֹלָם|olam|world|World & Ideas
+חַיִּים|chayim|life|World & Ideas
+אַהֲבָה|ahava|love|World & Ideas
+מִלְחָמָה|milchama|war|World & Ideas
+חֹפֶשׁ|chofesh|freedom / vacation|World & Ideas
+חֲלוֹם|chalom|dream|World & Ideas
+בְּעָיָה|be'aya|problem|World & Ideas
+רַעְיוֹן|ra'ayon|idea|World & Ideas
+סִפּוּר|sipur|story|World & Ideas
+חֲדָשׁוֹת|chadashot|news|World & Ideas
+מָקוֹם|makom|place|World & Ideas
+דֶּרֶךְ|derech|way / road|World & Ideas
+חֵלֶק|chelek|part|World & Ideas
+דָּבָר|davar|thing / word|World & Ideas
+זְמַן|zman|time|World & Ideas
+שָׁחוֹר|shachor|black|Colors & Descriptions
+צָהֹב|tzahov|yellow|Colors & Descriptions
+כָּתֹם|katom|orange (color)|Colors & Descriptions
+וָרֹד|varod|pink|Colors & Descriptions
+חוּם|chum|brown|Colors & Descriptions
+אָפֹר|afor|gray|Colors & Descriptions
+סָגֹל|sagol|purple|Colors & Descriptions
+צָעִיר|tza'ir|young|Colors & Descriptions
+זָקֵן|zaken|old (person)|Colors & Descriptions
+רָזֶה|raze|thin|Colors & Descriptions
+שָׁמֵן|shamen|fat|Colors & Descriptions
+נָכוֹן|nachon|correct / true|Colors & Descriptions
+שָׁגוּי|shagui|wrong|Colors & Descriptions
+מְסֻכָּן|mesukan|dangerous|Colors & Descriptions
+בָּטוּחַ|batuach|sure / safe|Colors & Descriptions
+מְיֻחָד|meyuchad|special|Colors & Descriptions
+פָּשׁוּט|pashut|simple|Colors & Descriptions
+שׁוֹנֶה|shoneh|different|Colors & Descriptions
+דּוֹמֶה|dome|similar|Colors & Descriptions
+נֶחְמָד|nechmad|nice / kind|Colors & Descriptions
+מַצְחִיק|matzchik|funny|Colors & Descriptions
+רָגִיל|ragil|usual / ordinary|Colors & Descriptions
+לִהְיוֹת|lihyot|to be|More Verbs
+לַעֲשׂוֹת|la'asot|to do / make|More Verbs
+לוֹמַר|lomar|to say|More Verbs
+לְדַבֵּר|ledaber|to speak|More Verbs
+לִרְצוֹת|lirtzot|to want|More Verbs
+לָגוּר|lagur|to live (reside)|More Verbs
+לָלֶכֶת|lalechet|to go / walk|More Verbs
+לֶאֱכֹל|le'echol|to eat|More Verbs
+לִשְׁתּוֹת|lishtot|to drink|More Verbs
+לִכְתֹּב|lichtov|to write|More Verbs
+לִלְמֹד|lilmod|to study / learn|More Verbs
+לְהַזְמִין|lehazmin|to order / invite|More Verbs
+לִשְׁלֹחַ|lishloach|to send|More Verbs
+לְקַבֵּל|lekabel|to receive|More Verbs
+לְהַרְגִּישׁ|leharghish|to feel|More Verbs
+לַחְשֹׁב|lachshov|to think|More Verbs
+לְהַאֲמִין|leha'amin|to believe|More Verbs
+לְהַסְבִּיר|lehasbir|to explain|More Verbs
+לְהִפָּגֵשׁ|lehipagesh|to meet (each other)|More Verbs
+לְהִתְלַבֵּשׁ|lehitlabesh|to get dressed|More Verbs
+לִנְשֹׁם|linshom|to breathe|More Verbs
+לְצַלֵּם|letzalem|to photograph|More Verbs
+לְצַיֵּר|letzayer|to draw|More Verbs
+לָשִׁיר|lashir|to sing|More Verbs
+לִרְקֹד|lirkod|to dance|More Verbs
+לִבְנוֹת|livnot|to build|More Verbs
+לְתַקֵּן|letaken|to fix / repair|More Verbs
+לְהַדְלִיק|lehadlik|to turn on / light|More Verbs
+לְכַבּוֹת|lechabot|to turn off / extinguish|More Verbs
+לִבְדֹּק|livdok|to check|More Verbs
+לְהַמְשִׁיךְ|lehamshich|to continue|More Verbs
+לַעֲבֹד|la'avod|to work|More Verbs
+לִקְפֹּץ|likpotz|to jump|More Verbs
+לָגַעַת|laga'at|to touch|More Verbs
+לִנְעֹל|linol|to lock|More Verbs
+`;
+    (function() {
+      var have = {};
+      RAW_VOCAB_LIST.forEach(function(r) { have[stripNikud(r[0])] = 1; });
+      WORD_PACK_2.trim().split('\n').forEach(function(line) {
+        var p = line.split('|');
+        if (p.length >= 4 && !have[stripNikud(p[0])]) { have[stripNikud(p[0])] = 1; RAW_VOCAB_LIST.push([p[0], p[1], p[2], p[3], '-', '-', '-']); }
+      });
+    })();
+
+    // Words imported by the user (paste lines or an Anki/Excel export): he|translit|english|category (2-4 columns, tab or |)
+    (function() {
+      var have = {}; RAW_VOCAB_LIST.forEach(function(r) { have[stripNikud(r[0])] = 1; });
+      safeGet('safa_custom_words', '').split('\n').forEach(function(line) {
+        var p = line.split(/\t|\|/).map(function(x) { return x.trim(); }).filter(function(x, i, a) { return x || i < a.length - 1; });
+        if (p.length < 2 || !p[0] || have[stripNikud(p[0])]) return;
+        var row = p.length === 2 ? [p[0], '-', p[1], 'My Words'] : p.length === 3 ? [p[0], p[1], p[2], 'My Words'] : [p[0], p[1], p[2], p[3] || 'My Words'];
+        have[stripNikud(p[0])] = 1; RAW_VOCAB_LIST.push([row[0], row[1], row[2], row[3], '-', '-', '-']);
+      });
+    })();
+
     var CATEGORIZED_VOCABULARY = RAW_VOCAB_LIST.map(function(row) {
       return {
         he: row[0],
@@ -994,6 +1368,86 @@
     ];
 
     // ============================================================================
+    // AUTO-GENERATED VOCABULARY UNITS: every 4 dictionary words become one unit with 5 exercises,
+    // so the course grows automatically with the dictionary (add lines to WORD_PACK to add units).
+    // ============================================================================
+    function buildVocabUnits() {
+      var all = CATEGORIZED_VOCABULARY, cats = [], by = {};
+      all.forEach(function(v) { if (!by[v.category]) { by[v.category] = []; cats.push(v.category); } by[v.category].push(v); });
+      var palette = [['rgb(28,176,246)', 'rgb(0,150,221)'], ['rgb(88,204,2)', 'rgb(88,167,0)'], ['rgb(255,150,0)', 'rgb(205,121,0)'], ['rgb(206,130,255)', 'rgb(165,104,204)'], ['rgb(20,184,166)', 'rgb(15,140,125)'], ['rgb(244,63,94)', 'rgb(190,45,75)']];
+      function opts(w, field, i) {
+        var out = [];
+        [by[w.category], all].forEach(function(pool) {
+          var start = (i * 7) % pool.length;
+          for (var j = 0; j < pool.length && out.length < 3; j++) {
+            var val = pool[(start + j) % pool.length][field];
+            if (val !== w[field] && out.indexOf(val) === -1) out.push(val);
+          }
+        });
+        out.splice(i % 4, 0, w[field]);
+        return out;
+      }
+      var units = [], n = 6;
+      cats.forEach(function(cat) {
+        var ws = by[cat], k = 0, part = 0;
+        while (k < ws.length) {
+          var end = k + 4; if (ws.length - end < 3) end = ws.length;
+          var ch = ws.slice(k, end); k = end; part++; n++;
+          var pal = palette[n % palette.length], uid = 'v' + n;
+          var qs = [{ type: 'matching', prompt: 'Match the Hebrew words to English:', pairs: ch.map(function(w) { return { he: w.he, en: w.en }; }), grammarTip: ch.map(function(w) { return w.he + ' = ' + w.en; }).join(' • ') }];
+          [0, 1, 2, 3].forEach(function(i) {
+            var w = ch[i % ch.length];
+            if (i % 2 === 0) qs.push({ type: 'multiple_choice', prompt: 'What does this Hebrew word mean?', hebrewPrompt: w.he, translit: w.translit, options: opts(w, 'en', n + i), correctAnswer: w.en, grammarTip: w.he + ' (' + w.translit + ') = ' + w.en + '.' });
+            else qs.push({ type: 'irab_detective', prompt: 'How do you say "' + w.en + '" in Hebrew?', sentenceBefore: 'Say:', targetWordBase: '', sentenceAfter: '', translation: w.en, options: opts(w, 'he', n + i).map(function(x) { return { value: x }; }), correctValue: w.he, grammarTip: w.he + ' (' + w.translit + ') = ' + w.en + '.' });
+          });
+          units.push({ id: uid, generated: true, unitNumber: 'UNIT ' + n, sectionTitle: cat, title: cat + ' • Part ' + part, description: ch.map(function(w) { return w.en; }).join(', '), color: pal[0], shadowColor: pal[1], ruleSummary: '', words: ch,
+            nodes: [{ id: uid + '-s1', title: cat + ' • Part ' + part, offset: 0, questions: qs }] });
+        }
+      });
+      return units;
+    }
+    function buildFormUnits() {
+      var units = [], palette = [['rgb(28,176,246)', 'rgb(0,150,221)'], ['rgb(88,204,2)', 'rgb(88,167,0)'], ['rgb(255,150,0)', 'rgb(205,121,0)'], ['rgb(206,130,255)', 'rgb(165,104,204)'], ['rgb(20,184,166)', 'rgb(15,140,125)'], ['rgb(244,63,94)', 'rgb(190,45,75)']];
+      function simple(x) { return x && x !== '-' && !/[\/(]/.test(x); }
+      function pickOpts(pool, correct, i) {
+        var out = [], st = (i * 7 + 3) % pool.length;
+        for (var j = 0; j < pool.length && out.length < 3; j++) { var v = pool[(st + j) % pool.length]; if (v !== correct && out.indexOf(v) === -1) out.push(v); }
+        out.splice(i % 4, 0, correct); return out;
+      }
+      function chunks(arr, size) {
+        var res = [], k = 0;
+        while (k < arr.length) { var end = k + size; if (arr.length - end < 2) end = arr.length; res.push(arr.slice(k, end)); k = end; }
+        return res;
+      }
+      function add(section, title, desc, words, qs) {
+        var num = COURSE_UNITS.length + units.length + 1, pal = palette[num % palette.length], uid = 'f' + num;
+        units.push({ id: uid, generated: true, unitNumber: 'UNIT ' + num, sectionTitle: section, title: title, description: desc, color: pal[0], shadowColor: pal[1], ruleSummary: '', words: words, nodes: [{ id: uid + '-s1', title: title, offset: 0, questions: qs }] });
+      }
+      [['plural', 'Plural forms', 'plural'], ['fem', 'Feminine forms', 'feminine']].forEach(function(cfg) {
+        var f = cfg[0], list = CATEGORIZED_VOCABULARY.filter(function(v) { return simple(v[f]) && simple(v.he) && v[f] !== v.he; });
+        var pool = list.map(function(v) { return v[f]; });
+        chunks(list, 4).forEach(function(ch, k) {
+          var qs = [{ type: 'matching', prompt: 'Match each word to its ' + cfg[2] + ' form:', pairs: ch.map(function(w) { return { he: w.he, en: w[f] }; }), grammarTip: ch.map(function(w) { return w.he + ' → ' + w[f]; }).join(' • ') }];
+          ch.forEach(function(w, i) { qs.push({ type: 'multiple_choice', prompt: 'What is the ' + cfg[2] + ' form of "' + w.en + '"?', hebrewPrompt: w.he, translit: w.translit, options: pickOpts(pool, w[f], k + i), correctAnswer: w[f], grammarTip: w.he + ' → ' + w[f] + '.' }); });
+          add(cfg[1], cfg[1] + ' • Part ' + (k + 1), ch.map(function(w) { return w.en; }).join(', '), ch.map(function(w) { return { he: w[f] }; }), qs);
+        });
+      });
+      var tenses = [['past', 'Past tense', ['ani', 'ata', 'hu', 'anachnu']], ['present', 'Present tense', ['ani', 'ata', 'at', 'anachnu']], ['future', 'Future tense', ['ani', 'ata', 'hu', 'anachnu']]];
+      VERB_CONJUGATION_DB.forEach(function(v) {
+        tenses.forEach(function(t) {
+          var tf = v.forms[t[0]], pool = PRONOUN_LIST.map(function(p) { return tf[p.id]; }).filter(function(x, i, a) { return a.indexOf(x) === i; });
+          var ps = t[2].map(function(id) { return PRONOUN_LIST.find(function(p) { return p.id === id; }); });
+          var qs = [{ type: 'matching', prompt: 'Match each pronoun to the ' + t[1].toLowerCase() + ' of ' + v.meaning + ':', pairs: ps.map(function(p) { return { he: p.he, en: tf[p.id] }; }), grammarTip: ps.map(function(p) { return p.he + ' ' + tf[p.id]; }).join(' • ') }];
+          ps.forEach(function(p, i) { qs.push({ type: 'multiple_choice', prompt: 'Conjugate "' + v.meaning + '" (' + t[1] + ') for ' + p.en + ':', hebrewPrompt: p.he + ' + ' + v.lemma, options: pickOpts(pool, tf[p.id], i), correctAnswer: tf[p.id], grammarTip: p.he + ' ' + tf[p.id] + ' (' + v.binyan + ').' }); });
+          add('Verbs: ' + v.lemma + ' (' + v.meaning + ')', v.lemma + ' • ' + t[1], v.meaning + ', ' + t[1].toLowerCase(), ps.map(function(p) { return { he: tf[p.id] }; }), qs);
+        });
+      });
+      return units;
+    }
+    COURSE_UNITS = COURSE_UNITS.concat(buildVocabUnits());
+    COURSE_UNITS = COURSE_UNITS.concat(buildFormUnits());
+
+    // ============================================================================
     // APPLICATION STATE
     // ============================================================================
     var parsedCompleted = ['u1-s1'];
@@ -1116,7 +1570,18 @@
     // TAB 1: LEARN PATH
     // ============================================================================
     function renderLearnTab() {
+      var lastGenCat = '';
       var unitsHtml = COURSE_UNITS.map(function(unit, uIdx) {
+        if (unit.generated) {
+          var done = state.completedNodes.indexOf(unit.nodes[0].id) !== -1;
+          var head = unit.sectionTitle !== lastGenCat ? '<h3 class="pt-8 pb-3 text-lg font-black text-[#3c3c3c]">' + escapeHtml(unit.sectionTitle) + '</h3>' : '';
+          lastGenCat = unit.sectionTitle;
+          return head + '<div class="flex items-center gap-3 p-3.5 mb-2.5 rounded-2xl border-2 border-[#e5e5e5] bg-white hover:border-[#84d8ff] transition-all">' +
+            '<div style="background:' + (done ? '#ffc800' : unit.color) + '" class="w-12 h-12 rounded-full text-white font-black text-sm flex items-center justify-center shrink-0">' + (done ? '⭐' : unit.unitNumber.replace('UNIT ', '')) + '</div>' +
+            '<div class="flex-1 min-w-0"><div class="text-[11px] font-extrabold text-[#777777] truncate">' + escapeHtml(unit.unitNumber) + ' • ' + escapeHtml(unit.description) + '</div>' +
+            '<div class="font-hebrew text-base font-bold text-[#3c3c3c] truncate" dir="rtl">' + unit.words.map(function(w) { return escapeHtml(w.he); }).join(' · ') + '</div></div>' +
+            '<button onclick="startNodeSession(\'' + unit.id + '\', 0)" class="' + (done ? 'duo-btn-outline' : 'duo-btn-green') + ' px-4 py-2 rounded-xl font-extrabold text-xs shrink-0">' + (done ? 'Review' : 'Start') + '</button></div>';
+        }
         var nodesHtml = unit.nodes.map(function(node, nIdx) {
           var isCompleted = state.completedNodes.indexOf(node.id) !== -1;
           var isFirst = (uIdx === 0 && nIdx === 0);
@@ -1323,6 +1788,13 @@
       if (input) { input.focus(); input.setSelectionRange(val.length, val.length); }
     };
 
+    window.importWords = function() {
+      var el = document.getElementById('import-words-text'); var t = el ? el.value.trim() : '';
+      if (!t) return;
+      safeSet('safa_custom_words', (safeGet('safa_custom_words', '') + '\n' + t).trim());
+      location.reload();
+    };
+    window.clearImportedWords = function() { safeSet('safa_custom_words', ''); location.reload(); };
     window.setDictCategory = function(cat) {
       state.dictCategory = cat;
       renderApp();
@@ -1384,6 +1856,12 @@
             'class="flex-1 px-4 py-3 rounded-2xl border-2 border-[#e5e5e5] font-bold text-sm focus:outline-none focus:border-[#1cb0f6]" />' +
           '<button onclick="toggleKeyboard()" class="kb-toggle-btn ' + (state.kbOpen ? 'kb-on' : '') + ' px-4 py-3 rounded-2xl font-extrabold text-xs shrink-0">⌨️ Hebrew Keyboard</button>' +
         '</div>' +
+        '<details class="rounded-2xl border-2 border-dashed border-[#84d8ff] bg-[#f4fbff] p-4"><summary class="cursor-pointer font-extrabold text-sm text-[#1899d6]">➕ Import your own words (each one becomes a dictionary entry and a lesson)</summary>' +
+          '<div class="mt-3 space-y-2 text-xs font-bold text-[#555555]">' +
+            '<div>One word per line: <code>עִבְרִית | translit | English | Category</code>. Two columns (Hebrew, English) or three (Hebrew, translit, English) also work, and you can paste straight from Excel / Anki exports (tab-separated). Imported words are saved in this browser. Words already in the dictionary are skipped.</div>' +
+            '<textarea id="import-words-text" rows="6" dir="auto" class="w-full p-3 rounded-xl border-2 border-[#e5e5e5] font-hebrew text-base" placeholder="שָׁעוֹן | sha\'on | clock | My Words"></textarea>' +
+            '<div class="flex gap-2"><button onclick="importWords()" class="duo-btn-green px-4 py-2 rounded-xl font-extrabold text-xs">Import & rebuild lessons</button><button onclick="clearImportedWords()" class="duo-btn-outline px-4 py-2 rounded-xl font-extrabold text-xs">Remove imported words</button></div>' +
+          '</div></details>' +
         '<div class="flex flex-wrap gap-2">' + catBtns + '</div>' +
         '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">' + cardsHtml + '</div>' +
       '</div>';
